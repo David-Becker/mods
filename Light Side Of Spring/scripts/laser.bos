@@ -7,10 +7,10 @@ Align(h) {
 	//get PRINT(h);
 }
 
-static-var reloading;
+static-var reloading, vulnerable;
 
 Reload() {
-	sleep 5000;
+	sleep 8000;
 	reloading=0;
 }
 
@@ -37,4 +37,22 @@ Create() {
 
 StartBuilding() {
 	set INBUILDSTANCE to 1;
+}
+
+Vulnerability() {
+	sleep 8000;
+	vulnerable=0;
+}
+
+HitByWeaponId(z,x,id,d) {
+	if (d > 1000) {
+		if (vulnerable) {
+			return 100;
+		} else {
+			vulnerable=1;
+			start-script Vulnerability();
+			return 10;
+		}
+	}
+	return 0;
 }

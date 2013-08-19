@@ -12,6 +12,7 @@
 {
 	[laser] {
 		canbuild1=mirror;
-		canbuild2=bottle;
+		canbuild2=splitter;
+		canbuild3=bottle;
 	}
 }

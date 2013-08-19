@@ -7,7 +7,7 @@
 	Mutator=official;
 
 	Description=BEAM AS BEAM CAN!;
-	Version=WIP2;
+	Version=WIP5;
 	ModType=1;
 	NumDependencies=1;
 	Depend0=springcontent.sdz;

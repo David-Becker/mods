@@ -64,6 +64,7 @@ AimLaser(h) {
 }
 
 Killed() {
-	sleep 1000;
+	hide body;
+	sleep 5000;
 	return 3;
 }

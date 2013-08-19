@@ -6,8 +6,8 @@
 
 	// Required Tags
 	Category=TURRET BUILDING GROUND NOTSMALL NOTINFRA;
-	FootprintX=2;
-	FootprintZ=2;
+	FootprintX=4;
+	FootprintZ=4;
 	MaxDamage=200;
 	IdleAutoHeal=20;
 	IdleTime=90;

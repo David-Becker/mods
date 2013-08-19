@@ -1,25 +1,24 @@
 [UNITINFO]
 {
-	Name=Laser;
-	Unitname=laser;
-	Description=The laser;
+	Name=Splitter;
+	Unitname=splitter;
+	Description=Splits the beam;
 
 	// Required Tags
-	Category=TURRET BUILDING GROUND NOTSMALL NOTINFRA COMMANDER;
+	Category=TURRET BUILDING GROUND NOTSMALL NOTINFRA;
 	FootprintX=4;
 	FootprintZ=4;
-	MaxDamage=1000;
-	//IdleAutoHeal=5;
+	MaxDamage=200;
+	IdleAutoHeal=20;
+	IdleTime=90;
 	maxSlope=12;
 	maxWaterDepth=0;
-	ObjectName=laser.s3o;
+	ObjectName=splitter.s3o;
 	Side=ANY;
 	SoundCategory=COMPUTER;
-	commander=1;
 
 	// Movement
 	CanMove=0;
-	CanAttack=0;
 
 	// Airplane Moventment
 
@@ -27,23 +26,13 @@
 	yardmap=o;
 
 	// Construction
-	ShowNanoFrame=0;
+	//ShowNanoFrame=0;
 	LevelGround=1;
+	BuildCostMetal=200;
+	BuildTime=3;
 
 	// Resources
-	EnergyMake=20;
-	EnergyStorage=100;
-	MetalStorage=2000;
-	MetalMake=5;
 	Reclaimable=0;
-	CanBuild=1;
-	CanRepair=0;
-	Builder=1;
-	WorkerTime=1;
-	TerraformSpeed=65536;
-	ReclaimSpeed=65536;
-	BuildDistance=65536;
-	ShowNanoSpray=0;
 
 	// Abilities
 
@@ -55,7 +44,7 @@
 	// Weapons
 	Weapon1=GuideLaser;
 	Weapon2=Laser;
-	ExplodeAs=LaserDeath;
+	ExplodeAs=MirrorDeath;
 
 	// Tracks/Flares
 

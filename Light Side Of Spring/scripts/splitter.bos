@@ -1,4 +1,4 @@
-piece base, body, aimguide, shooter;
+piece base, body, reflect, pass;
 
 #include "exptype.h"
 
@@ -15,7 +15,8 @@ Align(h) {
 Guide() {
 	if (lasered || get BUILD_PERCENT_LEFT) return;
 	lasered=1;
-	emit-sfx 2048 from aimguide;
+	emit-sfx 2048 from reflect;
+	emit-sfx 2048 from pass;
 	sleep 200;
 	lasered=0;
 }
@@ -26,9 +27,11 @@ ForwardLaser(red, h) {
 	if (ah > [.5]) ah = ah - [1];
 	if (ah < [-.5]) ah = ah + [1];
 	if (ah > [-.25] && ah < [.25]) {
-		turn shooter to y-axis 0 - ah now;
-		emit-sfx 2049 from shooter;
-		red=66;
+		turn reflect to y-axis 0 - ah now;
+		turn pass to y-axis <180> + ah now;
+		emit-sfx 2049 from reflect;
+		emit-sfx 2049 from pass;
+		red=75;
 		//play-sound ("BeamBounce",5);
 	}
 }
@@ -40,7 +43,8 @@ AimLaser(h) {
 	if (ah > [.5]) ah = ah - [1];
 	if (ah < [-.5]) ah = ah + [1];
 	if (ah > [-.25] && ah < [.25]) {
-		turn aimguide to y-axis 0 - ah now;
+		turn reflect to y-axis 0 - ah now;
+		turn pass to y-axis <180> + ah now;
 		start-script Guide();
 	}
 }

@@ -1,0 +1,9 @@
+[icontypes]
+{
+	[default]
+	{
+		size=1;
+		radiusadjust=1;
+		distance=1;
+	}
+}

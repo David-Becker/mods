@@ -1,0 +1,59 @@
+[UNITINFO]
+{
+	Name=Bottle;
+	Unitname=bottle;
+	Description=Focusses or disperses;
+
+	// Required Tags
+	Category=TURRET BUILDING GROUND NOTSMALL NOTINFRA;
+	FootprintX=4;
+	FootprintZ=4;
+	MaxDamage=200;
+	IdleAutoHeal=20;
+	IdleTime=90;
+	maxSlope=12;
+	maxWaterDepth=0;
+	ObjectName=bottle.s3o;
+	Side=ANY;
+	SoundCategory=COMPUTER;
+
+	// Movement
+	CanMove=0;
+
+	// Airplane Moventment
+
+	// Buildings
+	yardmap=o;
+
+	// Construction
+	//ShowNanoFrame=0;
+	LevelGround=1;
+	BuildCostMetal=300;
+	BuildTime=10;
+
+	// Resources
+	Reclaimable=0;
+
+	// Abilities
+
+	// Sight/Radar
+	RadarDistance=0;
+	SightDistance=0;
+	SeismicSignature=0;
+
+	// Weapons
+	Weapon1=GuideLaser;
+	Weapon2=Laser;
+	ExplodeAs=MirrorDeath;
+
+	// Tracks/Flares
+
+	// Watersettings
+
+	// Misc
+	SmoothAnim=0;
+
+	[SFXTypes]
+	{
+	}
+}

@@ -1,0 +1,239 @@
+piece base, body;
+piece grenbase, grenadelauncher, nade0, nade1;
+piece cannon, cn;
+piece machinegun, mg0, mg1;
+
+static-var barrel, defaultaim, engaged;
+
+#define SIG_Aim 1
+
+#include "exptype.h"
+#define MELTER_DEPTH [-12]
+#include "buildFX_melter.h"
+
+
+#define UPGRADE_BREAK_ON UPG_HEAVYWEAPONS
+#include "upgradesystem.h"
+
+//#define GREN
+#define CAN
+//#define MAG
+
+Create()
+{
+	#ifndef GREN
+	hide grenbase;
+	hide grenadelauncher;
+	#endif
+	
+	#ifndef CAN
+	hide cannon;
+	#endif
+	
+	#ifndef MAG
+	hide machinegun;
+	#endif
+	
+	start-script CheckForUpgrades();
+	start-script buildFX();
+}
+
+Killed(severity, corpsetype)
+{
+	#ifdef GREN
+	explode grenadelauncher type FALL | FIRE | SMOKE;
+	explode grenbase type FALL | FIRE | SMOKE;
+	#endif
+
+	#ifdef CAN
+	explode cannon type FALL | FIRE | SMOKE;
+	#endif
+
+	#ifdef MAG
+	explode machinegun type FALL | FIRE | SMOKE;
+	#endif
+	
+	corpsetype=1;
+	
+	if (severity>80)
+	{
+		corpsetype=3;
+		explode body type SHATTER;
+	}
+}
+
+RestoreAim()
+{
+	sleep 8000;
+	engaged=0;
+	
+	#ifdef GREN
+	turn grenbase to y-axis defaultaim speed <80>;
+	turn grenadelauncher to x-axis <0> speed <100>;
+	#endif
+	
+	#ifdef CAN
+	turn cannon to y-axis defaultaim speed <120>;
+	#endif
+	
+	#ifdef MAG
+	turn machinegun to y-axis defaultaim speed <160>;
+	#endif
+}
+
+#ifdef GREN
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = grenadelauncher;
+}
+
+QueryWeapon1(piecenum)
+{
+	if (barrel || (upgrades == (upgrades | UPG_HEAVYWEAPONS))) piecenum = nade0;
+	else piecenum = nade1;
+}
+
+FireWeapon1()
+{
+	barrel = !barrel;
+}
+
+AimWeapon1(heading, pitch)
+{
+	if (!engaged)
+	{
+		defaultaim = heading;
+		engaged = 1;
+	}
+	signal SIG_Aim;
+	set-signal-mask SIG_Aim;
+	turn grenbase to y-axis heading speed <280>;
+	turn grenadelauncher to x-axis (0-pitch) speed <400>;
+	wait-for-turn grenbase around y-axis;
+	wait-for-turn grenadelauncher around x-axis;
+	start-script RestoreAim();
+	return(1);
+}
+
+QueryWeapon2(piecenum)
+{
+	piecenum = nade1;
+}
+
+FireWeapon2()
+{
+}
+
+AimWeapon2(heading, pitch)
+{
+	wait-for-turn grenbase around y-axis;
+	wait-for-turn grenadelauncher around x-axis;
+	return(upgrades == (upgrades | UPG_HEAVYWEAPONS));
+}
+
+#endif
+
+#ifdef MAG
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = machinegun;
+}
+
+QueryWeapon1(piecenum)
+{
+	if (barrel) piecenum = mg0;
+	else piecenum = mg1;
+}
+
+FireWeapon1()
+{
+	if (barrel==1) emit-sfx 1025 from mg0;
+	else emit-sfx 1025 from mg1;
+	if (upgrades != (upgrades | UPG_HEAVYWEAPONS)) barrel = !barrel;
+	else barrel = 1;
+}
+
+AimWeapon1(heading, pitch)
+{
+	if (!engaged)
+	{
+		defaultaim = heading;
+		engaged = 1;
+	}
+	signal SIG_Aim;
+	set-signal-mask SIG_Aim;
+	turn machinegun to y-axis heading speed <480>;
+	wait-for-turn machinegun around y-axis;
+	start-script RestoreAim();
+	return(TRUE);
+}
+
+QueryWeapon2(piecenum)
+{
+	piecenum = mg1;
+}
+
+FireWeapon2()
+{
+	emit-sfx 1025 from mg1;
+}
+
+AimWeapon2(heading, pitch)
+{
+	wait-for-turn machinegun around y-axis;
+	return(upgrades == (upgrades | UPG_HEAVYWEAPONS));
+}
+
+#endif
+
+#ifdef CAN
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = cannon;
+}
+
+QueryWeapon1(piecenum)
+{
+	piecenum = cn;
+}
+
+AimWeapon1(heading, pitch)
+{
+	if (upgrades == (upgrades | UPG_HEAVYWEAPONS)) return 0;
+	if (!engaged)
+	{
+		defaultaim = heading;
+		engaged = 1;
+	}
+	signal SIG_Aim;
+	set-signal-mask SIG_Aim;
+	turn cannon to y-axis heading speed <120>;
+	wait-for-turn cannon around y-axis;
+	start-script RestoreAim();
+	return(1);
+}
+
+QueryWeapon2(piecenum)
+{
+	piecenum = cn;
+}
+
+AimWeapon2(heading, pitch)
+{
+	if (upgrades != (upgrades | UPG_HEAVYWEAPONS)) return 0;
+	if (!engaged)
+	{
+		defaultaim = heading;
+		engaged = 1;
+	}
+	signal SIG_Aim;
+	set-signal-mask SIG_Aim;
+	turn cannon to y-axis heading speed <80>;
+	wait-for-turn cannon around y-axis;
+	start-script RestoreAim();
+	return(1);
+}
+#endif

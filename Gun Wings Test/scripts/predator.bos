@@ -1,0 +1,87 @@
+piece base, body, flier0, flier1, wing, thruster0, thruster1;
+piece builder, nano0, nano1;
+piece laserarms, lasergun0, laser0, lasergun1, laser1;
+piece missile0, missile1, missile2, missilelauncher0, missilelauncher1, missilelauncher2;
+piece snipergun, sniper;
+
+static-var originalspeed;
+
+#include "exptype.h"
+
+#define SIG_Fire 1
+
+FlameTrail() {
+	while(1) {
+		sleep 100+10 * get HEALTH;
+		if (50 > get HEALTH) {
+			emit-sfx 1025 from body;
+		}
+	}
+}
+
+Create() {
+	hide builder;
+	hide missile0;
+	hide missile1;
+	hide missile2;
+	hide snipergun;
+	play-sound ("LASRMAS3", 10);
+}
+
+Killed() {
+	explode body type FALL | FIRE | SMOKE;
+	explode flier0 type FALL;
+	explode flier1 type FALL;
+	explode wing type FALL;
+	explode thruster0 type FALL | FIRE;
+	explode thruster1 type FALL | FIRE;
+	explode laserarms type FALL;
+	explode lasergun0 type FALL | SMOKE;
+	explode lasergun1 type FALL | SMOKE;
+	hide body;
+	hide flier0;
+	hide flier1;
+	hide wing;
+	hide thruster0;
+	hide thruster1;
+	hide laserarms;
+	hide lasergun0;
+	hide lasergun1;
+	emit-sfx 1024 from body;
+}
+
+HitByWeapon() {
+	emit-sfx 1025 from body;
+	emit-sfx 1025 from flier0;
+	emit-sfx 1025 from thruster1;
+}
+
+AimWeapon1() {
+	return 1;
+}
+
+AimFromWeapon1(piecenum) {
+	piecenum=body;
+}
+
+NoCharge() {
+	signal SIG_Fire;
+	set-signal-mask SIG_Fire;
+	set ACTIVATION to 0;
+	sleep 2000;
+	set ACTIVATION to 1;
+}
+
+FireWeapon1() {
+	start-script NoCharge();
+	emit-sfx 2049 from laser0;
+	emit-sfx 2049 from laser1;
+}
+
+AimWeapon2() {
+	return 0;
+}
+
+AimWeapon3() {
+	return 0;
+}

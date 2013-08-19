@@ -1,0 +1,334 @@
+[DRONE_LASER]
+	{
+	name=Microlaser;
+	rendertype=4;
+	lineofsight=1;
+	turret=1;
+	range=450;
+	weaponvelocity=1000;
+
+	beamtime=0.1;
+	beamweapon=1;
+	color=1;
+	thickness=1;
+	intensity=1;
+
+	reloadtime=0.25;
+	sprayangle=200;
+
+	areaofeffect=16;
+
+	tolerance=1000;
+
+	avoidfriendly=0;
+	collidefriendly=0;
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+	interceptedbyshieldtype=1; //Melee
+	explosiongenerator=custom:lasgun;
+	[DAMAGE]
+		{
+		default=10;
+		SwarmBuilder=30;
+		}
+	}
+
+[DRONE_MISSILE]
+{
+	name=Micromissiles;
+	rendertype=1;
+	lineofsight=1;
+	turret=1;
+	model=RPGmissile.s3o;
+	range=1200;
+	reloadtime=5;
+	weapontimer=2;
+	weaponvelocity=670;
+	startvelocity=450;
+	weaponacceleration=164;
+	turnrate=5120;
+	areaofeffect=16;
+	metalpershot=0;
+	soundstart=rocklit2;
+	soundhit=xplosml2;
+	firestarter=70;
+	smokedelay=.1;
+	guidance=1;
+	tracks=1;
+	noexplode=0;
+	targetable=0;
+	selfprop=1;
+	smoketrail=1;
+	tolerance=10000;
+	startsmoke=1;
+	Trajectoryheight=0;
+	avoidfriendly=0;
+	collidefriendly=0;
+	interceptedbyshieldtype=2; //Sniper
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+	[DAMAGE]
+	{
+		default=500;
+	}
+}
+
+[DRONE_SUPERMISSILE]
+{
+	name=Supermissiles;
+	rendertype=2;
+	lineofsight=1;
+	turret=1;
+	ballistic=0;
+	//burst=5;
+	//burstrate=.1;
+	wobble=2048;
+	Trajectoryheight=1;
+	model=RPGmissile.s3o;
+	range=1200;
+	reloadtime=12;
+	weapontimer=15;
+	weaponvelocity=350;
+	startvelocity=350;
+	weaponacceleration=0;
+	turnrate=0;
+	areaofeffect=128;
+	metalpershot=0;
+	energypershot=0;
+	soundstart=rockhvy1;
+	soundhit=xplomed1;
+	firestarter=70;
+	smokedelay=.1;
+	guidance=0;
+	tracks=1;
+	targetable=1;
+	selfprop=1;
+	smoketrail=1;
+	tolerance=10000;
+	explosiongaf=sexy;
+	explosionart=explode4x;
+	waterexplosiongaf=fx;
+	waterexplosionart=h2o;
+	lavaexplosiongaf=fx;
+	lavaexplosionart=lavasplash;
+	startsmoke=1;
+	interceptedbyshieldtype=4; //Artillery
+	avoidfriendly=0;
+	collidefriendly=0;
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+	explosiongenerator=custom:arty;
+	[DAMAGE]
+	{
+		default=750;
+	}
+}
+
+[DRONE_SNIPER]
+	{
+	name=SniperMicrolaser;
+	rendertype=0;
+	lineofsight=1;
+	turret=1;
+	range=2048;
+	weaponvelocity=1000;
+
+	beamtime=0.05;
+	beamlaser=1;
+	color=180;
+	thickness=3;
+	intensity=1;
+
+	reloadtime=4;
+
+	areaofeffect=16;
+
+	tolerance=1000;
+
+	avoidfriendly=1;
+	collidefriendly=0;
+
+	impulsefactor=0;
+	interceptedbyshieldtype=2; //sniper
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+	[DAMAGE]
+		{
+		default=200;
+		SwarmBuilder=1000;
+		}
+	}
+
+[DRONE_EXPLOSION]
+{
+	name=Microblast;
+	rendertype=1;
+	lineofsight=1;
+	turret=1;
+	model=TitanMissile.s3o;
+	range=1500;
+	reloadtime=3;
+	weapontimer=2;
+	weaponvelocity=670;
+	startvelocity=450;
+	weaponacceleration=164;
+	turnrate=5120;
+	metalpershot=0;
+	soundstart=rockhvy2;
+	soundhit=xplomed2;
+	firestarter=70;
+	smokedelay=.1;
+	guidance=1;
+	tracks=1;
+	selfprop=1;
+	smoketrail=1;
+	tolerance=10000;
+	explosiongaf=sexy;
+	explosionart=explode4x;
+	waterexplosiongaf=fx;
+	waterexplosionart=h2o;
+	lavaexplosiongaf=fx;
+	lavaexplosionart=lavasplash;
+	startsmoke=1;
+	Trajectoryheight=1;
+	areaofeffect=128;
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+	[DAMAGE]
+	{
+		default=25;
+	}
+}
+
+[DRONE_INTERCEPTOR]
+	{
+	name=SDI;
+	rendertype=0;
+	lineofsight=1;
+	turret=1;
+	range=250;
+	weaponvelocity=1000;
+
+	beamtime=0.2;
+	beamlaser=1;
+	color=1;
+	thickness=3;
+	intensity=1;
+
+	reloadtime=1.4;
+
+	areaofeffect=16;
+
+	tolerance=1000;
+
+	impulsefactor=0;
+	[DAMAGE]
+		{
+		default=200;
+		}
+	}
+
+[Drone_GrenadeLauncher]
+{
+	name=GMG;
+	rendertype=2;
+	lineofsight=0;
+	turret=1;
+	ballistic=1;
+	sprayangle=512;
+	wobble=0;
+	Trajectoryheight=1;
+	range=620;
+	reloadtime=1.25;
+	weapontimer=15;
+	noexplode=0;
+	weaponvelocity=600;
+	collidefriendly=0;
+	avoidfriendly=0;
+	noselfdamage=1;
+	startvelocity=450;
+	weaponacceleration=0;
+	turnrate=0;
+	areaofeffect=256;
+	metalpershot=0;
+	energypershot=200;
+	soundstart=m16;
+	soundhit=xplomed1;
+	firestarter=70;
+	smokedelay=.1;
+	guidance=0;
+	tracks=0;
+	selfprop=1;
+	smoketrail=0;
+	tolerance=10000;
+	explosionspeed=65536;
+	startsmoke=1;
+	interceptedbyshieldtype=1; //Melee
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+	explosiongenerator=custom:grenblast;
+	[DAMAGE]
+	{
+		default=500;
+	}
+}
+
+[DRONE_SHIELD]
+{
+	IsShield=1;
+	shieldrepulser=0;
+	smartshield=1;
+	exteriorshield=1;
+	visibleshield=0;
+	visibleshieldrepulse=1;
+	shieldenergyuse=0;
+	shieldradius=256;
+	shieldpower=1000;
+	shieldpowerregen=20;
+	shieldpowerregenenergy=0;
+	shieldbadcolor=0 0 0;
+	//Melee 1, Sniper 2, Artillery 4, Super 8, Antishield 16
+	shieldintercepttype=12;
+	[damage]
+	{
+		default=11;
+	}
+}
+
+[DRONE_SNIPERSHIELD]
+{
+	IsShield=1;
+	shieldrepulser=0;
+	smartshield=1;
+	exteriorshield=1;
+	visibleshield=1;
+	visibleshieldrepulse=1;
+	shieldcolor=.1 .7 .2;
+	shieldbadcolor=.1 .1 .1;
+	shieldalpha=0.4;
+	shieldbadalpha=0.1;
+	shieldforce=10000;
+	shieldenergyuse=0;
+	shieldradius=48;
+	shieldpower=2400;
+	shieldpowerregen=300;
+	shieldpowerregenenergy=150;
+	//Melee 1, Sniper 2, Artillery 4, Super 8, Antishield 16
+	shieldintercepttype=1;
+	[damage]
+	{
+		default=11;
+	}
+}

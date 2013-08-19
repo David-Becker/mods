@@ -1,0 +1,368 @@
+piece base, tower, towerframe0, towerframe1, towerframe2, towerframe3, exhaust;
+piece silo, pipe, oillevel, stream, crate, fuelsymbol, scaffolds;
+
+piece scaffold00, scaffold01, scaffold02, scaffold03;
+piece scaffold10, scaffold11, scaffold12, scaffold13;
+piece scaffold20, scaffold21, scaffold22, scaffold23;
+piece scaffold30, scaffold31, scaffold32, scaffold33;
+
+piece scaffold40, scaffold50, scaffold51, scaffold60, scaffold70, scaffold71;
+
+#include "exptype.h"
+#include "sfxtype.h"
+
+#define SIG_StopSmoke 1
+#define SIG_Dead 2
+
+static-var oil;
+
+FireTower()
+{
+	set-signal-mask SIG_StopSmoke;
+	while(1) {
+		emit-sfx SFXTYPE_BLACKSMOKE from exhaust;
+		emit-sfx SFXTYPE_BLACKSMOKE from exhaust;
+		emit-sfx SFXTYPE_VTOL from exhaust;
+		sleep 100;
+	}
+}
+
+EmptyOil()
+{
+	move oillevel to y-axis 0 speed [2];
+	hide fuelsymbol;
+	show stream;
+	start-script FireTower();
+	set ACTIVATION to 1;
+}
+
+//*** Begin oil checking code
+
+#define IS_REFINERY h==H_MAIN_FACTORY
+#define IS_OILTRUCK FALSE
+//Main Factory acts as refinery as well.
+
+#define IS_OILEMPTIER IS_REFINERY || IS_OILTRUCK
+#define OILTRUCK_RADIUS [300]
+#define REFINERY_RADIUS [900]
+// Oiltrucks have less range than refineries
+
+// This is where the heights of all refillers would be listed, remember: UNIT_HEIGHT = s3o radius * 65536
+#define H_MAIN_FACTORY 3342336 // 51 * 65536
+
+CheckForEmptier()
+{
+//	set-signal-mask SIG_StopSmoke;
+//	while(oil > 50) {
+//		sleep 2000; //this is slow so we won't try it often
+		var uid;
+		for (uid=0;uid < 5000;++uid) { //thanks, zwzsg
+		// get 70 = get MAX_ID
+		// for all units, 
+			if (get 74(uid)) { // UNIT_ALLIED | that are allies,
+				var h;
+				h=get UNIT_HEIGHT(uid);
+				if (IS_OILEMPTIER) { // and are oil refiners
+					var dist;
+					dist=get XZ_HYPOT(get UNIT_XZ(uid) - get PIECE_XZ(base));
+					// Store distance to compare with Truck and Refinery separately
+					if (IS_REFINERY && dist < REFINERY_RADIUS)
+					{
+						oil=0;
+						start-script EmptyOil();
+					}
+					if (IS_OILTRUCK && dist < OILTRUCK_RADIUS)
+					{
+						oil=0;
+						start-script EmptyOil();
+					}
+				}
+			}
+		}
+//	}
+}
+
+// *** End oil checking code
+
+//Handles filling the silo and emptying it
+DoExtract()
+{
+	start-script EmptyOil();
+	set-signal-mask SIG_Dead;
+	while(1)
+	{
+		if(oil < 100) {
+			++oil;
+			move oillevel to y-axis ([0.05]*oil) speed [1];
+		}
+		if (oil >= 100) {
+			signal SIG_StopSmoke;
+			hide stream;
+			show fuelsymbol;
+			set ACTIVATION to 0;
+		}
+		if(oil > 50) {
+			start-script CheckForEmptier();
+		}
+		sleep 1000;
+	}
+}
+
+
+SmokeTower()
+{
+	set-signal-mask SIG_StopSmoke;
+	while (1) {
+		emit-sfx SFXTYPE_WHITESMOKE from scaffold00;
+		emit-sfx SFXTYPE_WHITESMOKE from scaffold01;
+		sleep 100;
+		emit-sfx SFXTYPE_WHITESMOKE from scaffold10;
+		emit-sfx SFXTYPE_WHITESMOKE from scaffold11;
+		sleep 100;
+		emit-sfx SFXTYPE_WHITESMOKE from scaffold20;
+		emit-sfx SFXTYPE_WHITESMOKE from scaffold21;
+		sleep 100;
+		emit-sfx SFXTYPE_WHITESMOKE from scaffold30;
+		emit-sfx SFXTYPE_WHITESMOKE from scaffold31;
+		
+		sleep 100;
+		emit-sfx SFXTYPE_WHITESMOKE from tower;
+		emit-sfx SFXTYPE_WHITESMOKE from exhaust;
+		
+		sleep 100;
+	}
+}
+
+SmokeSilo()
+{
+	set-signal-mask SIG_StopSmoke;
+	while (1) {
+		emit-sfx SFXTYPE_WHITESMOKE from scaffold40;
+		emit-sfx SFXTYPE_WHITESMOKE from scaffold60;
+		sleep 100;
+		emit-sfx SFXTYPE_WHITESMOKE from scaffold50;
+		emit-sfx SFXTYPE_WHITESMOKE from scaffold51;
+		sleep 100;
+		emit-sfx SFXTYPE_WHITESMOKE from scaffold70;
+		emit-sfx SFXTYPE_WHITESMOKE from scaffold71;
+		sleep 100;
+		
+		emit-sfx SFXTYPE_WHITESMOKE from silo;
+		
+		sleep 100;
+	}
+}
+
+Create()
+{
+	turn base to y-axis <-10> now;
+	hide fuelsymbol;
+	hide tower;
+	hide towerframe0;
+	hide towerframe1;
+	hide towerframe2;
+	hide towerframe3;
+	
+	hide silo;
+	hide pipe;
+	hide oillevel;
+	hide stream;
+	hide crate;
+	
+//	hide scaffold00;
+	hide scaffold01;
+	hide scaffold02;
+	hide scaffold03;
+
+//	hide scaffold10;
+	hide scaffold11;
+	hide scaffold12;
+	hide scaffold13;
+
+//	hide scaffold20;
+	hide scaffold21;
+	hide scaffold22;
+	hide scaffold23;
+
+//	hide scaffold30;
+	hide scaffold31;
+	hide scaffold32;
+	hide scaffold33;
+
+	hide scaffold40;
+	hide scaffold50;
+	hide scaffold51;
+	hide scaffold60;
+	hide scaffold70;
+	hide scaffold71;
+	
+	//Build tower scaffold
+	
+	sleep 300;
+	
+	show scaffold01;
+	show scaffold11;
+	show scaffold21;
+	show scaffold31;
+
+	sleep 300;
+	
+	show scaffold02;
+	show scaffold12;
+	show scaffold22;
+	show scaffold32;
+
+	sleep 300;
+	
+	show scaffold03;
+	show scaffold13;
+	show scaffold23;
+	show scaffold33;
+	
+	sleep 300;
+	
+	// Build tower
+	
+	move tower to y-axis [-21] now;
+	show tower;
+	show towerframe0;
+	show towerframe1;
+	show towerframe2;
+	show towerframe3;
+	
+	start-script SmokeTower();
+	
+	while ((get BUILD_PERCENT_LEFT) > 30)
+	{
+		move tower to y-axis ([9] - (get BUILD_PERCENT_LEFT) * [0.3]) now;
+		sleep 100;
+	}
+	move tower to y-axis 0 now;
+	sleep 100; //Workaround in case the building is completed already
+	signal SIG_StopSmoke;
+	
+	//Destroy tower scaffold;
+	
+	turn scaffold00 to x-axis <-90> speed <60>;
+	turn scaffold10 to z-axis <-90> speed <60>;
+	turn scaffold20 to x-axis <90> speed <60>;
+	turn scaffold30 to z-axis <90> speed <60>;
+	
+	wait-for-turn scaffold00 around x-axis;
+	
+	hide scaffold00;
+	hide scaffold01;
+	hide scaffold02;
+	hide scaffold03;
+
+	hide scaffold10;
+	hide scaffold11;
+	hide scaffold12;
+	hide scaffold13;
+
+	hide scaffold20;
+	hide scaffold21;
+	hide scaffold22;
+	hide scaffold23;
+
+	hide scaffold30;
+	hide scaffold31;
+	hide scaffold32;
+	hide scaffold33;
+	
+	//Build silo scaffold
+	
+	sleep 200;
+	
+	show scaffold40;
+	show scaffold60;
+	
+	sleep 200;
+	
+	show scaffold50;
+	show scaffold70;
+	
+	sleep 200;
+	
+	show scaffold51;
+	show scaffold71;
+	
+	//build Silo
+	
+	start-script SmokeSilo();
+	
+	show silo;
+	
+	move silo to y-axis [-6] now;
+	while ((get BUILD_PERCENT_LEFT)>0)
+	{
+		move silo to y-axis (get BUILD_PERCENT_LEFT) * [-.3] now;
+		sleep 100;
+	}
+	move silo to y-axis 0 now;
+	sleep 100; //Workaround to make sure the smoke stops even when the building is cheated.
+	signal SIG_StopSmoke;
+	
+	//destroy Silo scaffold
+	
+	hide scaffold51;
+	hide scaffold71;
+	sleep 200;
+
+	hide scaffold50;
+	hide scaffold70;
+	sleep 200;
+
+	hide scaffold40;
+	hide scaffold60;
+	sleep 200;
+	
+	show pipe;
+	show oillevel;
+	show crate;
+	
+	start-script DoExtract();
+}
+
+Killed(severity, corpsetype)
+{
+	signal SIG_Dead;
+	signal SIG_StopSmoke;
+	
+	start-script SmokeTower();
+	start-script SmokeSilo();
+	
+	set ACTIVATION to 0; //since that is apparently not automatic
+	
+	explode crate type FALL | FIRE;
+	explode pipe type SHATTER;
+	hide pipe;
+	hide crate;
+	hide stream;
+	hide oillevel;
+	
+	turn towerframe0 to z-axis <90> speed <30>;
+	turn towerframe1 to x-axis <90> speed <30>;
+	turn towerframe2 to z-axis <-90> speed <30>;
+	turn towerframe3 to x-axis <-90> speed <30>;
+	move tower to y-axis [-25] speed [5];
+	spin tower around z-axis speed <10>;
+	sleep 700;
+	explode towerframe1 type SHATTER;
+	hide towerframe1;
+	move silo to y-axis [-15] speed [8];
+	spin silo around z-axis speed <15>;
+	sleep 300;
+	explode towerframe2 type SHATTER;
+	hide towerframe2;
+	sleep 1200;
+	explode towerframe0 type SHATTER;
+	hide towerframe0;
+	sleep 900;
+	explode towerframe3 type SHATTER;
+	hide towerframe3;
+	wait-for-move silo along y-axis;
+	signal SIG_StopSmoke;
+	wait-for-move tower along y-axis;
+	return 3;
+}

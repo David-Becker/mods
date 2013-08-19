@@ -1,0 +1,138 @@
+[NodeRange]
+	{
+	name=Marker;
+	rendertype=1;
+	lineofsight=1;
+	WeaponType=Melee;
+	alwaysVisible=1;
+	range=200;
+
+	areaofeffect=0;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	explosionGenerator=custom:explo_small;
+
+	[DAMAGE]
+		{
+		default=0;
+		}
+	}
+
+[TransmitterRange]
+	{
+	name=Marker;
+	rendertype=1;
+	lineofsight=1;
+	WeaponType=Melee;
+	alwaysVisible=1;
+	range=700;
+
+	areaofeffect=0;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	explosionGenerator=custom:explo_small;
+
+	[DAMAGE]
+		{
+		default=0;
+		}
+	}
+
+[FactoryLight]
+	{
+	name=Marker;
+	rendertype=1;
+	lineofsight=1;
+	WeaponType=Melee;
+	alwaysVisible=1;
+	range=1100;
+
+	areaofeffect=0;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	explosionGenerator=custom:explo_small;
+
+	[DAMAGE]
+		{
+		default=0;
+		}
+	}
+
+[FactoryArmor]
+	{
+	name=Marker;
+	rendertype=1;
+	lineofsight=1;
+	WeaponType=Melee;
+	alwaysVisible=1;
+	range=1300;
+
+	areaofeffect=0;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	explosionGenerator=custom:explo_small;
+
+	[DAMAGE]
+		{
+		default=0;
+		}
+	}
+
+[FactoryGunship]
+	{
+	name=Marker;
+	rendertype=1;
+	lineofsight=1;
+	WeaponType=Melee;
+	alwaysVisible=1;
+	range=1600;
+
+	areaofeffect=0;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	explosionGenerator=custom:explo_small;
+
+	[DAMAGE]
+		{
+		default=0;
+		}
+	}
+	
+[FactoryBomber]
+	{
+	name=Marker;
+	rendertype=1;
+	lineofsight=1;
+	WeaponType=Melee;
+	alwaysVisible=1;
+	range=3000;
+
+	areaofeffect=0;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	explosionGenerator=custom:explo_small;
+
+	[DAMAGE]
+		{
+		default=0;
+		}
+	}
+

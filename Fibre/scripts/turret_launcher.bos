@@ -1,0 +1,55 @@
+piece base, foot, holder, wheel, spike0, spike1, spike2, gp0, gp1, gp2;
+#include "Fibre.h"
+
+#define SIG_Aim 1
+
+#define DRAIN 300
+
+static-var gun;
+
+AimWeapon1(h,p) {
+	signal SIG_Aim;
+	set-signal-mask SIG_Aim;
+	turn holder to y-axis h speed <80>;
+	turn wheel to x-axis 0 - p speed <110>;
+	wait-for-turn holder around y-axis;
+	wait-for-turn wheel around x-axis;
+	return 1;
+}
+
+AimFromWeapon1(p) {
+	p=wheel;
+}
+
+QueryWeapon1(p) {
+	p = gp0 + gun;
+}
+
+Shot1() {
+	if (gun == 0) {
+		gun = 1;
+		move spike1 to z-axis [-5] now;
+		sleep 1000;
+		move spike1 to z-axis 0 speed [1];
+	}
+	else if (gun == 1) {
+		gun = 2;
+		move spike2 to z-axis [-5] now;
+		sleep 1000;
+		move spike2 to z-axis 0 speed [1];
+	}
+	else if (gun == 2) {
+		gun = 0;
+		move spike0 to z-axis [-5] now;
+		sleep 1000;
+		move spike0 to z-axis 0 speed [1];
+	}
+}
+
+BlockShot1(target, block) {
+	block = (get POWERLEVEL) < DRAIN;
+}
+
+FireWeapon1() {
+	set POWERLEVEL to (get POWERLEVEL) - DRAIN;
+}

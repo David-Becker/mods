@@ -1,0 +1,74 @@
+[UNITINFO]
+{
+	Name=Command Post;
+	Unitname=mainfac;
+	Description=Produces all units, refills ammo;
+	
+	//    Required Tags
+	BuildCostEnergy=0;
+	BuildCostMetal=5000;
+	BuildTime=1000;
+	ShowNanoFrame=0;
+	Category=PLANT BUILDING UNARMORED BOMBABLE NOTINF NOTSUB NOTAIR MISSILETARGET ALL;
+	FootprintX=7;
+	FootprintZ=7;
+	MaxSlope=20;
+	MaxDamage=20000;
+	ObjectName=mainfactory.s3o;
+	Side=Thingy;
+	SoundCategory=ARM_HOVER_BIG;
+	TEDClass=PLANT;
+	IdleTime=900;
+	IdleAutoHeal=500;
+	
+	//    Movement
+	BrakeRate=0;
+	Acceleration=0;
+	CanMove=1;
+	MaxVelocity=0;
+	MaxSlope=10;
+	TurnRate=0;
+	
+	//    Airplane Moventment
+	
+	//    Buildings
+	yardmap=ooooooo ooooooo oocccoo oocccoo oocccoo oocccoo oocccoo;
+	
+	//    Construction
+	Builder=1;
+	WorkerTime=100;
+	
+	//    Resources
+	EnergyMake=0;
+	EnergyStorage=0;
+	MetalStorage=0;
+	MetalMake=2;
+	
+	
+	//    Abilities
+	CanStop=1;
+	
+	//    Sight/Radar
+	RadarDistance=0;
+	SightDistance=1024;
+	
+	//    Weapons
+	Weapon1=Laser_Dummy_Refinery
+	ExplodeAs=;
+	SelfDestructAs=;
+	
+	//    Tracks/Flares
+	
+	//    Watersettings
+	
+	//    Misc
+	bmcode=0;
+	noautofire=0;
+	unitnumber=5;
+	firestandorders=1;
+	standingfireorder=2;
+	mobilestandorders=1;
+	standingmoveorder=1;
+	canpatrol=1;
+	buildangle=1024;
+}

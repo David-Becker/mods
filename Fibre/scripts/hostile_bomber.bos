@@ -1,0 +1,17 @@
+piece base, body, ex0, ex1, gp0, gp1;
+
+#include "fibre.h"
+
+static-var gp;
+
+QueryWepaon1(p) {
+	p=gp0 + gp;
+}
+
+Shot1() {
+	gp = !gp;
+}
+
+BlockShot1(target, block) {
+	block = get CRASHING;
+}

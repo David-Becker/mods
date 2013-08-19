@@ -1,0 +1,256 @@
+[MirrorDeath]
+{
+	[trails]
+	{
+		class=CExpGenSpawner;
+		[properties]
+		{
+			delay=i1;
+			dir=0,1,0;
+			damage=0 i1;
+			explosionGenerator=custom:MirrorDeath_Fire;
+			speed=0,0,0;
+			pos=0,0,0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=12;
+	}
+	[groundflash]
+	{
+		flashSize = 220;   // flash size
+		flashAlpha = 1;    // initial alpha of the flash
+		circleGrowth = 0; // size increase/frame
+		circleAlpha = 0;   // initial alpha of the ring
+		ttl = 16;          // number of frames
+		color = 1,0.9,0.2;    // color RGB
+	}
+}
+
+[MirrorDeath_Fire]
+{
+	[smoke]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			alwaysVisible=1;
+			sizegrowth=2;
+			sizemod=.98;
+			pos=r1.57 y0  r6.28 y1  d30 r10 p.8 y2  1.57 a0 s1 y3   a1 s1 x2 x3, a0 s1 x2, 1.57 a1 s1 x2 x3;
+			emitVector=0,1,0;
+			gravity=0, -.01, 0;
+			Texture=smoke1;
+			colorMap=1 1 1 .1   1 .9 .2 .1   .8 .3 .1 .6   0 0 0 1   0 0 0 .5   0 0 0 0;
+			airdrag=.9;
+			particleLife=30;
+			particleLifeSpread=90;
+			numParticles=4;
+			particleSpeed=4;
+			particleSpeedSpread=8;
+			particleSize=8;
+			particleSizeSpread=12;
+			emitRot=0;
+			emitRotSpread=180;
+			directional=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=10;
+	}
+}
+
+
+[LaserDeath]
+{
+	[circle]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			alwaysVisible=1;
+			sizegrowth=0;
+			sizemod=1;
+			pos=0, 1.0, 0;
+			emitVector=0,1,0;
+			gravity=0, 0, 0;
+			Texture=fires;
+			colorMap=1 1 1 .1   .5 .5 .5 .1;
+			airdrag=.9;
+			particleLife=7;
+			particleLifeSpread=16;
+			numParticles=1;
+			particleSpeed=0;
+			particleSpeedSpread=0;
+			particleSize=20;
+			particleSizeSpread=20;
+			emitRot=50;
+			emitRotSpread=30;
+			directional=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[ring1]
+	{
+		class = CBitmapMuzzleFlame;
+
+		[properties]
+      	{
+			alwaysVisible=1;
+         	dir = 0, 1, 0.01;
+         	colorMap=1 .9 .3 .1   .5 .2 0 .1   0 0 0 0;
+         	pos = 0, 6 i20, 0;
+          	size=1;
+          	length=1;
+          	sizeGrowth=250 i-60;
+          	ttl=32;
+          	frontOffset=0;
+          	sideTexture=null;
+          	frontTexture=shockwave;
+      	}
+		water=1;
+		air=1;
+		ground=1;
+		count=3;
+	}
+	[trails]
+	{
+		class=CExpGenSpawner;
+		[properties]
+		{
+			delay=0;
+			dir=0,1,0;
+			damage=0 r100;
+			explosionGenerator=custom:LaserDeath_trail;
+			speed=0,0,0;
+			pos=0,0,0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=15;
+	}
+	[blastsphere]
+	{
+		class=CSpherePartSpawner;
+		[properties]
+		{
+			alwaysVisible=1;
+			ttl=16;
+			alpha=0.3;
+			expansionSpeed=20;
+			color=1,1,1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[groundflash]
+	{
+		flashSize = 256;   // flash size
+		flashAlpha = .6;    // initial alpha of the flash
+		circleGrowth = 0; // size increase/frame
+		circleAlpha = 0;   // initial alpha of the ring
+		ttl = 16;          // number of frames
+		color = 1,0.9,0.2;    // color RGB
+	}
+}
+
+[LaserDeath_trail]
+{
+	[trails]
+	{
+		class=CExpGenSpawner;
+		[properties]
+		{
+			delay=2 i1;
+			dir=0,1,0;
+			damage=0 i1;
+			explosionGenerator=custom:LaserDeath_trailp;
+			speed=0,0,0;
+			pos=1 d.03 y1 i2 x1 y0 d1 s1 x0,-1 y1 i.4 p2 x1 y1 2 x0 a1,1.58 d1 s1 x0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=80;
+	}
+}
+
+[LaserDeath_trailp]
+{
+	[smoke]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			alwaysVisible=1;
+			sizegrowth=2;
+			sizemod=.97;
+			pos=0, 1.0, 0;
+			emitVector=0,1,0;
+			gravity=0, -.01, 0;
+			Texture=smoke1;
+			colorMap=1 1 1 .01   1 .9 .2 .01   .8 .3 .1 .6   0 0 0 1   0 0 0 1   0 0 0 1   0 0 0 1    0 0 0 .5   0 0 0 .2   0 0 0 0;
+			airdrag=.7;
+			particleLife=50;
+			particleLifeSpread=90;
+			numParticles=1;
+			particleSpeed=0;
+			particleSpeedSpread=12;
+			particleSize=8;
+			particleSizeSpread=12;
+			emitRot=0;
+			emitRotSpread=180;
+			directional=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[groundflash]
+	{
+		flashSize = 90;   // flash size
+		flashAlpha = .6;    // initial alpha of the flash
+		circleGrowth = 0; // size increase/frame
+		circleAlpha = 0;   // initial alpha of the ring
+		ttl = 4;          // number of frames
+		color = 1,0.9,0.2;    // color RGB
+	}
+}
+
+[BeamTrail] {
+	[smoke]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			alwaysVisible=1;
+			sizegrowth=-.25;
+			sizemod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0.1, 0;
+			Texture=burncircle;
+			colorMap=1 1 0 .1   0 0 0 0;
+			airdrag=.8;
+			particleLife=20;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=1;
+			particleSpeedSpread=0;
+			particleSize=20;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+}

@@ -1,0 +1,44 @@
+piece base, body, gp0, gp1, mg;
+
+#include "fibre.h"
+
+static-var gp;
+
+QueryWeapon1(p) {
+	p = gp + gp0;
+}
+
+AimWeapon1(h,p) {
+	return 1;
+}
+
+AimFromWeapon1(p) {
+	p=body;
+}
+
+Shot1() {
+	gp = !gp;
+//	set CHANGE_TARGET to 1;
+}
+
+/*EndBurst1() {
+	set CURRENT_FUEL to 0;
+}*/
+
+AimWeapon2(h,p) {
+	turn mg to y-axis h now;
+	turn mg to x-axis 0-p now;
+	return 1;
+}
+
+QueryWeapon2(p) {
+	p=mg;
+}
+
+AimFromWeapon2(p) {
+	p=mg;
+}
+
+Shot2() {
+	emit-sfx 1024 from mg;
+}

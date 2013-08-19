@@ -1,0 +1,77 @@
+[Death]
+{
+	name=Death;
+
+	areaofeffect=0;
+	collidefriendly=0;
+	avoidfriendly=0;
+	//soundstart=nadefire;
+	soundhit=death;
+
+	tolerance=1000;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	explosionGenerator=custom:DeathBlast;
+	interceptedbyshieldtype=0;
+	[DAMAGE]
+	{
+		default=0;
+	}
+}
+
+
+[BaseDeath]
+{
+	name=Death;
+
+	areaofeffect=0;
+	collidefriendly=0;
+	avoidfriendly=0;
+	//soundstart=nadefire;
+	soundhit=basedeath;
+
+	tolerance=1000;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	explosionGenerator=custom:BaseDeathBlast;
+	interceptedbyshieldtype=0;
+	[DAMAGE]
+	{
+		default=0;
+	}
+}
+
+
+[JumpImpact]
+{
+	name=Jump;
+
+	areaofeffect=256;
+	id=2;
+	collidefriendly=0;
+	avoidfriendly=0;
+	range=1024;
+	//soundstart=nadefire;
+	//soundhit=basedeath;
+
+	tolerance=1000;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	explosionGenerator=custom:none;
+	interceptedbyshieldtype=0;
+	explosionspeed=65536;
+	[DAMAGE]
+	{
+		default=10;
+	}
+}
+

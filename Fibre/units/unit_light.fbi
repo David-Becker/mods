@@ -1,0 +1,68 @@
+[UNITINFO]
+{
+	Name=Drone;
+	Unitname=unit_light;
+	Description=Light unit;
+
+	// Required Tags
+	Category=UNIT GROUND SMALL NOTINFRA;
+	FootprintX=1;
+	FootprintZ=1;
+	MaxDamage=120;
+	IdleAutoHeal=20;
+	BuildCostEnergy=20;
+	BuildCostMetal=2;
+	iconType=tiny;
+	maxSlope=36;
+	ObjectName=unit_light.s3o;
+	Side=ANY;
+	//SoundCategory=CITADEL;
+
+	// Movement
+	CanMove=1;
+	MaxVelocity=2.6;
+	Acceleration=4;
+	Brakerate=4;
+	TurnRate=3000;
+	MovementClass=DroneHOVER;
+
+	// Airplane Moventment
+
+	// Buildings
+
+	// Construction
+	ShowNanoFrame=0;
+	LevelGround=0;
+
+	// Resources
+	EnergyMake=0;
+	EnergyStorage=100;
+	MetalStorage=0;
+	MetalMake=0;
+	Reclaimable=0;
+
+	// Abilities
+	CanStop=1;
+	SelfDestructCountdown=1;
+
+	// Sight/Radar
+	RadarDistance=0;
+	SightDistance=0;
+	SeismicSignature=0;
+
+	// Weapons
+	Weapon1=UnitLaser;
+	NoChaseCategory=AIR;
+	ExplodeAs=DeathMed;
+
+	// Tracks/Flares
+
+	// Watersettings
+
+	// Misc
+	SmoothAnim=0;
+
+	[SFXTypes]
+	{
+	}
+}

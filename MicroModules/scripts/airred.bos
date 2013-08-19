@@ -1,0 +1,14 @@
+piece base, body, gp, ex;
+
+
+AimFromWeapon1(p) {
+	p=body;
+}
+
+QueryWeapon1(p) {
+	p=gp;
+}
+
+Killed() {
+	hide body;
+}

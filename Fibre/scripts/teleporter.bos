@@ -1,0 +1,8 @@
+piece base, body;
+
+#include "fibre.h"
+
+TeleportFX() {
+	emit-sfx 1024 from base;
+	get KILL_UNIT(0, 0, 1);
+}

@@ -1,0 +1,51 @@
+piece base, body, aimguide, shooter;
+
+#include "exptype.h"
+
+static-var lasered, aimOffset;
+
+Align(h) {
+	var ah;
+	ah=(aimOffset - h);
+	if (ah > [.5]) ah = ah - [1];
+	if (ah < [-.5]) ah = ah + [1];
+	set HEADING to h + ah/2;
+}
+
+Guide() {
+	if (lasered || get BUILD_PERCENT_LEFT) return;
+	lasered=1;
+	emit-sfx 2048 from aimguide;
+	sleep 200;
+	lasered=0;
+}
+
+ForwardLaser(red, h) {
+	var ah;
+	ah = h - get HEADING;
+	if (ah > [.5]) ah = ah - [1];
+	if (ah < [-.5]) ah = ah + [1];
+	if (ah > [-.25] && ah < [.25]) {
+		turn shooter to y-axis 0 - ah now;
+		emit-sfx 2049 from shooter;
+		red=66;
+		//play-sound ("BeamBounce",5);
+	}
+}
+
+AimLaser(h) {
+	aimOffset = h;
+	var ah;
+	ah = h - get HEADING;
+	if (ah > [.5]) ah = ah - [1];
+	if (ah < [-.5]) ah = ah + [1];
+	if (ah > [-.25] && ah < [.25]) {
+		turn aimguide to y-axis 0 - ah now;
+		start-script Guide();
+	}
+}
+
+Killed() {
+	sleep 1000;
+	return 3;
+}

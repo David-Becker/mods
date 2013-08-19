@@ -1,0 +1,555 @@
+[TRIREME_LASER]
+	{
+	name=Triremelaser;
+	rendertype=0;
+	lineofsight=1;
+	turret=1;
+	range=560;
+	weaponvelocity=512;
+
+//	beamtime=0.05;
+//	beamlaser=1;
+	beamweapon=1;
+	color=1;
+	thickness=3;
+	intensity=1;
+
+	accuracy=1024;
+
+	reloadtime=0.1;
+
+	areaofeffect=64;
+
+	tolerance=1000;
+
+	impulsefactor=0;
+	interceptedbyshieldtype=1; //Melee
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+	explosiongenerator=custom:lasgun;
+	[DAMAGE]
+		{
+		default=60;
+		SwarmBuilder=200;
+		}
+	}
+
+[TRIREME_FLAMER]
+	{
+	name=Triremeflamer;
+	rendertype=5;
+	lineofsight=1;
+	turret=1;
+	range=560;
+	weaponvelocity=384;
+
+	accuracy=1024;
+	sprayangle=10000;
+
+	reloadtime=0.01;
+	groundbounce=1;
+
+	areaofeffect=128;
+
+	tolerance=1000;
+
+	impulsefactor=0;
+	interceptedbyshieldtype=1; //Melee
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+	[DAMAGE]
+		{
+		default=60;
+		SwarmBuilder=200;
+		}
+	}
+
+[Big_MachineGun]
+{
+	name=MG;
+	rendertype=4;
+	lineofsight=1;
+	turret=1;
+	ballistic=0;
+	burst=3;
+	burstrate=.1;
+	sprayangle=100;
+	wobble=0;
+	Trajectoryheight=0;
+	//model=TitanMissile.s3o;
+	range=400;
+	reloadtime=2;
+	weapontimer=15;
+	noexplode=0;
+	weaponvelocity=550;
+	startvelocity=550;
+	weaponacceleration=0;
+	turnrate=0;
+	areaofeffect=16;
+	metalpershot=0;
+	energypershot=0;
+	soundstart=m16;
+	soundhit=lasrhit2;
+	firestarter=70;
+	smokedelay=.1;
+	guidance=0;
+	tracks=1;
+	selfprop=1;
+	smoketrail=0;
+	tolerance=10000;
+	explosiongaf=sexy;
+	explosionart=explode4x;
+	waterexplosiongaf=fx;
+	waterexplosionart=h2o;
+	lavaexplosiongaf=fx;
+	lavaexplosionart=lavasplash;
+	startsmoke=1;
+	interceptedbyshieldtype=1; //Melee
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+	[DAMAGE]
+	{
+		default=100;
+	}
+}
+
+[Big_HeavyMachineGun]
+{
+	name=HMG;
+	rendertype=4;
+	lineofsight=1;
+	turret=1;
+	beamweapon=1;
+	color=15;
+	thickness=1;
+	duration=.01;
+	intensity=0.8;
+	ballistic=0;
+	sprayangle=300;
+	wobble=0;
+	Trajectoryheight=0;
+	range=550;
+	reloadtime=.1;
+	weapontimer=15;
+	noexplode=0;
+	weaponvelocity=1200;
+	startvelocity=1200;
+	weaponacceleration=0;
+	turnrate=0;
+	areaofeffect=64;
+	metalpershot=0;
+	energypershot=0;
+	soundstart=m16;
+	soundhit=lasrhit1;
+	firestarter=70;
+	smokedelay=.1;
+	guidance=0;
+	tracks=1;
+	selfprop=1;
+	smoketrail=0;
+	tolerance=10000;
+	interceptedbyshieldtype=1; //Melee
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+	[DAMAGE]
+	{
+		default=80;
+	}
+}
+
+[Big_GrenadeLauncher]
+{
+	name=GMG;
+	rendertype=2;
+	lineofsight=0;
+	turret=1;
+	ballistic=1;
+	sprayangle=2048;
+	wobble=0;
+	Trajectoryheight=1;
+	range=620;
+	reloadtime=.85;
+	weapontimer=15;
+	noexplode=0;
+	weaponvelocity=400;
+	noselfdamage=1;
+	startvelocity=450;
+	weaponacceleration=0;
+	turnrate=0;
+	areaofeffect=256;
+	metalpershot=0;
+	energypershot=30;
+	soundstart=m16;
+	soundhit=xplomed1;
+	firestarter=70;
+	smokedelay=.1;
+	guidance=0;
+	tracks=0;
+	selfprop=1;
+	smoketrail=0;
+	tolerance=10000;
+	explosionspeed=65536;
+	startsmoke=1;
+	interceptedbyshieldtype=1; //Melee
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+	explosiongenerator=custom:grenblast;
+	[DAMAGE]
+	{
+		default=500;
+	}
+}
+
+[Big_ICBM]
+{
+	name=ICBM;
+	rendertype=1;
+	lineofsight=1;
+	turret=1;
+	ballistic=0;
+	vlaunch=0;
+	model=TitanMissile.s3o;
+	range=1500;
+	reloadtime=8;
+	weapontimer=20;
+	flighttime=1000000;
+	weaponvelocity=20480;
+	startvelocity=0;
+	weaponacceleration=2500;
+	turnrate=2048;
+	areaofeffect=180;
+	//metalpershot=2400;
+	energypershot=500;
+	commandfire=0;
+	soundstart=rockhvy2;
+	soundhit=xplomed2;
+	firestarter=0;
+	smokedelay=.1;
+	guidance=0;
+	tracks=1;
+	targetable=1;
+	stockpile=0;
+	selfprop=1;
+	smoketrail=1;
+	tolerance=10000;
+	startsmoke=1;
+	interceptedbyshieldtype=12; //Artillery and Super
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+	explosiongenerator=custom:large_impact;
+	[DAMAGE]
+	{
+		default=2800;
+		CTitan=1000;
+	}
+}
+
+[Big_SupportMissile]
+{
+	name=TankMissile;
+	rendertype=1;
+	lineofsight=1;
+	turret=1;
+	ballistic=0;
+	vlaunch=0;
+	//burst=12;
+	//burstrate=0.01;
+	model=RPGmissile.s3o;
+	range=1500;
+	reloadtime=0.75;
+	weapontimer=2;
+	flighttime=1000;
+	weaponvelocity=600;
+	startvelocity=600;
+	weaponacceleration=0;
+	turnrate=30000;
+	areaofeffect=16;
+	//metalpershot=2400;
+	energypershot=0;
+	commandfire=0;
+	soundstart=rockhvy2;
+	soundhit=xplomed2;
+	firestarter=0;
+	smokedelay=.1;
+	guidance=0;
+	tracks=1;
+	targetable=0;
+	stockpile=0;
+	selfprop=1;
+	smoketrail=1;
+	tolerance=10000;
+	startsmoke=1;
+	interceptedbyshieldtype=1; //Melee
+	trajectoryheight=0;
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+	[DAMAGE]
+	{
+		default=350;
+	}
+}
+
+
+[Big_IonCannon]
+	{
+	name=IonCannon;
+	rendertype=0;
+	duration=.3;
+	lineofsight=1;
+	turret=1;
+	range=2048;
+	weaponvelocity=1000;
+
+	beamtime=1;
+	beamweapon=1;
+	color=180;
+	thickness=6;
+	intensity=1;
+	soundhit=xplolrg1;
+
+	reloadtime=5;
+
+	areaofeffect=180;
+	
+	tolerance=1000;
+	interceptedbyshieldtype=2; //Sniper
+ 	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+	explosiongenerator=custom:ionblast;
+
+	[DAMAGE]
+		{
+		default=3600;
+		}
+	}
+
+[Big_LaserCannon]
+	{
+	name=LaserCannon;
+	rendertype=0;
+	lineofsight=1;
+	turret=1;
+	range=1100;
+	weaponvelocity=1000;
+	
+	beamtime=1.75;
+	beamlaser=1;
+	color=1;
+	thickness=2;
+	intensity=0.8;
+
+	energypershot=40;
+
+	reloadtime=1.75;
+
+	areaofeffect=16;
+	
+	tolerance=1000;
+	interceptedbyshieldtype=2; //Sniper
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+
+	[DAMAGE]
+		{
+		default=1500;
+		}
+	}
+
+[Big_LaserCannonUpgraded]
+	{
+	name=LaserCannon;
+	rendertype=0;
+	lineofsight=1;
+	turret=1;
+	range=1100;
+	weaponvelocity=1000;
+
+	beamtime=.25;
+	beamlaser=1;
+	largebeamlaser=1;
+	color=1;
+	thickness=8;
+	laserflaresize=6;
+	intensity=0.8;
+
+	energypershot=40;
+
+	reloadtime=.7;
+
+	areaofeffect=96;
+
+	tolerance=1000;
+	interceptedbyshieldtype=2; //Sniper
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+
+	[DAMAGE]
+		{
+		default=1500;
+		}
+	}
+
+
+[Big_PlasmaStorm_DISINTEGRATOR]
+	{
+	name=Plasmathrower;
+	rendertype=3;
+	lineofsight=1;
+	turret=0;
+	range=800;
+	reloadtime=.1;
+	weapontimer=12;
+	size=30;
+	weaponvelocity=384;
+	areaofeffect=128;
+//	burst=20;
+//	burstrate=0.001;
+	sprayangle=5120;
+	Energypershot=50;
+	randomdecay=0;
+	soundstart=Flamhvy1;
+	soundhit=;
+	firestarter=100;
+	noexplode=1;
+	tolerance=2000;
+	guidance=0;
+	interceptedbyshieldtype=16; //Shieldpiercer
+	explosiongenerator=custom:buildFX_melter_small;
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+	[DAMAGE]
+		{
+		default=1000;
+		}
+	}
+
+[Big_OrbitMissiles]
+{
+	name=OrbitMissiles;
+	rendertype=4;
+	lineofsight=1;
+	turret=1;
+	beamweapon=1;
+	ballistic=0;
+	vlaunch=0;
+	burst=20;
+	burstrate=0.2;
+	sprayangle=1000;
+	//wobble=5000;
+	//model=RPGmissile.s3o;
+	color=1;
+	thickness=5;
+	intensity=1;
+	duration=.1;
+	range=10240;
+	reloadtime=20;
+	weapontimer=20;
+	flighttime=1000000;
+	weaponvelocity=1280;
+	startvelocity=0;
+	weaponacceleration=256;
+	turnrate=2048;
+	areaofeffect=96;
+	energypershot=1000;
+	commandfire=0;
+	//soundstart=rockhvy2;
+	soundhit=xplomed2;
+	firestarter=0;
+	smokedelay=.1;
+	guidance=0;
+	tracks=0;
+	tolerance=10000;
+	startsmoke=1;
+	interceptedbyshieldtype=8; //Super
+	explosiongenerator=custom:lasblast;
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+	[DAMAGE]
+	{
+		default=1900;
+	}
+}
+
+[Big_Blast]
+	{
+	name=BigBlast;
+	rendertype=0;
+	duration=30;
+	lineofsight=1;
+	turret=1;
+	range=2048;
+	weaponvelocity=1000;
+	
+	reloadtime=1.2;
+
+	impulsefactor=3;
+
+	areaofeffect=512;
+	
+	tolerance=1000;
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+
+	[DAMAGE]
+		{
+		default=3600;
+		}
+	}
+
+[Trireme_Disinfector]
+	{
+	name=Disinfector;
+	rendertype=0;
+	duration=30;
+	lineofsight=1;
+	turret=1;
+	range=2048;
+	weaponvelocity=1000;
+	
+	reloadtime=1.2;
+
+	impulsefactor=3;
+
+	areaofeffect=2048;
+	ExplosionSpeed=65536;
+	EdgeEffectiveness=1;
+	
+	tolerance=1000;
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+
+	[DAMAGE]
+		{
+		default=1600;
+		heavyunit=8000;
+		}
+	}
+

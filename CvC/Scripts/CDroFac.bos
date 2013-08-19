@@ -1,0 +1,59 @@
+piece base, body, press;
+
+#include "SFXtype.h"
+#include "exptype.h"
+#define MELTER_DEPTH [-20]
+#include "buildFX_melter.h"
+
+static-var stomping;
+
+Create()
+{
+	move press to y-axis [-8] now;
+	start-script buildFX();
+}
+
+Activate()
+{
+	stomping=0;
+	move press to y-axis 0 speed [32];
+	wait-for-move press along y-axis;
+	set YARD_OPEN to 1; 
+	set INBUILDSTANCE to 1;
+	return(TRUE);
+}
+
+QueryNanoPiece(piecenum)
+{
+	piecenum=press;
+	if (!stomping) {
+		stomping=1;
+		move press to y-axis [-8] speed [64];
+//		set INBUILDSTANCE to 0;
+		wait-for-move press along y-axis;
+		emit-sfx 1025 from press;
+		move press to y-axis 0 speed [32];
+		wait-for-move press along y-axis;
+//		set INBUILDSTANCE to 1;
+		stomping=0;
+	}
+}
+
+QueryBuildInfo(piecenum)
+{
+	piecenum=press;
+}
+
+Deactivate()
+{
+	move press to y-axis [-8] speed [32];
+	set YARD_OPEN to 0;
+	set ACTIVATION to 1;
+}
+
+Killed(severity, corpsetype)
+{
+	explode body type SHATTER;
+	explode press type FALL | FIRE | SMOKE;
+	corpsetype = 3;
+}

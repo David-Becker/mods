@@ -1,0 +1,69 @@
+piece base, body, barrel, recoiler, gp;
+
+#include "blob.h"
+
+static-var moving;
+
+ChangedBlobCount(type, count, root) {
+	/*if (type==) {
+		burst=count + 2;
+		get WEAPON_SPRAY(-1, root * 360);
+		if (!shooting) b=burst;
+	}*/
+	return;
+}
+
+StartMoving() {
+	moving=1;
+}
+
+StopMoving() {
+	moving=0;
+}
+
+Create() {
+	call-script ChangedBlobCount(1,0,0);
+}
+
+QueryWeapon1(p) {
+	p=gp;
+}
+
+AimFromWeapon1(p) {
+	p=barrel;
+}
+
+#define TURNRATE 800
+
+ResetAim() {
+	sleep 1000;
+	turn barrel to x-axis 0 speed <60>;
+}
+
+AimWeapon1(h,p) {
+	signal SIG_Aim;
+	set-signal-mask SIG_Aim;
+	start-script ResetAim();
+	if (moving) return 0;
+	turn barrel to x-axis 0 - p speed <60>;
+	while(h > TURNRATE) {
+		set HEADING to (get HEADING) + TURNRATE;
+		h=h - TURNRATE;
+		sleep 30;
+	}
+	while(h < 0 - TURNRATE) {
+		set HEADING to (get HEADING) - TURNRATE;
+		h=h + TURNRATE;
+		sleep 30;
+	}
+	set HEADING to (get HEADING) + h;
+	wait-for-turn barrel around x-axis;
+	return 1;
+}
+
+Shot1() {
+	emit-sfx 1024 from gp;
+	move recoiler to z-axis [-3] speed [128];
+	sleep 100;
+	move recoiler to z-axis [0] speed [64];
+}

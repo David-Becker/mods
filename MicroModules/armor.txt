@@ -1,0 +1,8 @@
+[blob]{
+}
+
+[air]{
+	airgreen=1;
+	airred=1;
+	airblue=1;
+}

@@ -1,0 +1,10 @@
+[MOD]
+{
+	Name=CvC 0.4;
+
+	ModType=1;
+	NumDependencies=2;
+	//Depend0=erom_cursors.sd7;
+	Depend0=springcontent.sdz;
+	Depend1=otacontent.sdz;
+}

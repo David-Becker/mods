@@ -1,0 +1,38 @@
+[buildFX_melter]
+{
+        [base]
+        {
+                class=CSimpleParticleSystem;
+                [properties] {
+                        sizegrowth=0;
+                        sizemod=1;
+              		pos=0, 4, 0;
+	        	emitVector= 0, 1, 0;
+	         	gravity=0, 0, 0;
+                   	colorMap= 1 1 .6 .1   1 .6 .2 .1   0 0 0 0;
+    	            	Texture=blastcloud;
+    	             	airdrag=1;
+    	              	particleLife=25;
+    	               	particleLifeSpread=30;
+    	                numParticles=4;
+    		        particleSpeed=1;
+    		        particleSpeedSpread=.2;
+    		        particleSize=30;
+    		        particleSizeSpread=10;
+    		        emitRot=85;
+    		        emitRotSpread=10;
+    		        directional=0;
+                }
+                air=1;
+                ground=1;
+        }
+	[groundflash]
+	{
+		flashSize = 64;   // flash size
+		flashAlpha = .6;    // initial alpha of the flash
+		circleGrowth = 0; // size increase/frame
+		circleAlpha = 0;   // initial alpha of the ring
+		ttl = 32;          // number of frames
+		color = 1,0.6,0.2;    // color RGB
+	}
+}

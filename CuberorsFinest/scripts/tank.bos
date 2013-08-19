@@ -1,0 +1,116 @@
+piece base, body, turret, core0, core1, shell0, shell1, gp0, gp1, mg0, mg1;
+
+static-var gp;
+
+#define SIG_Aim 1
+
+#define SMALL_MOVE [3]
+#define SMALL_MOVE_SPEED [9]
+#define LARGE_MOVE [5]
+#define LARGE_MOVE_SPEED [10]
+
+Create() {
+	sleep rand(0,1000);
+	while(1) {
+		move core0 to y-axis SMALL_MOVE speed SMALL_MOVE_SPEED;
+		move core1 to y-axis SMALL_MOVE speed SMALL_MOVE_SPEED;
+		sleep 250;
+		move shell0 to y-axis LARGE_MOVE speed LARGE_MOVE_SPEED;
+		move shell1 to y-axis LARGE_MOVE speed LARGE_MOVE_SPEED;
+		sleep 250;
+		move core0 to y-axis 0- SMALL_MOVE speed SMALL_MOVE_SPEED;
+		move core1 to y-axis 0- SMALL_MOVE speed SMALL_MOVE_SPEED;
+		sleep 250;
+		move shell0 to y-axis 0- LARGE_MOVE speed LARGE_MOVE_SPEED;
+		move shell1 to y-axis 0- LARGE_MOVE speed LARGE_MOVE_SPEED;
+		sleep 250;
+	}
+}
+
+
+AimFromWeapon1(p) {
+	p=turret;
+}
+
+QueryWeapon1(p) {
+	p = gp0 + gp;
+}
+
+ResetAim1() {
+	sleep 2000;
+	turn turret to y-axis 0 speed <180>;
+}
+
+AimWeapon1(h,p) {
+	signal SIG_Aim;
+	set-signal-mask SIG_Aim;
+	turn turret to y-axis h speed <270>;
+	wait-for-turn turret around y-axis;
+	turn gp0 to x-axis 0 - p now;
+	turn gp1 to x-axis 0 - p now;
+	start-script ResetAim1();
+	return 1;
+}
+
+Shot1() {
+	gp= !gp;
+	if (gp) {
+		emit-sfx 1024 from gp1;
+	} else {
+		emit-sfx 1024 from gp0;
+	}
+}
+
+
+AimFromWeapon2(p) {
+	p=mg0;
+}
+
+QueryWeapon2(p) {
+	p=mg0;
+}
+
+Shot2() {
+	move mg0 to z-axis [-8] + rand(0,16) * [1] now;
+	move mg0 to y-axis [-8] + rand(0,16) * [1] now;
+	emit-sfx 1025 from mg0;
+}
+
+AimWeapon2(h,p) {
+	turn mg0 to y-axis h now;
+	turn mg0 to x-axis 0 - p now;
+	return 1;
+}
+
+
+
+AimFromWeapon3(p) {
+	p=mg1;
+}
+
+QueryWeapon3(p) {
+	p=mg1;
+}
+
+Shot3() {
+	move mg1 to z-axis [-8] + rand(0,16) * [1] now;
+	move mg1 to y-axis [-8] + rand(0,16) * [1] now;
+	emit-sfx 1025 from mg1;
+}
+
+AimWeapon3(h,p) {
+	turn mg1 to y-axis h now;
+	turn mg1 to x-axis 0 - p now;
+	return 1;
+}
+
+
+
+HitByWeaponId(z,x,id,d) {
+	if (id==2) { //grenade
+		return 100;
+	}
+	else {
+		return 5;
+	}
+}

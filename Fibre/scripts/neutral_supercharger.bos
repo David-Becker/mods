@@ -1,0 +1,21 @@
+piece base, body, pin0, pin1, arc;
+
+#include "Fibre.h"
+
+Create() {
+	turn pin0 to y-axis <90> now;
+	turn pin1 to y-axis <-90> now;
+	while(1) {
+		if (300==get POWERLEVEL) {
+			if (rand(0,2)) emit-sfx 1024 from pin0;
+			if (rand(0,2)) emit-sfx 1024 from pin1;
+		}
+		sleep 250;
+	}
+}
+
+HitByWeaponId(z,x,id,d) {
+	set POWERLEVEL to (get POWERLEVEL) - d/100;
+	if ((get POWERLEVEL) < 0) set POWERLEVEL to 0;
+	return 0;
+}

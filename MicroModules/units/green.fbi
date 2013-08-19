@@ -1,0 +1,71 @@
+[UNITINFO]
+{
+	Name=Missile Launcher;
+	Unitname=green;
+	Description=Forms a plane body or a precision weapon;
+
+	// Required Tags
+	Category=UNIT GROUND BASIC GREEN;
+	FootprintX=1;
+	FootprintZ=1;
+	MaxDamage=300;
+	IdleAutoHeal=10;
+	BuildCostEnergy=100;
+	BuildCostMetal=20;
+	maxSlope=22;
+	power=30;
+	ObjectName=green.s3o;
+	Side=ANY;
+	//SoundCategory=CITADEL;
+
+	// Movement
+	CanMove=1;
+	MaxVelocity=3.6;
+	Acceleration=3;
+	Brakerate=4;
+	TurnRate=2200;
+	MovementClass=BlobHOVER;
+
+	// Airplane Moventment
+
+	// Buildings
+
+	// Construction
+	ShowNanoFrame=0;
+	LevelGround=0;
+
+	// Resources
+	EnergyMake=0;
+	EnergyStorage=0;
+	MetalStorage=0;
+	MetalMake=0;
+	Reclaimable=0;
+
+	// Abilities
+	CanStop=1;
+	SelfDestructCountdown=1;
+
+	// Sight/Radar
+	RadarDistance=0;
+	SightDistance=600;
+	SeismicSignature=0;
+
+	// Weapons
+	Weapon1=GreenBlobGun;
+	BadTargetCategory1=BASIC;
+	NoChaseCategory=AIR;
+	ExplodeAs=BlobPlop;
+
+	// Tracks/Flares
+
+	// Watersettings
+
+	// Misc
+	SmoothAnim=0;
+
+	[SFXTypes]
+	{
+		explosionGenerator0=custom:missile_s_muzzle;
+		explosionGenerator1=custom:missilerear_muzzle;
+	}
+}

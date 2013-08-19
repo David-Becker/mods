@@ -1,0 +1,57 @@
+piece base, body, foot0, foot1, generator;
+piece dish, targeter, orbit;
+
+#define SIG_Aim 1
+
+#include "exptype.h"
+#define MELTER_DEPTH [-32]
+#include "buildFX_melter.h"
+
+#define UPGRADE_BREAK_ON 32
+#include "upgradesystem.h"
+
+Create()
+{
+	spin targeter around y-axis speed <3000>;
+	call-script buildFX();
+	start-script CheckForUpgrades();
+	spin dish around y-axis speed <30>;
+}
+
+Killed(severity, corpsetype)
+{
+	corpsetype=1;
+	explode foot0 type SHATTER;
+	explode foot1 type SHATTER;
+	explode generator type SHATTER;
+	if (severity>80) {
+		explode body type SHATTER;
+		explode dish type SHATTER;
+		corpsetype=3;
+	}
+	else explode dish type FALL;
+}
+
+AimWeapon1(heading,pitch)
+{
+	signal SIG_Aim;
+	set-signal-mask SIG_Aim;
+//	turn dish to y-axis heading speed <60>;
+	//wait-for-turn dish around y-axis;
+	return(upgrades == (upgrades | 32));
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum=targeter;
+}
+
+QueryWeapon1(piecenum)
+{
+	piecenum=orbit;
+}
+
+TargetCleared()
+{
+	turn dish to y-axis <0> speed <60>;
+}

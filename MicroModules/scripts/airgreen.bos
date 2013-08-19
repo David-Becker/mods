@@ -1,0 +1,76 @@
+piece base, body, wingl, wingr, gp0, gp1, ex;
+
+#include "blob.h"
+
+static-var gp, burst, b, shooting;
+
+ChangedBlobCount(type, count, root) {
+	if (type==1) {
+		burst=count + 2;
+		//get WEAPON_SPRAY(-1, root * 360);
+		if (!shooting) b=burst;
+	}
+}
+
+Deactivate() {
+	turn wingl to y-axis <50> speed <30>;
+	turn wingr to y-axis <-50> speed <30>;
+}
+
+Activate() {
+	turn wingl to y-axis 0 speed <30>;
+	turn wingr to y-axis 0 speed <30>;
+}
+
+
+Create() {
+	call-script ChangedBlobCount(1,0,0);
+	turn wingr to y-axis <-50> now;
+	turn wingl to y-axis <50> now;
+	while(!get CRASHING) sleep 250;
+	call-script lua_KillSelf();
+}
+
+Killed() {
+	hide body;
+	hide wingl;
+	hide wingr;
+	explode wingl type FALL | SMOKE;
+	explode wingr type FALL | SMOKE;
+}
+
+ResetAim() {
+	sleep 4000;
+	b=burst;
+	shooting=0;
+}
+
+QueryWeapon1(p) {
+	p=gp0 + gp;
+}
+
+AimFromWeapon1(p) {
+	p=body;
+}
+
+AimWeapon1(h,p) {
+	signal SIG_Aim;
+	set-signal-mask SIG_Aim;
+	start-script ResetAim();
+	return 1;
+}
+
+Shot1() {
+	if (gp) emit-sfx 1024 from gp0;
+	else emit-sfx 1024 from gp1;
+	gp = !gp;
+	if (b > 1) {
+		shooting=1;
+		get WEAPON_RELOADSTATE(-1,0); //instant reload
+		--b;
+	} 
+	else {
+		shooting=0;
+		b=burst;
+	}
+}

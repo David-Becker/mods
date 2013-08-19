@@ -1,0 +1,61 @@
+piece base, foot, pillar, drop, head, sidel, sider, rear;
+
+#include "Fibre.h"
+
+#define SIG_Trail 1
+
+ChargeFX() {
+	while(1) {
+		sleep 500;
+		set CEG_DAMAGE to get POWERLEVEL;
+		if (1000 == get POWERLEVEL) {
+			emit-sfx 1027 from head;
+		}
+		emit-sfx 1026 from pillar;
+	}
+}
+
+Completed() {
+	move sidel to x-axis [-16] speed [16];
+	move sidel to z-axis [8] speed [8];
+	move sidel to y-axis [-24] speed [24];
+	
+	move sider to x-axis [16] speed [16];
+	move sider to z-axis [8] speed [8];
+	move sider to y-axis [-24] speed [24];
+
+	move rear to z-axis [-16] speed [16];
+	move rear to y-axis [-24] speed [24];
+	show foot;
+	show pillar;
+	sleep 1000;
+
+	hide sidel;
+	hide sider;
+	hide rear;
+	move pillar to y-axis [4] speed [2];
+	start-script ChargeFX();
+}
+
+FireTrail() {
+	set-signal-mask SIG_Trail;
+	while(1) {
+		emit-sfx 1024 from base;
+		sleep 30;
+	}
+}
+
+Create() {
+	move base to y-axis [1000] now;
+	hide foot;
+	hide pillar;
+	start-script FireTrail();
+	var i;
+	for (i=100; i<600; i= i+40) {
+		move base to y-axis 0 speed [1]*i;
+		sleep 20;
+	}
+	wait-for-move base along y-axis;
+	signal SIG_Trail;
+	emit-sfx 1025 from base;
+}

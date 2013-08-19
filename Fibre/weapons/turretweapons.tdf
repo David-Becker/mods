@@ -1,0 +1,442 @@
+[TurretLaser]
+	{
+	name=Laser;
+	rendertype=1;
+	lineofsight=1;
+	//beamweapon=1;
+	//duration=0.3;
+	RGBcolor=1 .2 .2;
+	beamlaser=1;
+	beamburst=1;
+	beamttl=8;
+	beamdecay=.8;
+	minIntensity=1;
+	intensity=1;
+	thickness=1;
+	corethickness=1;
+	alwaysVisible=1;
+
+	size=5;
+	soundstart=bitfire;
+
+	turret=1;
+	range=200;
+	weaponvelocity=700;
+
+	reloadtime=.5;
+
+	areaofeffect=8;
+	collidefriendly=0;
+	avoidfriendly=0;
+	collidefeature=0;
+	avoidfeature=0;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+
+	interceptedbyshieldtype=1;
+	explosionGenerator=custom:explo_med;
+	[DAMAGE]
+		{
+		default=90;
+		}
+	}
+
+
+[TurretRocket]
+	{
+	name=Rocket;
+	rendertype=1;
+	lineofsight=1;
+	WeaponType=MissileLauncher;
+	TrajectoryHeight=.3;
+	Dance=30;
+	TurnRate=5000;
+	flighttime=6;
+	Guidance=1;
+	Tracks=1;
+	model=rocket.s3o;
+	alwaysVisible=1;
+
+	size=5;
+	soundstart=bitfire;
+
+	turret=1;
+	range=400;
+	weaponvelocity=300;
+	startvelocity=300;
+	smoketrail=0;
+
+	reloadtime=2;
+
+	areaofeffect=22;
+	collidefriendly=0;
+	avoidfriendly=0;
+	collidefeature=0;
+	avoidfeature=0;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	cegTag=trail_missile;
+	explosionGenerator=custom:explo_med;
+
+	interceptedbyshieldtype=1;
+	[DAMAGE]
+		{
+		default=260;
+		}
+	}
+
+
+[TurretMortar]
+	{
+	name=Mortar;
+	rendertype=1;
+	lineofsight=1;
+	WeaponType=Cannon;
+	alwaysVisible=1;
+
+	size=2;
+
+	turret=1;
+	range=700;
+	weaponvelocity=400;
+	myGravity=.2;
+	accuracy=200;
+	HighTrajectory=1;
+
+	reloadtime=2;
+
+	areaofeffect=32;
+	collidefriendly=0;
+	avoidfriendly=0;
+	collidefeature=0;
+	avoidfeature=0;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	explosionGenerator=custom:explo_med;
+	cegTag=trail_cannon;
+	leadLimit=200;
+
+	interceptedbyshieldtype=1;
+	[DAMAGE]
+		{
+		default=350;
+		}
+	}
+
+
+[TurretStarfire]
+	{
+	name=Starfire;
+	rendertype=1;
+	lineofsight=1;
+	WeaponType=Cannon;
+	alwaysVisible=1;
+
+	size=2;
+
+	turret=1;
+	range=800;
+	weaponvelocity=500;
+	myGravity=.2;
+	sprayangle=500;
+	projectiles=10;
+
+	reloadtime=5;
+
+	areaofeffect=90;
+	collidefriendly=0;
+	avoidfriendly=0;
+	collidefeature=0;
+	avoidfeature=0;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	explosionGenerator=custom:explo_med;
+	leadLimit=0;
+
+	interceptedbyshieldtype=1;
+	[DAMAGE]
+		{
+		default=240;
+		}
+	}
+
+[TurretShredder]
+	{
+	name=Shredder;
+	WeaponType=BeamLaser;
+	intensity=0;
+	minIntensity=1;
+	alwaysVisible=1;
+	beamburst=1;
+
+	soundstart=bitfire;
+
+	turret=1;
+	range=660;
+	HeightMod=.4;
+	weaponvelocity=700;
+
+	reloadtime=.1;
+
+	areaofeffect=20;
+	edgeeffectiveness=.7;
+	collidefriendly=0;
+	avoidfriendly=0;
+	collidefeature=0;
+	avoidfeature=0;
+
+	tolerance=500;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+
+	interceptedbyshieldtype=1;
+	explosionGenerator=custom:explo_small;
+	[DAMAGE]
+		{
+		default=20;
+		}
+	}
+
+[TurretHowitzer]
+	{
+	name=Stonefist;
+	rendertype=1;
+	lineofsight=1;
+	WeaponType=Cannon;
+	alwaysVisible=1;
+
+	size=4;
+
+	turret=1;
+	range=500;
+	weaponvelocity=500;
+	myGravity=.4;
+	accuracy=200;
+
+	reloadtime=3;
+
+	areaofeffect=280;
+	collidefriendly=0;
+	avoidfriendly=0;
+	collidefeature=0;
+	avoidfeature=0;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	explosionGenerator=custom:explo_largeblast;
+	cegTag=trail_howitzer;
+	leadLimit=200;
+	explosionSpeed=65536;
+
+	interceptedbyshieldtype=1;
+	[DAMAGE]
+		{
+		default=800;
+		}
+	}
+
+[TurretCruiseMissile]
+	{
+	name=Rocket;
+	rendertype=1;
+	lineofsight=1;
+	WeaponType=StarburstLauncher;
+	TurnRate=25000;
+	flighttime=12;
+	WeaponTimer=2.5;
+	fixedLauncher=1;
+	Guidance=0;
+	Tracks=0;
+	model=cruisemissile.s3o;
+	alwaysVisible=1;
+
+	size=5;
+	soundstart=bitfire;
+
+	turret=1;
+	range=1300;
+	weaponvelocity=500;
+	startvelocity=50;
+	weaponacceleration=100;
+	smoketrail=0;
+
+	reloadtime=10;
+
+	areaofeffect=54;
+	collidefriendly=0;
+	avoidfriendly=0;
+	collidefeature=0;
+	avoidfeature=0;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	cegTag=trail_cruisemissile;
+	explosionGenerator=custom:explo_dirtblast;
+
+	interceptedbyshieldtype=1;
+	[DAMAGE]
+		{
+		default=600;
+		}
+	}
+
+[TurretLauncher]
+	{
+	name=Launch Poison;
+	rendertype=1;
+	lineofsight=1;
+	WeaponType=Cannon;
+	alwaysVisible=1;
+	model=turretprojectile.s3o;
+
+	turret=1;
+	range=700;
+	weaponvelocity=500;
+	myGravity=.2;
+	sprayangle=900;
+	burst = 3;
+	burstrate= .4;
+
+	reloadtime=15;
+
+	areaofeffect=25;
+	collidefriendly=0;
+	avoidfriendly=0;
+	collidefeature=0;
+	avoidfeature=0;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	explosionGenerator=custom:explo_med;
+	cegTag=trail_turret;
+	leadLimit=0;
+
+	interceptedbyshieldtype=1;
+	[DAMAGE]
+		{
+		default=80;
+		}
+	}
+
+[TurretNapalm]
+	{
+	name=Napalm Globs;
+	rendertype=1;
+	lineofsight=1;
+	WeaponType=Cannon;
+	alwaysVisible=1;
+
+	size=4;
+
+	turret=1;
+	range=300;
+	weaponvelocity=300;
+	myGravity=.4;
+	accuracy=600;
+
+	reloadtime=1;
+
+	areaofeffect=140;
+	collidefriendly=0;
+	avoidfriendly=0;
+	collidefeature=0;
+	avoidfeature=0;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	explosionGenerator=custom:explo_fire;
+	cegTag=trail_napalm;
+	explosionSpeed=65536;
+
+	interceptedbyshieldtype=1;
+	[DAMAGE]
+		{
+		default=50;
+		}
+	}
+
+[TurretTorpedo]
+	{
+	name=Torpedo;
+	rendertype=1;
+	lineofsight=1;
+	WeaponType=TorpedoLauncher;
+	waterWeapon=1;
+	TurnRate=15000;
+	flighttime=8;
+	Guidance=1;
+	Tracks=1;
+	model=rocket.s3o;
+	alwaysVisible=1;
+
+	soundstart=bitfire;
+
+	turret=1;
+	range=600;
+	weaponvelocity=300;
+	startvelocity=300;
+	smoketrail=0;
+
+	reloadtime=4;
+
+	areaofeffect=80;
+	collidefriendly=0;
+	avoidfriendly=0;
+	collidefeature=0;
+	avoidfeature=0;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	cegTag=trail_shipcannon;
+	explosionGenerator=custom:explo_med;
+
+	interceptedbyshieldtype=1;
+	[DAMAGE]
+		{
+		default=600;
+		}
+	}
+

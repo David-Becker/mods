@@ -1,0 +1,37 @@
+[UNITINFO]
+	{
+	UnitName=CORBUPL;
+	Version=1;
+	Side=COSMOS;
+	Objectname=COrbitalUplink.s3o;
+	buildpic=corbupl.bmp;
+	Designation=COrbUpl;
+	Name=Orbital Uplink;
+	Description=- Transmits coordinates for orbital weapons platforms (requires upgrade to work);
+	FootprintX=6;
+	FootprintZ=4;
+	Yardmap=o;
+	UnitRestricted=2;
+	BuildCostEnergy=0;
+	BuildCostMetal=10000;
+	MaxDamage=18000;
+	MaxSlope=30;
+	EnergyUse=0;
+	BuildTime=36000;
+	NoAutoFire=0;
+	SightDistance=180;
+	RadarDistance=4096;
+	SoundCategory=CORE_GEO;
+	ExplodeAs=Big_ICBM;
+	SelfDestructAs=TITAN_NUKES;
+	Category=ORBUPL SUPERWEAPON HARMLESS LARGE NOTSMALL BUILDING ALL ;
+	TEDClass=TURRET;
+	ActivateWhenBuilt=1;
+	OnlyTargetCategory=All;
+	Weapon1=Big_OrbitMissiles;
+	shownanoframe=0;
+        [SFXTypes]
+	{
+	       explosiongenerator0=custom:buildFX_melter;
+       	}
+	}

@@ -1,0 +1,79 @@
+[UNITINFO]
+{
+	Name=Assault Coordination Vehicle;
+	UnitName=CACV;
+	
+	//    Required Tags
+	BuildCostEnergy=0;
+	BuildCostMetal=3000;
+	BuildTime=24000;
+	Category=ACV LARGE NOTSMALL NOTBUILDING ALL ;
+	Description=- Provides vision and radar, can request missile strikes with upgrade;
+	FootprintX=3;
+	FootprintZ=3;
+	MaxDamage=8000;
+	ObjectName=CACV.s3o;
+	buildpic=cacv.bmp;
+	icontype=acv;
+	Side=COSMOS;
+	SoundCategory=ARM_HOVER_BIG;
+	TEDClass=TANK;
+	activatewhenbuilt=1;
+	istargetingupgrade=0;
+
+	//    Movement
+	BrakeRate=0.9;
+	MovementClass=DefaultMoveType;
+	Acceleration=0.6;
+	CanMove=1;
+	MaxVelocity=2.1;
+	TurnRate=280;
+	MaxSlope=30;
+	
+	//    Airplane Moventment
+	
+	//    Buildings
+	
+	//    Construction
+	
+	//    Resources
+	EnergyMake=5;
+	EnergyStorage=0;
+	EnergyUse=0;
+	MetalStorage=300;
+	MetalMake=2;
+	
+	
+	//    Abilities
+	CanAttack=1;
+	CanStop=1;
+	
+	//    Sight/Radar
+	RadarDistance=4500;
+	SightDistance=1280;
+	
+	//    Weapons
+	OnlyTargetCategory=All;
+	BadTargetCategory1=NOTLARGE;
+	Weapon1=Big_ICBM;
+	Weapon2=Big_MachineGun;
+	Weapon3=Big_MachineGun;
+	wpri_badTargetCategory=AIR;
+	BadTargetCategory=AIR;
+	ExplodeAs=TITAN_MISSILE;
+	SelfDestructAs=TITAN_MISSILE;
+	NoChaseCategory=VTOL;
+	
+	//    Tracks/Flares
+	
+	//    Watersettings
+	
+	//    Misc
+	SmoothAnim=0;
+	
+	ShowNanoFrame=0;
+        [SFXTypes]
+	{
+	       explosiongenerator0=custom:buildFX_melter;
+       	}
+}

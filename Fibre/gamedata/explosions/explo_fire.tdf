@@ -1,0 +1,158 @@
+[explo_fire]
+{
+	[circle]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=1;
+			sizemod=1;
+			pos=0, 1.0, 0;
+			emitVector=0,1,0;
+			gravity=0, 0, 0;
+			Texture=smoke1;
+			colorMap=1 .9 .4 .1   .8 .3 0 .1   0 0 0 0;
+			airdrag=.9;
+			particleLife=16;
+			particleLifeSpread=10;
+			numParticles=12;
+			particleSpeed=0;
+			particleSpeedSpread=3.6;
+			particleSize=3;
+			particleSizeSpread=2;
+			emitRot=0;
+			emitRotSpread=90;
+			directional=0;
+			alwaysVisible=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+	[spew]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=0;
+			sizemod=1;
+			pos=0, 1.0, 0;
+			emitVector=0,1,0;
+			gravity=0, 0, 0;
+			Texture=puff;
+			colorMap=1 .9 .1 .1   .5 .3 0 .1   0 0 0 0;
+			airdrag=1;
+			particleLife=6;
+			particleLifeSpread=2;
+			numParticles=5 r10;
+			particleSpeed=6;
+			particleSpeedSpread=4;
+			particleSize=3;
+			particleSizeSpread=2;
+			emitRot=0;
+			emitRotSpread=90;
+			directional=1;
+			alwaysVisible=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+	[burn]
+	{
+		class=CExpGenSpawner;
+		[properties]
+		{
+			delay=1 i5;
+			dir=0,1,0;
+			damage=0 i1;
+			explosionGenerator=custom:explo_fire_burn;
+			speed=0,0,0;
+			pos=0,0,0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=20;
+	}
+}
+
+[explo_fire_burn]
+{
+	[circle]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=1 d-.03;
+			sizemod=1;
+			pos=-30 r60, 1.0, -30 r60;
+			emitVector=0,1,0;
+			gravity=0, .1, 0;
+			Texture=smoke1;
+			colorMap=0 0 0 0   1 .9 .4 .1   .8 .3 0 .1   0 0 0 0;
+			airdrag=.9;
+			particleLife=16;
+			particleLifeSpread=10;
+			numParticles=2;
+			particleSpeed=0;
+			particleSpeedSpread=.6;
+			particleSize=3 d-.1;
+			particleSizeSpread=2;
+			emitRot=0;
+			emitRotSpread=10;
+			directional=0;
+			alwaysVisible=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=3;
+	}
+	[spew]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=0;
+			sizemod=1;
+			pos=-30 r60, 1.0, -30 r60;
+			emitVector=0,1,0;
+			gravity=0, 0, 0;
+			Texture=puff;
+			colorMap=1 .9 .1 .1   .5 .3 0 .1   0 0 0 0;
+			airdrag=1;
+			particleLife=6;
+			particleLifeSpread=2;
+			numParticles=1 r4;
+			particleSpeed=6;
+			particleSpeedSpread=4;
+			particleSize=3;
+			particleSizeSpread=2;
+			emitRot=0;
+			emitRotSpread=30;
+			directional=1;
+			alwaysVisible=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+	[shockwave]
+	{
+		class = CBitmapMuzzleFlame;
+		[properties]
+      	{
+         	dir = 0,1,0.00001;
+         	pos = 0, 30, 0;
+         	colorMap=.5 .5 .4 .1   .4 .3 0 .1   .3 0 0 .1   0 0 0 0;
+          	size=1;
+          	length=1;
+          	sizeGrowth=120 d-3;
+          	ttl=24;
+          	frontOffset=-.1;
+          	sideTexture=null;
+          	frontTexture=burncircle;
+			alwaysVisible=1;
+      	}
+		water=1;
+		air=1;
+		ground=1;
+	}
+}

@@ -1,0 +1,238 @@
+[TRIGGER_LASER]
+	{
+	name=Weapon Trigger;
+	rendertype=4;
+	lineofsight=1;
+	turret=1;
+	range=64;
+	weaponvelocity=1000;
+
+	beamtime=0.1;
+	beamweapon=1;
+	color=1;
+	thickness=1;
+	intensity=0;
+	soundstart=lasrmas1;
+
+	reloadtime=0.15;
+	sprayangle=200;
+
+	areaofeffect=16;
+
+	tolerance=1000;
+
+	avoidfriendly=0;
+	collidefriendly=0;
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+	energypershot=60;
+	interceptedbyshieldtype=1; //Melee
+	explosiongenerator=custom:lasgun;
+	[DAMAGE]
+		{
+		default=0.01;
+		}
+	}
+
+[TARGETER]
+	{
+	name=Targeting System;
+	rendertype=4;
+	lineofsight=1;
+	turret=1;
+	range=8192;
+	toairweapon=1;
+	weaponvelocity=1000;
+
+	beamtime=0.1;
+	beamweapon=1;
+	color=1;
+	thickness=1;
+	intensity=0;
+
+	reloadtime=0.15;
+	sprayangle=200;
+
+	areaofeffect=16;
+
+	tolerance=1000;
+
+	avoidfriendly=0;
+	collidefriendly=0;
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+	energypershot=60;
+	interceptedbyshieldtype=1; //Melee
+	explosiongenerator=custom:lasgun;
+	[DAMAGE]
+		{
+		default=0.01;
+		}
+	}
+
+[DRONE_LASER]
+	{
+	name=Microlaser;
+	rendertype=4;
+	lineofsight=1;
+	turret=1;
+	range=8192;
+	weaponvelocity=1000;
+
+	beamtime=0.02;
+	beamweapon=1;
+	color=1;
+	thickness=1;
+	intensity=1;
+	soundhit=xplosml1;
+
+	reloadtime=0.25;
+	sprayangle=10;
+
+	areaofeffect=16;
+
+	tolerance=1000;
+
+	avoidfriendly=0;
+	collidefriendly=0;
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+	energypershot=1;
+	interceptedbyshieldtype=1; //Melee
+	explosiongenerator=custom:lasgun;
+	[DAMAGE]
+		{
+		default=30;
+		}
+	}
+
+[DRONE_MISSILE]
+{
+	name=Micromissiles;
+	rendertype=1;
+	lineofsight=1;
+	turret=1;
+	model=RPGmissile.s3o;
+	range=409600;
+	reloadtime=5;
+	weapontimer=200;
+	weaponvelocity=1024;
+	startvelocity=512;
+	weaponacceleration=512;
+	turnrate=5120;
+	wobble=7680;
+	sprayangle=16384;
+	areaofeffect=128;
+	energypershot=10;
+	soundstart=rocklit2;
+	soundhit=xplosml2;
+	firestarter=70;
+	smokedelay=.1;
+	guidance=1;
+	tracks=1;
+	noexplode=0;
+	targetable=0;
+	selfprop=1;
+	smoketrail=1;
+	tolerance=10000;
+	startsmoke=1;
+	Trajectoryheight=0;
+	avoidfriendly=0;
+	collidefriendly=0;
+	interceptedbyshieldtype=2; //Sniper
+	canAttackGround=0;
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+	explosiongenerator=custom:missile_impact;
+	toairweapon=1;
+	commandfire=1;
+
+	[DAMAGE]
+	{
+		default=140;
+	}
+}
+
+[DRONE_SNIPER]
+	{
+	name=SniperMicrolaser;
+	rendertype=0;
+	lineofsight=1;
+	turret=1;
+	range=2048;
+	weaponvelocity=1000;
+
+	beamtime=0.05;
+	beamlaser=1;
+	color=180;
+	thickness=3;
+	intensity=1;
+
+	reloadtime=4;
+
+	areaofeffect=16;
+
+	tolerance=1000;
+
+	avoidfriendly=1;
+	collidefriendly=0;
+
+	impulsefactor=0;
+	interceptedbyshieldtype=2; //sniper
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+	[DAMAGE]
+		{
+		default=200;
+		SwarmBuilder=1000;
+		}
+	}
+
+[DRONE_EXPLOSION]
+{
+	name=Microblast;
+	rendertype=1;
+	lineofsight=1;
+	turret=1;
+	model=TitanMissile.s3o;
+	range=1500;
+	reloadtime=3;
+	weapontimer=2;
+	weaponvelocity=670;
+	startvelocity=450;
+	weaponacceleration=164;
+	turnrate=5120;
+	metalpershot=0;
+	soundstart=rockhvy2;
+	soundhit=xplolrg2;
+	firestarter=70;
+	smokedelay=.1;
+	guidance=1;
+	tracks=1;
+	selfprop=1;
+	smoketrail=1;
+	tolerance=10000;
+	startsmoke=1;
+	Trajectoryheight=1;
+	areaofeffect=128;
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+	explosiongenerator=custom:grenblast;
+	[DAMAGE]
+	{
+		default=25;
+	}
+}
+

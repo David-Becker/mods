@@ -1,0 +1,8 @@
+[building]
+{
+	turret_laser=0;
+}
+
+[citadel] {
+	citadel = 1;
+}

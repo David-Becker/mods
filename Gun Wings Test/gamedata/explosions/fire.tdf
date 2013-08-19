@@ -1,0 +1,29 @@
+[fire]
+{
+	[blast]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=1;
+			sizemod=.98;
+			pos=0, 1.0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, 0, 0;
+			Texture=fireblast;
+			colorMap=.1 .1 .1 .1   1 1 1 .1   0 0 0 1   0 0 0 0;
+			airdrag=.9;
+			particleLife=32;
+			particleLifeSpread=32;
+			numParticles=1;
+			particleSpeed=0;
+			particleSpeedSpread=4;
+			particleSize=12;
+			particleSizeSpread=8;
+			emitRot=0;
+			emitRotSpread=180;
+			directional=0;
+		}
+		air=1;
+		ground=1;
+	}
+}

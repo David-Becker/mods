@@ -1,0 +1,55 @@
+[grenblast]
+{
+        [tracers]
+        {
+                class=CSimpleParticleSystem;
+                [properties] {
+                        sizegrowth=0;
+                        sizemod=1;
+              		pos=0, 1, 0;
+	        	emitVector= 0, 1, 0;
+	         	gravity=0, 0, 0;
+                   	colorMap= 1 1 1 .1   .9 .7 .3 .1   0 0 0 0;
+    	            	Texture=dirt;
+    	             	airdrag=0.9;
+    	              	particleLife=15;
+    	               	particleLifeSpread=10;
+    	                numParticles=30;
+    		        particleSpeed=22;
+    		        particleSpeedSpread=8;
+    		        particleSize=10;
+    		        particleSizeSpread=10;
+    		        emitRot=0;
+    		        emitRotSpread=90;
+    		        directional=1;
+                }
+                air=1;
+                ground=1;
+        }
+        [base]
+        {
+                class=CSimpleParticleSystem;
+                [properties] {
+                        sizegrowth=1;
+                        sizemod=1;
+              		pos=0, 2, 0;
+	        	emitVector= 0, 1, 0;
+	         	gravity=0, 0, 0;
+                   	colorMap= 1 1 1 .1   .9 .4 .2 .1   0 0 0 0;
+    	            	Texture=blastcloud;
+    	             	airdrag=0.9;
+    	              	particleLife=25;
+    	               	particleLifeSpread=30;
+    	                numParticles=30;
+    		        particleSpeed=5;
+    		        particleSpeedSpread=2;
+    		        particleSize=20;
+    		        particleSizeSpread=10;
+    		        emitRot=0;
+    		        emitRotSpread=90;
+    		        directional=0;
+                }
+                air=1;
+                ground=1;
+        }
+}

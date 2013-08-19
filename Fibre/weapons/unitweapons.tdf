@@ -1,0 +1,515 @@
+[UnitLaser]
+	{
+	name=Laser;
+	rendertype=1;
+	lineofsight=1;
+	//beamweapon=1;
+	//duration=0.3;
+	RGBcolor=1 .2 .2;
+	beamlaser=1;
+	beamburst=1;
+	beamttl=8;
+	beamdecay=.8;
+	minIntensity=1;
+	intensity=1;
+	thickness=.3;
+	corethickness=1;
+	alwaysVisible=1;
+
+	size=5;
+	soundstart=bitfire;
+
+	turret=1;
+	range=150;
+	weaponvelocity=400;
+
+	reloadtime=.5;
+
+	areaofeffect=8;
+	collidefriendly=0;
+	avoidfriendly=0;
+	collidefeature=0;
+	avoidfeature=0;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+
+	interceptedbyshieldtype=1;
+	
+	explosionGenerator=custom:explo_small;
+	[DAMAGE]
+		{
+		default=20;
+		}
+	}
+
+[UnitCannon]
+	{
+	name=Gun;
+	rendertype=1;
+	lineofsight=1;
+	WeaponType=LaserCannon;
+	alwaysVisible=1;
+	Duration = .3;
+	RGBColor=1 1 1 1;
+	texture1=tankshot;
+	texture2=null;
+	hardstop=1;
+
+	size=5;
+	soundstart=bitfire;
+
+	turret=1;
+	range=320;
+	weaponvelocity=700;
+
+	reloadtime=2.5;
+
+	areaofeffect=22;
+	collidefriendly=0;
+	avoidfriendly=0;
+	collidefeature=0;
+	avoidfeature=0;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+
+	interceptedbyshieldtype=1;
+
+	explosionGenerator=custom:explo_med;
+	[DAMAGE]
+		{
+		default=170;
+		}
+	}
+
+[UnitMissile]
+	{
+	name=Missile;
+	rendertype=1;
+	lineofsight=1;
+	WeaponType=MissileLauncher;
+	Dance=30;
+	TurnRate=68000;
+	Guidance=1;
+	Tracks=1;
+	fixedLauncher=1;
+	model=rocket.s3o;
+	alwaysVisible=1;
+	projectiles=2;
+	//burst=4;
+	//burstrate=.5;
+
+	size=5;
+	soundstart=bitfire;
+
+	turret=1;
+	range=400;
+	flighttime=1.5;
+	weaponvelocity=800;
+	startvelocity=800;
+	weaponacceleration=1600;
+	smoketrail=0;
+
+	reloadtime=.8;
+
+	areaofeffect=30;
+	collidefriendly=0;
+	avoidfriendly=0;
+	collidefeature=0;
+	avoidfeature=0;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	cegTag=trail_missile;
+	explosionGenerator=custom:explo_med;
+
+	interceptedbyshieldtype=1;
+	[DAMAGE]
+		{
+		default=80;
+		}
+	}
+
+[UnitAirMG]
+	{
+	name=MG;
+	WeaponType=BeamLaser;
+	intensity=0;
+	minIntensity=1;
+	alwaysVisible=1;
+	thickness=.7;
+	duration=.3;
+	RGBcolor= 1 1 1;
+	//texture1=tankshot;
+	beamburst=1;
+	sprayangle=500;
+
+	soundstart=bitfire;
+
+	turret=1;
+	range=400;
+	flighttime = 5;
+	HeightMod=0;
+	cylinderTargetting=3;
+	weaponvelocity=900;
+
+	reloadtime=.5;
+	burst=5;
+	burstrate=.1;
+
+	areaofeffect=20;
+	edgeeffectiveness=.7;
+	collidefriendly=0;
+	avoidfriendly=0;
+	collidefeature=0;
+	avoidfeature=0;
+
+	tolerance=500;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+
+	interceptedbyshieldtype=1;
+	explosionGenerator=custom:explo_small;
+	[DAMAGE]
+		{
+		default=5;
+		}
+	}
+
+[UnitMG]
+	{
+	name=MG;
+	WeaponType=BeamLaser;
+	intensity=0;
+	minIntensity=1;
+	alwaysVisible=1;
+	thickness=.7;
+	duration=.3;
+	RGBcolor= 1 1 1;
+	//texture1=tankshot;
+	beamburst=1;
+	//sprayangle=500;
+
+	soundstart=bitfire;
+
+	turret=1;
+	range=300;
+	flighttime = 5;
+	HeightMod=0;
+	cylinderTargetting=3;
+	weaponvelocity=900;
+
+	reloadtime=.5;
+	burst=5;
+	burstrate=.1;
+
+	areaofeffect=20;
+	edgeeffectiveness=.7;
+	collidefriendly=0;
+	avoidfriendly=0;
+	collidefeature=0;
+	avoidfeature=0;
+
+	tolerance=500;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+
+	interceptedbyshieldtype=1;
+	explosionGenerator=custom:explo_small;
+	[DAMAGE]
+		{
+		default=4;
+		}
+	}
+
+[UnitBomb]
+	{
+	name=Bombs;
+	rendertype=1;
+	lineofsight=1;
+	ballistic=1;
+	dropped=1;
+	WeaponType=AircraftBomb;
+	model=rocket.s3o;
+	alwaysVisible=1;
+	reloadtime=10;
+	manualBombSettings=1;
+	projectiles=2;
+	burst=10;
+	burstrate=.2;
+	sprayangle=6000;
+	myGravity=.3;
+
+	size=5;
+	soundstart=bitfire;
+
+	turret=0;
+	range=1400;
+
+	areaofeffect=250;
+	collidefriendly=0;
+	avoidfriendly=0;
+	collidefeature=0;
+	avoidfeature=0;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	explosionGenerator=custom:explo_pillar;
+
+	interceptedbyshieldtype=1;
+	[DAMAGE]
+		{
+		default=200;
+		}
+	}
+
+[UnitBombHostile]
+	{
+	name=Bombs;
+	rendertype=1;
+	lineofsight=1;
+	ballistic=1;
+	dropped=1;
+	WeaponType=AircraftBomb;
+	model=rocket.s3o;
+	alwaysVisible=1;
+	reloadtime=4;
+	manualBombSettings=1;
+	projectiles=2;
+	burst=5;
+	burstrate=.2;
+	sprayangle=3000;
+	myGravity=.3;
+
+	size=5;
+	soundstart=bitfire;
+
+	turret=0;
+	range=1400;
+
+	areaofeffect=250;
+	collidefriendly=0;
+	avoidfriendly=0;
+	collidefeature=0;
+	avoidfeature=0;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	explosionGenerator=custom:explo_pillar;
+
+	interceptedbyshieldtype=1;
+	[DAMAGE]
+		{
+		default=200;
+		}
+	}
+
+[UnitSeaCannon]
+	{
+	name=Missile Volley;
+	rendertype=1;
+	lineofsight=1;
+	WeaponType=Cannon;
+	alwaysVisible=1;
+	model=rocket.s3o;
+
+	turret=1;
+	range=700;
+	weaponvelocity=200;
+	myGravity=.05;
+	heightMod=0;
+	sprayangle=600;
+	burst = 5;
+	burstrate= .4;
+
+	reloadtime=5;
+
+	areaofeffect=80;
+	collidefriendly=0;
+	avoidfriendly=0;
+	collidefeature=0;
+	avoidfeature=0;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	explosionGenerator=custom:explo_shipcannon;
+	cegTag=trail_shipcannon;
+
+	interceptedbyshieldtype=1;
+	[DAMAGE]
+		{
+		default=100;
+		}
+	}
+
+[UnitSeaCannonH]
+	{
+	name=Missile Volley H;
+	rendertype=1;
+	lineofsight=1;
+	WeaponType=Cannon;
+	alwaysVisible=1;
+	model=rocket.s3o;
+	highTrajectory=1;
+
+	turret=1;
+	range=700;
+	weaponvelocity=200;
+	myGravity=.05;
+	heightMod=0;
+	sprayangle=300;
+	projectiles = 5;
+	burstrate= .4;
+
+	reloadtime=5;
+
+	areaofeffect=80;
+	collidefriendly=0;
+	avoidfriendly=0;
+	collidefeature=0;
+	avoidfeature=0;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	explosionGenerator=custom:explo_large;
+	cegTag=trail_shipcannon;
+
+	interceptedbyshieldtype=1;
+	[DAMAGE]
+		{
+		default=300;
+		}
+	}
+
+[UnitSeaMissile]
+	{
+	name=Missile;
+	rendertype=1;
+	lineofsight=1;
+	WeaponType=StarburstLauncher;
+	Dance=60;
+	TurnRate=36000;
+	weaponTimer=.5;
+	Guidance=1;
+	Tracks=1;
+	fixedLauncher=1;
+	trajectoryHeight=.7;
+	model=rocket.s3o;
+	alwaysVisible=1;
+	projectiles=2;
+	burst=3;
+	burstrate=.5;
+	projectiles=2;
+
+	size=5;
+	soundstart=bitfire;
+
+	turret=1;
+	range=600;
+	flighttime=9;
+	weaponvelocity=400;
+	startvelocity=200;
+	weaponacceleration=900;
+	smoketrail=0;
+
+	reloadtime=10;
+
+	areaofeffect=30;
+	collidefriendly=0;
+	avoidfriendly=0;
+	collidefeature=0;
+	avoidfeature=0;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	cegTag=trail_shipcannon;
+	explosionGenerator=custom:explo_med;
+
+	interceptedbyshieldtype=1;
+	[DAMAGE]
+		{
+		default=280;
+		}
+	}
+
+[UnitArtilleryHostile]
+	{
+	name=Missile Volley;
+	rendertype=1;
+	lineofsight=1;
+	WeaponType=Cannon;
+	alwaysVisible=1;
+	model=rocket.s3o;
+
+	turret=1;
+	range=700;
+	weaponvelocity=200;
+	myGravity=.05;
+	heightMod=0;
+	sprayangle=600;
+	burst = 5;
+	burstrate= .2;
+
+	reloadtime=3;
+
+	areaofeffect=100;
+	collidefriendly=0;
+	avoidfriendly=0;
+	collidefeature=0;
+	avoidfeature=0;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	explosionGenerator=custom:explo_shipcannon;
+	cegTag=trail_shipcannon;
+
+	interceptedbyshieldtype=1;
+	[DAMAGE]
+		{
+		default=50;
+		}
+	}
+

@@ -1,0 +1,80 @@
+Dozers
+Version 4 as of 22:20 09.12.2006
+
+Dozerz is a simple experimental mod. It relies on the thought that units have two ways of winning over each other, the one is rock paper scissors (one unit type counters another), the other is tactical use. In Dozerz I tried to make use of the latter.
+
+There are two units in Dozerz:
+
+Dozer
+Combat unit
+Features:
+- Forward shield blocks attacks coming from the front. Red lasers will weaken and penetrate the shield, purple lasers won't (and get intercepted at a larger radius).
+- An aimed lasergun (red) that does moderate damage and can penetrate the shield of an enemy dozer after enough shots. Use this 90% of the time since it works for most combat situations.
+- A pair of sweeper lasers (purple) that anally violate dozers but have no effect on shields. Use this when the enemy has his rear exposed or you suspect cloaked enemies in the area. While one of these is beaming away at your forces you must not turn away from it or fire your dgun since that means instant death. Actually you can fire the dgun when under sweeper fire if you time it right but you WILL lose that dozer.
+- Use the on/off toggle to switch between red (off) and purple (on) lasers.
+- A DGun (fireball looking thing) for 700 energy and 100 metal which kills dozers in a wide area around its impact but moves slowly and disables your shield for 1.5 seconds, 0.5 of which is before firing. Since it's slow your enemy might be able to run away before it hits (8 seconds to impact at maximum range) so use the sweeper beams to prevent him from moving (well, technically he CAN move...). The dgun projectile will travel in a straight line even beyond its range, shoot it at your own dozers to make it fly really far (or use FPS mode)
+- Cloaking that gets undone if you get closer than half your weapon range to the enemy but allows you to remain hard to spot (and prevents your shield from showing up in the extended LOS where you can usually only see airplanes or explosions, especially behind hills). While enabled this turns your shield off so beware of sweepers.
+- Temporary invincibility for 7 seconds after being built to make it easier to defend your flag.
+- A self destruction mechanism that is the only way to damage the enemy flag.
+- Automatic healing, if a dozer is left alone for a while its HP will recover fully
+- Uses 1 metal and produces 3 energy. Means more dozers = slower dozer production but faster DGun recharge (well, as long as you pause production for a while).
+
+Flag
+Base/Factory
+Features:
+- Can build Dozers
+- Invulnerable to conventional weapons, only the dozer's self destruction can harm the flag
+- Lets defensive artillery rain down on its position when the on/off toggle is set to on, this slowly wears your flag down so use it sparingly as your flag cannot be repaired. Use it when your enemy kills your newly made dozers before they can do anything to him.
+- Produces Metal
+
+The mod variant "Spawner" prevents the flag from calling in the artillery and turns the flag into a stationary builder which allows it to place dozers within its range (display is incorrect, the build range is approximately half the displayed range). Those dozers can be rotated in any way you want and have only 3 seconds of invulnerability which also disables their weapons until they are vulnerable.
+
+Known bugs that cannot be fixed without an engine patch:
+- The Dgun does not take obstacles into account, giving the order when the unit is behind a hill or tree or something will result in a self frag.
+- Dozers with the sweeper beam don't recloak when their weapon stops firing, toggle the cloak button twice to make them recloak.
+- The sweeper beam will hit friendlies in its field of fire. Make sure you don't move into the area and don't have a sweeper in the back of your force with a Fire At Will order. Your shields will not block the beam (this is on purpose).
+- First person mode makes the shield disable as if your unit was preparing to fire the dgun and when the sweeper beam is selected it will fire constantly as long as you aim in the forward arc. This is because the aim function of the unit gets called constantly.
+- The DGun projectile will exceed its range and can travel across the map and further. Since it can't be fixed by me I'll at least tell you so you aren't surprised if it gets used agianst you.
+- Aiming the DGun at a unit will make the dozer that got the order keep trying to fire the DGun after the first shot. Generally avoid that since if the DGun misses the intended target it will travel above ground and not explode until it hits another obstacle which can mean missing an enemy troop concentration.
+- The flag won't build units at its maximum build range.
+
+Changelog:
+
+v4:
+- Replaced scattershot with sweeping beams that do the intended job much better without occassionally striking through the shield
+- Dozer turn rate increased since the sweeping beams hit much faster and the flank doesn't need to be exposed as long for that to work
+- Dozers can cloak now. They uncloak when they get even remotely close to an enemy but it approximately halves the distance at which a dozer can be spotted (especially when you count the shields being visible in the semi-dark aerial LOS). The sweeping beams make short work of cloaked dozers but cloaking allows ambushes.
+- Shield recharge rate increased. Doesn't affect combat too much but lets dozers reach full shield strength after 10 seconds instead of 25
+- Dgun range increased to match other weapon ranges. Should prevent dozers standing around shooting their normal weapons when ordered to shoot dgun at target outside of dgun range
+- Dgun now collides with friendly units.
+- Added custom explosion for the flag destruction and Dozer construction.
+- Changed No Firestorm variant into Spawner variant
+
+v3:
+- Added custom explosion generators (dozer explosions spawn flares, green=dead, red=self-d and laser impacts look different when hitting shields vs. hull)
+- Firestorm now looks like lasers
+- Firestorm, DGun and Flagkiller (Dozer self-d) shockwave expansion speed increased (looked ridiculous)
+- Firestorm damage against dozers reduced (it's not supposed to be effective for stopping enemies from self-d'ing after all)
+
+v2:
+- Removed Grenadiers variant, put the dgun into the standard game
+- Added invulnerability for freshly spawned dozers to prevent "flag pin"
+- Weapon damage against dozers reduced (scattershot is no longer instakill)
+- Shield regeneration lowered
+- Shield "fire arc" trimmed down to make dozers face the enemy when attacking (the shield is the first weapon, Spring turns the unit so the first weapon has a line of fire). Previously they left their flank exposed to their target.
+- Shield slightly larger (both against laser and scattershot)
+- Scattershot speed increased to lower the firing arc (could previously fire over the shield)
+- Added firestorm (defensive artillery) to the flag, added variant No Firestorm that doesn't have this
+- Added icon for flag, when zooming out it will now show a flag icon
+
+v1:
+- Dozers faster
+- Shield smaller, uses larger shield to deflect the scattershot, shield capacity and regeneration decreased
+- Ressource income reduced (100->30)
+- Added dgun in Grenadiers variant
+- Flag turned into factory instead of stationary builder to allow rally points (also prevents reclaiming of enemy dozers and exploit to find the enemy flag)
+- Self destruction for dozers is near instant
+- Fire arc fixed, aimed slightly to the side in v0
+- Ranges reduced somewhat
+
+v0: initial release

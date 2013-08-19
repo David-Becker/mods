@@ -1,0 +1,45 @@
+piece base, body, gp;
+
+#include "blob.h"
+
+StartMoving() {
+	signal SIG_Move;
+	set-signal-mask SIG_Move;
+	while(1) {
+		set UPRIGHT to !get GROUND_HEIGHT(get PIECE_XZ(base));
+		sleep 500;
+	}
+}
+
+StopMoving() {
+	signal SIG_Move;
+}
+
+Create() {
+	set UPRIGHT to !get GROUND_HEIGHT(get PIECE_XZ(base));
+	spin body around y-axis speed <210>;
+}
+
+WaveFX() {
+	emit-sfx 1025 from base;
+}
+
+QueryWeapon1(p) {
+	p=gp;
+}
+
+AimFromWeapon1(p) {
+	p=gp;
+}
+
+AimWeapon1(h,p) {
+	signal SIG_Aim;
+	set-signal-mask SIG_Aim;
+	turn gp to y-axis h now;
+	turn gp to x-axis 0 - p now;
+	return 1;
+}
+
+/*Shot1() {
+	emit-sfx 1024 from gp;
+}*/

@@ -1,0 +1,126 @@
+piece base, body, radar;
+piece tbase0, turret0, gp00, gp01, gp02, gp03, gp04;
+piece tbase1, turret1, gp10, gp11, gp12, gp13, gp14;
+piece tbase2, turret2, gp20, gp21, gp22, gp23, gp24;
+piece gp30, gp31, gp32, gp33, gp34, gp35;
+
+#include "Fibre.h"
+
+static-var gun0, gun1, gun2, gun3;
+#define SIG_Aim1 1
+#define SIG_Aim2 2
+#define SIG_Aim3 4
+
+Create() {
+	spin radar around y-axis speed <180>;
+	turn turret0 to x-axis <-20> now;
+	turn turret1 to x-axis <-20> now;
+	turn turret2 to x-axis <20> now;
+
+	turn gp30 to y-axis <-120> now;
+	turn gp30 to x-axis <-45> now;
+
+	turn gp32 to y-axis <-120> now;
+	turn gp32 to x-axis <-45> now;
+
+	turn gp34 to y-axis <-120> now;
+	turn gp34 to x-axis <-45> now;
+
+	turn gp31 to y-axis <120> now;
+	turn gp31 to x-axis <-45> now;
+
+	turn gp33 to y-axis <120> now;
+	turn gp33 to x-axis <-45> now;
+
+	turn gp35 to y-axis <120> now;
+	turn gp35 to x-axis <-45> now;
+}
+
+QueryWeapon1(p) {
+	p = gp00 + gun0;
+}
+
+AimFromWeapon1(p) {
+	p=turret0;
+}
+
+Shot1() {
+	gun0 = gun0 +1;
+	if (gun0 > 4) gun0 = 0;
+}
+
+AimWeapon1(h,p) {
+	signal SIG_Aim1;
+	set-signal-mask SIG_Aim1;
+	turn tbase0 to y-axis h speed <60>;
+	turn turret0 to x-axis 0 - p speed <40>;
+	wait-for-turn tbase0 around y-axis;
+	wait-for-turn turret0 around x-axis;
+	return 1;
+}
+
+
+QueryWeapon2(p) {
+	p = gp10 + gun1;
+}
+
+AimFromWeapon2(p) {
+	p=turret1;
+}
+
+Shot2() {
+	gun1 = gun1 +1;
+	if (gun1 > 4) gun1 = 0;
+}
+
+AimWeapon2(h,p) {
+	signal SIG_Aim2;
+	set-signal-mask SIG_Aim2;
+	turn tbase1 to y-axis h speed <60>;
+	turn turret1 to x-axis 0 - p speed <40>;
+	wait-for-turn tbase1 around y-axis;
+	wait-for-turn turret1 around x-axis;
+	return 1;
+}
+
+
+QueryWeapon3(p) {
+	p = gp20 + gun2;
+}
+
+AimFromWeapon3(p) {
+	p=turret2;
+}
+
+Shot3() {
+	gun2 = gun2 +1;
+	if (gun2 > 4) gun2 = 0;
+}
+
+AimWeapon3(h,p) {
+	signal SIG_Aim3;
+	set-signal-mask SIG_Aim3;
+	turn tbase2 to y-axis <180> + h speed <60>;
+	turn turret2 to x-axis p speed <40>;
+	wait-for-turn tbase2 around y-axis;
+	wait-for-turn turret2 around x-axis;
+	return 1;
+}
+
+
+QueryWeapon4(p) {
+	p = gp30 + gun3;
+}
+
+AimFromWeapon4(p) {
+	p=radar;
+}
+
+Shot4() {
+	gun3 = gun3 +1;
+	if (gun3 > 5) gun3 = 0;
+}
+
+AimWeapon4(h,p) {
+	return 1;
+}

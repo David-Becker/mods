@@ -1,0 +1,59 @@
+[trail_howitzer]
+{
+	[circle]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=2;
+			sizemod=.9;
+			pos=0, 0, 0;
+			emitVector=0,1,0;
+			gravity=0, .1, 0;
+			Texture=smoke1;
+			colorMap=1 .9 .2 .1   .5 .2 0 .1   0 0 0 0;
+			airdrag=.95;
+			particleLife=8;
+			particleLifeSpread=16;
+			numParticles=3;
+			particleSpeed=0;
+			particleSpeedSpread=1;
+			particleSize=6;
+			particleSizeSpread=8;
+			emitRot=0;
+			emitRotSpread=180;
+			directional=0;
+			alwaysVisible=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+	[smoke]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=2;
+			sizemod=.95;
+			pos=0, 0, 0;
+			emitVector=0,1,0;
+			gravity=0, .3, 0;
+			Texture=smoke1;
+			colorMap=0 0 0 .4   0 0 0 1   0 0 0 1   0 0 0 .6   0 0 0 0;
+			airdrag=.95;
+			particleLife=24;
+			particleLifeSpread=16;
+			numParticles=3;
+			particleSpeed=0;
+			particleSpeedSpread=5;
+			particleSize=1;
+			particleSizeSpread=.5;
+			emitRot=0;
+			emitRotSpread=180;
+			directional=0;
+			alwaysVisible=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+}

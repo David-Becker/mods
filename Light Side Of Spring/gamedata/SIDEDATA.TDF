@@ -1,0 +1,17 @@
+[SIDE0]
+{
+	name=A;
+	commander=laser;
+}
+[SIDE1]
+{
+	name=!A;
+	commander=laser;
+}
+[CANBUILD]
+{
+	[laser] {
+		canbuild1=mirror;
+		canbuild2=bottle;
+	}
+}

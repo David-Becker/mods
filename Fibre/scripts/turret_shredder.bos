@@ -1,0 +1,41 @@
+piece base, foot, turret, guns, gp0, gp1, gp2, gp3;
+#include "fibre.h"
+
+#define SIG_Aim 1
+
+#define DRAIN 6
+
+//static-var gp;
+
+AimFromWeapon1(p) {
+	p=turret;
+}
+
+QueryWeapon1(p) {
+	p=gp0;
+	//p = gp0 + gp;
+}
+
+AimWeapon1(h,p) {
+	signal SIG_Aim;
+	set-signal-mask SIG_Aim;
+	turn turret to y-axis h speed <720>;
+	turn guns to x-axis 0-p speed <600>;
+	wait-for-turn turret around y-axis;
+	wait-for-turn guns around x-axis;
+	return 1;
+}
+
+BlockShot1(target, block) {
+	block = (get POWERLEVEL) < DRAIN;
+}
+
+FireWeapon1() {
+	set POWERLEVEL to (get POWERLEVEL) - DRAIN;
+	emit-sfx 1024 from gp0;
+	emit-sfx 1024 from gp1;
+	emit-sfx 1024 from gp2;
+	emit-sfx 1024 from gp3;
+	//gp= gp+1;
+	//if (gp >3) gp =0;
+}

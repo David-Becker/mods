@@ -1,0 +1,69 @@
+piece base, body, frontemitter, backemitter;
+
+#include "exptype.h"
+
+static-var frontlasered, backlasered;
+
+Align(h) {
+	set HEADING to h;
+}
+
+FrontGuide() {
+	if (frontlasered || get BUILD_PERCENT_LEFT) return;
+	frontlasered=1;
+	emit-sfx 2048 from frontemitter;
+	sleep 200;
+	frontlasered=0;
+}
+
+RearGuide() {
+	if (backlasered || get BUILD_PERCENT_LEFT) return;
+	backlasered=1;
+	var i;
+	for(i = -4;i<=4;++i) {
+		turn backemitter to y-axis <180> + <9>*i now;
+		emit-sfx 2048 from backemitter;
+	}
+	sleep 200;
+	backlasered=0;
+}
+
+ForwardLaser(red, h) {
+	if (get BUILD_PERCENT_LEFT) return;
+	var ah;
+	ah = h - get HEADING;
+	if (ah > [.5]) ah = ah - [1];
+	if (ah < [-.5]) ah = ah + [1];
+
+	if (ah > [.325] || ah < [-.325]) {
+		emit-sfx 2049 from frontemitter;
+		red=85;
+	} else {
+		var i;
+		for(i= -4;i<=4;++i) {
+			turn backemitter to y-axis <180> + <9>*i now;
+			emit-sfx 2049 from backemitter;
+		}
+		red=0;
+	}
+}
+
+AimLaser(h) {
+	if (get BUILD_PERCENT_LEFT) return;
+	var ah;
+	ah = h - get HEADING;
+	if (ah > [.5]) ah = ah - [1];
+	if (ah < [-.5]) ah = ah + [1];
+	
+	//hit in the back
+	if (ah > [.325] || ah < [-.325]) {
+		start-script FrontGuide();
+	} else {
+		start-script RearGuide();
+	}
+}
+
+Killed() {
+	sleep 1000;
+	return 3;
+}

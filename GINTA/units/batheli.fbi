@@ -1,0 +1,81 @@
+[UNITINFO]
+{
+	Name=Gunship;
+	Unitname=batheli;
+	Description=Helicopter with anti-ground missiles;
+	
+	//    Required Tags
+//	buildpic=mbt.bmp;
+	BuildCostEnergy=0;
+	BuildCostMetal=2600;
+	BuildTime=1200;
+	Category=MOBILE WEAPON ARMORED NOTVEHICLE NOTMISSILETARGET NOTBOMBABLE NOTINF NOTSUB AIR HELICOPTER ALL;
+	FootprintX=3;
+	FootprintZ=3;
+	MaxDamage=3000;
+	IdleAutoHeal=0;
+	ObjectName=BattleHelicopter.s3o;
+	Side=Thingy;
+	SoundCategory=ARM_HOVER_BIG;
+	TEDClass=VTOL;
+	
+	//    Movement
+//	MovementClass=Helicopter;
+	BrakeRate=4;
+	Acceleration=0.5;
+	CanMove=1;
+	MaxVelocity=11;
+	TurnRate=360;
+	
+	//    Airplane Moventment
+	SteeringMode=1;
+	Cruisealt=384;	
+	AirHoverFactor=0;
+	
+	//    Buildings
+	
+	//    Construction
+	
+	//    Resources
+	EnergyMake=0;
+	EnergyStorage=0;
+	MetalStorage=0;
+	MetalMake=0;
+	
+	
+	//    Abilities
+	CanAttack=1;
+	CanStop=1;
+	CanFly=1;
+	CanHover=1;
+	HoverAttack=1;
+	
+	//    Sight/Radar
+	RadarDistance=4096;
+	SightDistance=1024;
+	
+	//    Weapons
+	Weapon1=Laser_Targeting_Gunship;
+
+	Weapon4=Machinegun_Gunship;
+	WeaponSlaveTo4=1;
+	
+	Weapon2=Missile_Gunship_ATGM;
+	onlyTargetCategory2=VEHICLE;
+	WeaponSlaveTo2=1;
+	
+	Weapon3=Missile_Gunship_Unguided;
+	onlyTargetCategory3=BOMBABLE;
+	WeaponSlaveTo3=1;
+
+	ExplodeAs=;
+	SelfDestructAs=;
+	
+	//    Tracks/Flares
+	
+	//    Watersettings
+	
+	//    Misc
+	SmoothAnim=0;
+	
+}

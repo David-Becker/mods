@@ -1,0 +1,45 @@
+[Laser_Targeting_Gunship]
+	{
+	name=Firecontrol;
+	rendertype=2;
+	lineofsight=1;
+	beamlaser=1;
+	beamtime=0.2;
+	color=1;
+	intensity=0.3;
+	thickness=0.5;
+
+	turret=1;
+	range=4096;
+	
+	reloadtime=0.2;
+
+	areaofeffect=4;
+	collidefriendly=0;
+	avoidfriendly=1;
+	
+	tolerance=3000;
+
+	impulsefactor=0; 
+	impulseBoost=0; //Thanks, Argh.
+	craterMult=0; 
+	craterBoost=0;
+	
+	interceptedbyshieldtype=0; //Doesn't care about armor plates
+	[DAMAGE]
+		{
+		default=1;
+		}
+	}
+
+
+[Laser_Dummy_Refinery]
+	{
+	name=RefineryRange;
+	range=2280;
+	
+	[DAMAGE]
+		{
+		default=1;
+		}
+	}

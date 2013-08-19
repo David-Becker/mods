@@ -1,0 +1,121 @@
+[UNITINFO]
+{
+	Name=Trireme;
+	UnitName=CTRIREME;
+	
+	//    Required Tags
+	BuildCostEnergy=0;
+	BuildCostMetal=2500;
+	BuildTime=16000;
+	Category=TRIREME LARGE NOTSMALL NOTBUILDING FLYING ALL ;
+	Description=- Anti-drone vessel;
+	icontype=trireme;
+	FootprintX=6;
+	FootprintZ=6;
+	MaxDamage=15000;
+	ObjectName=CTrireme.s3o;
+	buildpic=ctrireme.bmp;
+	Side=COSMOS;
+	SoundCategory=ARM_HOVER_BIG;
+
+	//    Movement
+	BrakeRate=0.8;
+	//MovementClass=TANKHOVER2;
+	Acceleration=0.5;
+	CanMove=1;
+	CanFly=1;
+	CanHover=1;
+	CruiseAlt=70;
+	AirHoverFactor=0;
+	AirStrafe=0;
+	HoverAttackStrafe=0;
+	CollisionSphereScale=1;
+	MaxSlope=30;
+
+	MaxVelocity=.9;
+	TurnRate=160;
+	//Upright=1;
+	//Floater=1;
+
+	//    Airplane Moventment
+	
+	//    Buildings
+
+	//    Construction
+	Builder=1;	//Workaround to make the thing fly. No idea why Spring messes up without it
+	CanReclaim=0;
+	CanRepair=0;
+	CanAssist=0;
+	CanRestore=0;
+	WorkerTime=300;
+
+	//    Resources
+	EnergyMake=0;
+	EnergyStorage=0;
+	EnergyUse=0;
+	MetalStorage=0;
+	MetalMake=0;
+	
+	
+	//    Abilities
+	CanAttack=1;
+	CanStop=1;
+	CanBuild=1;
+
+	//    Sight/Radar
+	RadarDistance=0;
+	SightDistance=750;
+
+	//    Weapons
+	OnlyTargetCategory=All;
+	BadTargetCategory=NOTSMALL;
+
+	Weapon1=TRIREME_LASER;
+	WeaponMainDir1= 0 0 1;
+	MaxAngleDif1= 270;
+
+	Weapon2=TRIREME_LASER;
+	WeaponMainDir2= 0 0 1;
+	MaxAngleDif2= 270;
+
+	Weapon3=TRIREME_LASER;
+	WeaponMainDir3= -1 0 0;
+	MaxAngleDif3= 180;
+
+	Weapon4=TRIREME_LASER;
+	WeaponMainDir4= 1 0 0;
+	MaxAngleDif4= 180;
+
+	Weapon5=TRIREME_LASER;
+	WeaponMainDir5= -1 0 0;
+	MaxAngleDif5= 180;
+
+	Weapon6=TRIREME_LASER;
+	WeaponMainDir6= 1 0 0;
+	MaxAngleDif6= 180;
+
+	Weapon7=TRIREME_LASER;
+	WeaponMainDir7= -1 0 -1;
+	MaxAngleDif7= 270;
+
+	Weapon8=TRIREME_LASER;
+	WeaponMainDir8= 1 0 -1;
+	MaxAngleDif8= 270;
+
+	ExplodeAs=Big_IonCannon;
+	SelfDestructAs=Trireme_disinfector;
+	NoChaseCategory=VTOL;
+	
+	//    Tracks/Flares
+	
+	//    Watersettings
+
+	//    Misc
+	SmoothAnim=0;
+
+	ShowNanoFrame=0;
+        [SFXTypes]
+	{
+	       explosiongenerator0=custom:buildFX_melter_large;
+       	}
+}

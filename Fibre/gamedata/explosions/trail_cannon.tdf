@@ -1,0 +1,31 @@
+[trail_cannon]
+{
+	[circle]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=2;
+			sizemod=.9;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			Texture=smoke1;
+			colorMap=.6 .6 .6 .6   .2 .2 .2 .6   0 0 0 0;
+			airdrag=.95;
+			particleLife=0 d1;
+			particleLifeSpread=16;
+			numParticles=.5 d.1 m1.1;
+			particleSpeed=0;
+			particleSpeedSpread=0;
+			particleSize=1;
+			particleSizeSpread=.5;
+			emitRot=0;
+			emitRotSpread=10;
+			directional=0;
+			alwaysVisible=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+}

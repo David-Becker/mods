@@ -1,0 +1,8 @@
+[messages]
+{
+	[Team%i(%s) is no more]
+	{
+		tr1=Team%i(%s) asked for the prettiest woman in the land;
+	}
+}
+

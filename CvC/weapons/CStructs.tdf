@@ -1,0 +1,50 @@
+[MEX_SHIELD]
+{
+	IsShield=1;
+	shieldrepulser=0;
+	smartshield=1;
+	exteriorshield=0;
+	visibleshield=1;
+	visibleshieldrepulse=1;
+//	shieldenergyuse=10000;
+	shieldradius=400;
+	shieldpower=5000;
+	shieldpowerregen=800;
+	shieldpowerregenenergy=30;
+	shieldbadcolor=.3 .05 .03;
+	shieldcolor=.3 .3 .9;
+	shieldalpha=0.2;
+	//Melee 1, Sniper 2, Artillery 4, Super 8, Antishield 16
+	shieldintercepttype=12;
+	[damage]
+	{
+		default=7;
+	}
+}
+
+[UpgradeKiller]
+{
+	name=TitanMissiles;
+	rendertype=1;
+	ballistic=1;
+	turret=1;
+
+	model=TitanMissile.s3o;
+	range=2500;
+	reloadtime=25;
+	weaponvelocity=700;
+
+	areaofeffect=128;
+	edgeeffectiveness=0.3;
+	explosiongenerator=custom:arty;
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+	[DAMAGE]
+	{
+		default=0.1;
+		Upgrade=5000000;
+	}
+}
+

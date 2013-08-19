@@ -1,0 +1,36 @@
+[Cannon_Kinetic]
+	{
+	name=120mm;
+	rendertype=4;
+	ballistic=1;
+//	lineofsight=1;
+//	beamlaser=1;
+//	beamtime=0.1;
+//	intensity=0.03;
+//	color=40;
+
+	turret=1;
+	range=2048;
+	weaponvelocity=768;
+	
+	reloadtime=10;
+	sprayangle=16;
+
+	areaofeffect=16;
+	collidefriendly=0;
+	avoidfriendly=0;
+	
+	tolerance=1000;
+
+	impulsefactor=0; 
+	impulseBoost=0; //Thanks, Argh.
+	craterMult=0; 
+	craterBoost=0;
+	
+	interceptedbyshieldtype=1; //Standard Armor
+	[DAMAGE]
+		{
+		default=6800;
+		Concrete=1500;
+		}
+	}

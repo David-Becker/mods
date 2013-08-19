@@ -1,0 +1,67 @@
+[UNITINFO]
+{
+	Name=Turret Launcher;
+	Unitname=turret_launcher;
+	Description=Ballistic launcher for small turrets;
+
+	// Required Tags
+	Category=TURRET BUILDING GROUND NOTSMALL NOTINFRA;
+	FootprintX=2;
+	FootprintZ=2;
+	MaxDamage=1700;
+	IdleAutoHeal=0;
+	BuildCostEnergy=600;
+	maxSlope=36;
+	maxWaterDepth=0;
+	ObjectName=turret_launcher.s3o;
+	BuildPic=turret_launcher.tga;
+	Side=ANY;
+	//SoundCategory=CITADEL;
+
+	// Movement
+	CanMove=0;
+
+	// Airplane Moventment
+
+	// Buildings
+	yardmap=oo oo;
+
+	// Construction
+	ShowNanoFrame=0;
+	LevelGround=1;
+
+	// Resources
+	EnergyMake=40;
+	EnergyStorage=300;
+	MetalStorage=0;
+	MetalMake=0;
+	Reclaimable=0;
+
+	// Abilities
+	CanStop=1;
+	SelfDestructCountdown=1;
+	onOffable=1;
+	activateWhenBuilt=1;
+
+	// Sight/Radar
+	RadarDistance=0;
+	SightDistance=0;
+	SeismicSignature=0;
+
+	// Weapons
+	Weapon1=TurretLauncher;
+	BadTargetCategory1=UNIT;
+	HighTrajectory=1;
+	ExplodeAs=DeathLarge;
+
+	// Tracks/Flares
+
+	// Watersettings
+
+	// Misc
+	SmoothAnim=0;
+
+	[SFXTypes]
+	{
+	}
+}

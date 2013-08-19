@@ -1,0 +1,138 @@
+[Doomsday]
+	{
+	name=Doom2;
+	rendertype=1;
+	lineofsight=1;
+	RGBcolor=.2 .2 1;
+	beamlaser=1;
+	beamburst=1;
+	beamttl=64;
+	beamdecay=.96;
+	minIntensity=1;
+	intensity=1;
+	thickness=5;
+	corethickness=.5;
+	alwaysVisible=1;
+	explosionSpeed=8;
+	commandfire=1;
+
+	turret=1;
+	range=64000;
+
+	reloadtime=20;
+
+	areaofeffect=900;
+	collidefriendly=0;
+	avoidfriendly=0;
+	collidefeature=0;
+	avoidfeature=0;
+
+	tolerance=3000;
+
+//	impulsefactor=0;
+//	impulseBoost=0;
+	craterMult=6;
+//	craterBoost=0;
+
+	interceptedbyshieldtype=1;
+	explosionGenerator=custom:explo_doomsday;
+	[DAMAGE]
+		{
+		default=9001;
+		}
+	}
+
+[DoomsdayAim]
+	{
+	name=Doom;
+	rendertype=1;
+	WeaponType=Melee;
+	lineofsight=1;
+	RGBcolor=.2 .2 1;
+	beamlaser=1;
+	beamburst=1;
+	beamttl=64;
+	beamdecay=.97;
+	minIntensity=1;
+	intensity=1;
+	thickness=30;
+	corethickness=.5;
+	alwaysVisible=1;
+	projectiles=0;
+	commandfire=1;
+
+	turret=1;
+	range=64000;
+
+	reloadtime=20;
+
+	areaofeffect=900;
+	collidefriendly=0;
+	avoidfriendly=0;
+	collidefeature=0;
+	avoidfeature=0;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+
+	interceptedbyshieldtype=1;
+	explosionGenerator=custom:explo_med;
+	[DAMAGE]
+		{
+		default=1;
+		}
+	}
+
+[Nuke]
+	{
+	name=Strategic Missile;
+	rendertype=1;
+	lineofsight=1;
+	WeaponType=StarburstLauncher;
+	TurnRate=25000;
+	flighttime=300;
+	WeaponTimer=8;
+	Guidance=0;
+	Tracks=0;
+	model=nuke.s3o;
+	alwaysVisible=1;
+	commandfire=1;
+
+	soundstart=bitfire;
+
+	turret=1;
+	range=9600;
+	weaponvelocity=5000;
+	startvelocity=50;
+	weaponacceleration=50;
+	smoketrail=0;
+
+	reloadtime=10;
+
+	areaofeffect=900;
+	collidefriendly=0;
+	avoidfriendly=0;
+	collidefeature=0;
+	avoidfeature=0;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	cegTag=trail_cruisemissile;
+	explosionGenerator=custom:explo_doomsday;
+
+	interceptedbyshieldtype=1;
+	[DAMAGE]
+		{
+		default=6000;
+		citadel=3000;
+		}
+	}
+

@@ -1,0 +1,15 @@
+[MOD]
+{
+	Name=Dozerz v4 (spawner);
+
+	ModType=1;
+	NumDependencies=3;
+
+	Depend0=Dozerz.sd7;
+	Depend1=springcontent.sdz;
+	Depend2=erom_cursors.sd7;
+	[NTAI]
+	{
+		tdfpath=dozerz;
+	}
+}

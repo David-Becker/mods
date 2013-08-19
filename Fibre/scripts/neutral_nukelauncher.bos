@@ -1,0 +1,26 @@
+piece base, foot, rocket, gp;
+
+#include "Fibre.h"
+
+AimWeapon1() {
+	return 500 <= get POWERLEVEL;
+}
+
+AimFromWeapon1(p) {
+	p=gp;
+}
+
+QueryWeapon1(p) {
+	p=gp;
+}
+
+FireWeapon1() {
+	hide rocket;
+	get KILL_UNIT;
+}
+
+HitByWeaponId(z,x,id,d) {
+	set POWERLEVEL to (get POWERLEVEL) - d/100;
+	if ((get POWERLEVEL) < 0) set POWERLEVEL to 0;
+	return 0;
+}

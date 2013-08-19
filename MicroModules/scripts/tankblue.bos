@@ -1,0 +1,84 @@
+piece base, body, turret, gun, gp0, gp1, t1, t2, t3;
+
+#include "blob.h"
+
+static-var gp, burst, b, shooting, moving;
+
+ChangedBlobCount(type, count, root) {
+	if (type==1) {
+		burst=count + 2;
+		get WEAPON_SPRAY(-1, root * 360);
+		if (!shooting) b=burst;
+	}
+}
+
+MoveAnim() {
+	signal SIG_Move;
+	set-signal-mask SIG_Move;
+	while(moving) {
+		show t3;
+		hide t1;
+		sleep 30;
+		show t2;
+		hide t3;
+		sleep 30;
+		show t1;
+		hide t2;
+		sleep 30;
+	}
+}
+
+StartMoving() {
+	moving=1;
+	start-script MoveAnim();
+}
+
+StopMoving() {
+	moving=0;
+}
+
+Create() {
+	call-script ChangedBlobCount(1,0,0);
+}
+
+ResetAim() {
+	sleep 2000;
+	turn turret to y-axis 0 speed <140>;
+	turn gun to x-axis 0 speed <90>;
+	b=burst;
+	shooting=0;
+}
+
+QueryWeapon1(p) {
+	p=gp0 + gp;
+}
+
+AimFromWeapon1(p) {
+	p=turret;
+}
+
+AimWeapon1(h,p) {
+	signal SIG_Aim;
+	set-signal-mask SIG_Aim;
+	start-script ResetAim();
+	turn turret to y-axis h speed <140>;
+	turn gun to x-axis 0 - p speed <90>;
+	wait-for-turn turret around y-axis;
+	wait-for-turn gun around x-axis;
+	return 1;
+}
+
+Shot1() {
+	if (gp) emit-sfx 1024 from gp0;
+	else emit-sfx 1024 from gp1;
+	gp = !gp;
+	if (b > 1) {
+		shooting=1;
+		get WEAPON_RELOADSTATE(-1,0); //instant reload
+		--b;
+	} 
+	else {
+		shooting=0;
+		b=burst;
+	}
+}

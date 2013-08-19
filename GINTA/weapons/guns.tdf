@@ -1,0 +1,74 @@
+[Machinegun_Mounted]
+	{
+	name=M60;
+	rendertype=2;
+	lineofsight=1;
+	beamweapon=1;
+	duration=0.02;
+	color=40;
+	intensity=0.5;
+	thickness=0.5;
+
+	turret=1;
+	range=768;
+	weaponvelocity=420;
+	
+	reloadtime=0.11;
+	sprayangle=512;
+
+	areaofeffect=4;
+	collidefriendly=0;
+	avoidfriendly=0;
+	
+	tolerance=3000;
+
+	impulsefactor=0; 
+	impulseBoost=0; //Thanks, Argh.
+	craterMult=0; 
+	craterBoost=0;
+	
+	interceptedbyshieldtype=0; //Doesn't care about armor plates
+	[DAMAGE]
+		{
+		default=100;
+		Concrete=20;
+		Armored=0;
+		}
+	}
+
+[Machinegun_Gunship]
+	{
+	name=Chaingun;
+	rendertype=2;
+	lineofsight=1;
+	beamweapon=1;
+	duration=0.05;
+	color=40;
+	intensity=0.5;
+	thickness=0.8;
+
+	turret=1;
+	range=1536;
+	weaponvelocity=1024;
+	
+	reloadtime=0.1;
+	sprayangle=128;
+
+	areaofeffect=4;
+	collidefriendly=0;
+	avoidfriendly=0;
+	
+	tolerance=3000;
+
+	impulsefactor=0; 
+	impulseBoost=0; //Thanks, Argh.
+	craterMult=0; 
+	craterBoost=0;
+	
+	interceptedbyshieldtype=0; //Doesn't care about armor plates
+	[DAMAGE]
+		{
+		default=150;
+		Concrete=20;
+		}
+	}

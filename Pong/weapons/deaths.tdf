@@ -1,0 +1,72 @@
+[PaddleDeath]
+{
+	name=Paddle;
+	WeaponType=LaserCannon;
+	turret=1;
+	range=65536;
+	weaponvelocity=1600;
+	duration=3;
+	thickness=5;
+	RGBcolor=1 1 .2;
+	sprayangle=0;
+	alwaysvisible=1;
+
+	reloadtime=1;
+	EnergyPerShot=100;
+
+	areaofeffect=16;
+	collidefriendly=1;
+	avoidfriendly=0;
+
+	tolerance=1000;
+	soundhit=LaserDeath;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	explosionGenerator=custom:LaserDeath;
+
+	interceptedbyshieldtype=0;
+	[DAMAGE]
+	{
+		default=1;
+	}
+}
+
+[Death]
+{
+	name=Laser;
+	WeaponType=LaserCannon;
+	turret=1;
+	range=65536;
+	weaponvelocity=1600;
+	duration=3;
+	thickness=5;
+	RGBcolor=1 1 .2;
+	sprayangle=0;
+	alwaysvisible=1;
+
+	reloadtime=1;
+	EnergyPerShot=100;
+
+	areaofeffect=16;
+	collidefriendly=1;
+	avoidfriendly=0;
+
+	tolerance=1000;
+	soundhit=MirrorDeath;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	explosionGenerator=custom:MirrorDeath;
+
+	interceptedbyshieldtype=0;
+	[DAMAGE]
+	{
+		default=1;
+	}
+}
+

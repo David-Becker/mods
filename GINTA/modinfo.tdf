@@ -1,0 +1,15 @@
+[MOD]
+{
+	Name=GINTA;
+
+	ModType=1;
+	NumDependencies=3;
+	
+	Depend0=springcontent.sdz;
+	Depend1=otacontent.sdz;
+	Depend2=springbitmaps_v061.sdz;
+	[NTAI]
+	{
+		tdfpath=GINTA;
+	}
+}

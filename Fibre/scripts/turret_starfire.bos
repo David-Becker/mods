@@ -1,0 +1,32 @@
+piece base, foot, turret, barrel, gp;
+#include "fibre.h"
+
+#define SIG_Aim 1
+
+#define DRAIN 240
+
+AimFromWeapon1(p) {
+	p=barrel;
+}
+
+QueryWeapon1(p) {
+	p=gp;
+}
+
+AimWeapon1(h,p) {
+	signal SIG_Aim;
+	set-signal-mask SIG_Aim;
+	turn turret to y-axis h speed <120>;
+	turn barrel to x-axis <0>-p speed <120>;
+	wait-for-turn turret around y-axis;
+	wait-for-turn barrel around x-axis;
+	return 1;
+}
+
+BlockShot1(target, block) {
+	block = (get POWERLEVEL) < DRAIN;
+}
+
+FireWeapon1() {
+	set POWERLEVEL to (get POWERLEVEL) - DRAIN;
+}

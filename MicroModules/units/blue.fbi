@@ -1,0 +1,69 @@
+[UNITINFO]
+{
+	Name=Gunner;
+	Unitname=blue;
+	Description=Forms a tank body or a battle cannon;
+
+	// Required Tags
+	Category=UNIT GROUND BASIC BLUE;
+	FootprintX=1;
+	FootprintZ=1;
+	MaxDamage=500;
+	IdleAutoHeal=10;
+	BuildCostEnergy=100;
+	BuildCostMetal=20;
+	maxSlope=22;
+	power=20;
+	ObjectName=blue.s3o;
+	Side=ANY;
+	//SoundCategory=CITADEL;
+
+	// Movement
+	CanMove=1;
+	MaxVelocity=2.7;
+	Acceleration=3;
+	Brakerate=4;
+	TurnRate=1600;
+	MovementClass=BlobHOVER;
+
+	// Airplane Moventment
+
+	// Buildings
+
+	// Construction
+	ShowNanoFrame=0;
+	LevelGround=0;
+
+	// Resources
+	EnergyMake=0;
+	EnergyStorage=0;
+	MetalStorage=0;
+	MetalMake=0;
+	Reclaimable=0;
+
+	// Abilities
+	CanStop=1;
+	SelfDestructCountdown=1;
+
+	// Sight/Radar
+	RadarDistance=0;
+	SightDistance=500;
+	SeismicSignature=0;
+
+	// Weapons
+	Weapon1=BlueBlobGun;
+	NoChaseCategory=AIR;
+	ExplodeAs=BlobPlop;
+
+	// Tracks/Flares
+
+	// Watersettings
+
+	// Misc
+	SmoothAnim=0;
+
+	[SFXTypes]
+	{
+		explosionGenerator0=custom:bluegun_muzzle;
+	}
+}

@@ -1,0 +1,45 @@
+[Pong]
+{
+	name=Pong;
+	WeaponType=BeamLaser;
+	thickness=3;
+	intensity=1;
+	beamburst=1;
+	beamttl=16;
+	beamdecay=.8;
+	turret=1;
+	range=170;
+
+	reloadtime=1;
+
+	collidefriendly=1;
+	avoidfriendly=0;
+
+	tolerance=10000;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+
+	interceptedbyshieldtype=0;
+	[DAMAGE]
+	{
+		default=.0000001;
+	}
+}
+
+[RadiusDisplay]
+{
+	IsShield=1;
+	shieldrepulser=0;
+	visibleshield=1;
+	shieldcolor=.1 .7 .2;
+	shieldalpha=0.4;
+	shieldradius=170;
+	shieldintercepttype=0;
+	[damage]
+	{
+		default=11;
+	}
+}

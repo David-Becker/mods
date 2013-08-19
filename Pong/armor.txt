@@ -1,0 +1,9 @@
+[mirror] {
+	mirror=1;
+	bottle=1;
+	splitter=1;
+}
+
+[laser] {
+	laser=1;
+}

@@ -1,0 +1,91 @@
+[lasblast]
+{
+        [upsplash]
+        {
+                class=CSimpleParticleSystem;
+                [properties] {
+                        sizegrowth=.5;
+                        sizemod=1;
+              		pos=0, 1.0, 0;
+	        	emitVector=0,1,0;
+	         	gravity=0, 0, 0;
+                   	colorMap=1.0 0.6 0.6 0.5    1.0 0.4 0.4 0.3         1.0 0.2 0.2 0     0.5 0.1 0.1 0;
+    	            	Texture=blastcloud;
+    	             	airdrag=0.8;
+    	              	particleLife=15;
+    	               	particleLifeSpread=10;
+    	                numParticles=10;
+    		        particleSpeed=2;
+    		        particleSpeedSpread=40;
+    		        particleSize=10;
+    		        particleSizeSpread=5;
+    		        emitRot=0;
+    		        emitRotSpread=10;
+    		        directional=0;
+                }
+                air=1;
+                ground=1;
+        }
+
+        [base]
+        {
+                class=CSimpleParticleSystem;
+                [properties] {
+                        sizegrowth=1.5;
+                        sizemod=0.9;
+              		pos=0, 1.0, 0;
+	        	emitVector=0,1,0;
+	         	gravity=0, 0.5, 0;
+                   	colorMap=1.0 0.6 0.6 1    0.8 0.4 0.4 .2         0.6 0.2 0.2 .1     0 0 0 0;
+    	            	Texture=blastcloud;
+    	             	airdrag=0.8;
+    	              	particleLife=15;
+    	               	particleLifeSpread=10;
+    	                numParticles=30;
+    		        particleSpeed=5;
+    		        particleSpeedSpread=10;
+    		        particleSize=20;
+    		        particleSizeSpread=10;
+    		        emitRot=0;
+    		        emitRotSpread=90;
+    		        directional=0;
+                }
+                air=1;
+                ground=1;
+        }
+        [dispersion1]
+        {
+                class=CSimpleParticleSystem;
+                [properties] {
+                        sizegrowth=.1;
+                        sizemod=1;
+              		pos=0, 1.0, 0;
+	        	emitVector=0,1,0;
+	         	gravity=0, -0.3, 0;
+                   	colorMap=1.0 0.6 0.6 0.5    1.0 0.4 0.4 0.3         1.0 0.2 0.2 0     0.5 0.1 0.1 0;
+    	            	Texture=blastcloud;
+    	             	airdrag=0.9;
+    	              	particleLife=30;
+    	               	particleLifeSpread=30;
+    	                numParticles=35;
+    		        particleSpeed=16;
+    		        particleSpeedSpread=4;
+    		        particleSize=2;
+    		        particleSizeSpread=4;
+    		        emitRot=70;
+    		        emitRotSpread=10;
+    		        directional=0;
+                }
+                air=1;
+                ground=1;
+        }
+	[groundflash]
+	{
+		flashSize = 256;   // flash size
+		flashAlpha = 1;    // initial alpha of the flash
+		circleGrowth = 6.4; // size increase/frame
+		circleAlpha = 0.2;   // initial alpha of the ring
+		ttl = 40;          // number of frames
+		color = 1,0.6,0.6;    // color RGB
+	}
+}

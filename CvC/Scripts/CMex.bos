@@ -1,0 +1,50 @@
+piece base, body, drill, cover0, cover1;
+
+#include "exptype.h"
+
+#define MELTER_DEPTH [-8]
+#include "buildFX_melter.h"
+#define UPGRADE_BREAK_ON 8
+#include "upgradesystem.h"
+
+Create()
+{
+	call-script buildFX();
+	start-script CheckForUpgrades();
+}
+
+Killed(severity, corpsetype)
+{
+	explode cover0 type FALL | FIRE | SMOKE;
+	explode cover1 type FALL | FIRE | SMOKE;
+	explode drill type FALL | FIRE | SMOKE;
+	corpsetype=1;
+	if (severity>80)
+	{
+		corpsetype=3;
+		explode body type SHATTER;
+	}
+}
+
+Activate()
+{
+	move cover0 to z-axis [-2] speed [3];
+	move cover1 to z-axis [2] speed [3];
+	wait-for-move cover0 along z-axis;
+	spin drill around y-axis speed <60> accelerate <5>;
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum=drill;
+}
+
+QueryWeapon1(piecenum)
+{
+	piecenum=drill;
+}
+
+AimWeapon1(h,p)
+{
+	return(upgrades == (upgrades | 8));
+}

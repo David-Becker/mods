@@ -1,0 +1,16 @@
+[icontypes]
+{
+	[default]
+	{
+		size=1;
+		radiusadjust=1;
+		distance=1;
+	}
+	[flag]
+	{
+		bitmap=icons/flag.tga;
+		size=5;
+		radiusadjust=3;
+		distance=0.5;
+	}
+}

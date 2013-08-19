@@ -1,0 +1,38 @@
+[suppressor]
+{
+        [strikethrough]
+        {
+                class=CSimpleParticleSystem;
+                [properties] {
+                        sizegrowth=.5;
+                        sizemod=0.8;
+              		pos=0, 1.0, 0;
+	        	emitVector=dir;
+	         	gravity=0, 0.3, 0;
+                   	colorMap=1 1 1 1   1 .2 1 0;
+    	            	Texture=blastcloud;
+    	             	airdrag=.8;
+    	              	particleLife=15;
+    	               	particleLifeSpread=10;
+    	                numParticles=15;
+    		        particleSpeed=2;
+    		        particleSpeedSpread=20;
+    		        particleSize=2;
+    		        particleSizeSpread=3;
+    		        emitRot=0;
+    		        emitRotSpread=10;
+    		        directional=0;
+                }
+                air=1;
+                ground=1;
+        }
+	[groundflash]
+	{
+		flashSize = 4;   // flash size
+		flashAlpha = .4;    // initial alpha of the flash
+		circleGrowth = 0.4; // size increase/frame
+		circleAlpha = 0.2;   // initial alpha of the ring
+		ttl = 5;          // number of frames
+		color = 1,1,0.6;    // color RGB
+	}
+}

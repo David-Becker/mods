@@ -1,0 +1,14 @@
+[SIDE0]
+{
+	name=C-D3/L Predator;
+	commander=predator;
+}
+[SIDE1]
+{
+	name=C-D3/M Falcon;
+	commander=falcon;
+}
+
+[CANBUILD]
+{
+}

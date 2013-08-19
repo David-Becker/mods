@@ -1,0 +1,37 @@
+piece base, body, tower, pipe0, pipe1, capacitor, frame;
+piece panelbase0, panelbase1, panel0, panel1, panel2, panel3;
+
+#include "SFXtype.h"
+#include "exptype.h"
+#define MELTER_DEPTH [-22]
+#include "buildFX_melter.h"
+
+Create()
+{
+	call-script buildFX();
+	move tower to y-axis [10] speed [5];
+	sleep 1;
+	explode frame type SHATTER;
+	hide frame;
+	wait-for-move tower along y-axis;
+	move panelbase0 to x-axis [7] speed [5];
+	move panelbase1 to x-axis [-7] speed [5];
+	wait-for-move panelbase0 along x-axis;
+	turn panel0 to x-axis <-90> speed <60>;
+	turn panel1 to x-axis <90> speed <60>;
+	turn panel2 to x-axis <-90> speed <60>;
+	turn panel3 to x-axis <90> speed <60>;
+}
+
+Killed( severity, corpsetype ) 
+{
+	explode body type SHATTER | FIRE | SMOKE;
+	explode tower type FALL | FIRE | SMOKE;
+	explode panel0 type FALL;
+	explode panel1 type FALL;
+	explode panel2 type FALL | SMOKE;
+	explode panel3 type FALL | SMOKE;
+	explode pipe0 type FALL | SMOKE;
+	explode pipe1 type FALL | SMOKE;
+	explode capacitor type FALL | FIRE | SMOKE;
+}

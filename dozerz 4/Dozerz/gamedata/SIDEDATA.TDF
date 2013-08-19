@@ -1,0 +1,20 @@
+[SIDE0]
+	{
+	name=Dozerz;
+	nameprefix=d;
+	commander=flag;
+	}
+
+[SIDE1]
+	{
+	name=Dozerz;
+	nameprefix=d;
+	commander=flag;
+	}
+
+[CANBUILD]
+	{
+	[flag] {
+	       canbuild1=d;
+	}
+	}

@@ -1,0 +1,9 @@
+[Sensors]
+{
+        [Los]
+        {
+                LosMipLevel=4;
+                AirLosMipLevel=4;
+        }
+}
+

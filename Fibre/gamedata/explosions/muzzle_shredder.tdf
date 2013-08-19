@@ -1,0 +1,59 @@
+[muzzle_shredder]
+{
+	[circle]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=.3;
+			sizemod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			Texture=smoke1;
+			colorMap=1 .9 .3 .1   0 0 0 0;
+			airdrag=1;
+			particleLife=1;
+			particleLifeSpread=1;
+			numParticles=1;
+			particleSpeed=0;
+			particleSpeedSpread=.6;
+			particleSize=4;
+			particleSizeSpread=3;
+			emitRot=0;
+			emitRotSpread=0;
+			directional=0;
+			alwaysVisible=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+	[spew]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=0;
+			sizemod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			Texture=mgshot;
+			colorMap=1 .9 .1 .1   .5 .3 0 .1   0 0 0 0;
+			airdrag=1;
+			particleLife=12;
+			particleLifeSpread=2;
+			numParticles=1;
+			particleSpeed=40;
+			particleSpeedSpread=40;
+			particleSize=5;
+			particleSizeSpread=1;
+			emitRot=0;
+			emitRotSpread=1;
+			directional=1;
+			alwaysVisible=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+}

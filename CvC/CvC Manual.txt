@@ -1,0 +1,193 @@
+CvC mod version 0.4
+13:23 27.03.2007
+
+**** IMPORTANT FOR PLAYERS OF 0.03(a): ****
+* The biggest change between the last version and this one is that energy is no longer used to tech up. It's used for powering some weapons and shields but it's no longer required to get powerful weapons. Now you need the Upgrade Center to tech up.
+* Also note that the Eagle is no longer a sniper but a short range attacker.
+****
+
+
+This mod is mostly the result of a few "wouldn't it be cool" ideas and it's probably horribly unbalanced since I didn't do playtesting with humans yet but maybe it's fun for someone out there. Yes, the name sucks so I'm calling it CvC until I can come up with a better one.
+
+The basic balancing ended up having two types of units, dirt cheap and fast swarmers with build times measured in units per second and slower big units with much heavier armor and various powerful weapon systems. The little swarmers are the main force of any attack, although they are weak and many weapons will kill them by the dozen they are made as fast as they are destroyed and in large numbers they are deadly, although they may not be able to deal with certain large units without support from bigger units.
+
+Upgrades are shared among allies so make sure you coordinate your research with your teammates.
+
+I've taken the liberty of using fbi and tdf files from Nanoblobs (pre-GPL version), World Domination and Absolute Annihilation as templates for most of the stuff here and to learn about the dozens of undocumented TA Spring tags, I hope they don't mind.
+
+The faction implemented so far:
+
+The COSMOS
+==========
+
+The COSMOS is a US defense project gone haywire, an attempt to have an AI-controlled force (think Skynet) where the central AI got infested with a parasite soul that desires to destroy all life in the universe to restore the perfect order. As nanotechnology is too chaotic for the parasite soul's tastes the COSMOS uses melter systems to build things which heat the ground and shape it into the desired object.
+
+Large Units:
+
+Titan.
+	The Titan serves as your Commander should you choose to play as the COSMOS (like you have a choice...). It has moderate armor, radar and can build basic structures. At close range it can use its melter system on enemies, provided it's not using that system to build anything. If the Titan is destroyed it causes a gigantic explosion that will destroy almost everything in a large radius (25000 damage over 2048 units if you need to know, does only a tenth of that to other Titans) and leaving a lake on softer maps. You only get one Titan so use it carefully.
+Strength: Anything that's far away, preferrably not moving and tightly packed.
+Weakness: Anything that's not far away. Unless it's just a few small drones, the melter can take care of those.
+
+Trireme.
+	A slow anti-drone unit. It mounts eight laser cannons (four of which require the Heavy Weapons Deployment upgrade), each of which has more firepower than a laser drone. When self-destructing the Trireme will cause a huge explosion and wipe out all units in a large area of the map. Triremes are effective for defense (and if they're overwhelmed you can trigger the self destruct to destroy a large part of the enemy force) or slowly pushing the frontline towards the enemy. Its strength lies in its ability to see and destroy drones before they can see the Trireme. Due to its low speed it's faster to send a group of builder drones and build the Trireme close to the front line. Triremes can hover over water and can operate without support most of the time. When approaching bigger targets it's wise to turn the Trireme to its side to allow more guns to hit the target.
+Strength: Drones. In any number. Especially if they approach the Trireme in a straight line none of them will even know what hit them.
+Weakness: Any anti-armor units combined with spotters.
+
+Assault Coordination Vehicle.
+	Moderate speed, weak armor (for a big unit), a long range radar and huge range of sight. The ACV was designed to provide targeting data for the many long-range weapons in the game. It mounts two big machineguns which prevent stray drones from taking the ACV down but it's not an attack force by itself. With the Heavy Weapons Deployment upgrade the ACV can "request" (fire from a high point) powerful missiles to strike any target within range.
+Strength: Seeing enemies and allowing other units to shoot at greater range. The missiles might work to take down large units when you use lots of ACVs but generally missile drones can do the same for much less metal.
+Weakness: The ACV won't put up much of a fight when approached by combat units.
+
+Linebreaker.
+	Does just what it says on the box. The project name was "battering ram": A powerful but slow unit that will break through any line of defense that happens to be in its way. It mounts a (fixed direction) plasmastorm weapon as its main cannon which fires a stream of plasma that will go through everything and vaporize any target in no time. It also has secondary weapons should any pesky defenders try to attack it and not approach it from the front, two big machineguns (stronger than the ones on the ACV) and a grenade launcher that deals with larger numbers of drones once you have the Heavy Weapons Deployment upgrade. Should it be destroyed the plasma core will disperse and "disinfect" the area around the Linebreaker. If your enemy fields these make sure you spot them early to avoid the plasmastorm or the explosion ripping a hole into your base. Due to their sloooooow speed you should build them near their destination point. Groups of Linebreakers are ineffective because the blast will cause a chain reaction.
+Strength: Drones in not so large numbers and anything that is in front of the plasmastorm.
+Weakness: Being spotted early and pelted by missile drones.
+
+Tiger.
+	The Main Battle Tank of the COSMOS, a huge beast with a similarily huge ion cannon as its primary weapon. Secondary weapons are four heavy machineguns (of which only two can shoot into any given direction), two long-range lasercannons and a grenade launcher (the latter two requiring the Heavy Weapons Deployment upgrade). Although it still is fearsome when operating alone you're better off sending a support force with the Tiger as well. That will allow you to use its full range and potentially distract anti-armor weapons, making the Tiger live longer. One on one it can destroy anything (unless that something is a Linebreaker with its main weapon aimed at the Tiger) but it costs a LOT and can only be built at the Heavy Vehicle Factory.
+Strength: The plain most powerful unit available to the COSMOS. Can deal with almost everything.
+Weakness: It is probably your enemy's favourite target and it's not invincible. It's also the most expensive unit in your arsenal so its loss would mean a serious setback.
+
+Drones:
+
+Pigeon Builder drone.
+	A drone that can build. It's slower and better armored than other drones since I hate it when builder units get destroyed easily. That may get revoked if their stronger armor turns out to be too much of an annoyance in an assault.
+
+Predator Laser drone.
+	Dirt cheap, pretty effective against other drones. Has two lasers that do little damage but are enough to destroy combat drones quickly. It also has a better sight distance than other drones. Best used in large numbers.
+Strength: Cheap and good against drones. 1 on 1 they lose against any other unit but you can build at least four of them for the price of that other unit.
+Weakness: The lasers don't do enough damage to make a big unit care. Sure, they can down a large unit in the right numbers but a few missile drones will do that better and from far away.
+
+Falcon Missile drone.
+	Not so cheap and comes with missiles that should be more effective against larger targets than the lasers of its cheaper brother. The missiles may work against individual drones but usually a bunch of laser drones will rip a missile drone apart. Missile drones have a good range which allows them to work as long range support when combined with scouts. Missile drones cannot operate without scouts, their sight range is way too short. With the right upgrade they also gain an inaccurate artillery rocket that allows indirect fire. It's slow firing and has the same range as the direct missile but its larger damage area makes it more effective against drones.
+Strength: Slow targets or isolated drones. But the former only if the missile drone knows where it is, which usually means LOS from an ACV or scout troop.
+Weakness: Anything that gets too close and can take the first hit.
+
+Eagle Riot drone.
+	Your big bet: Either a great help or a huge liability. The Eagle fires a powerful grenade launcher that tears a big chunk out of a drone force and has a shield that protects it from most short ranged weapons for a few seconds. When it dies it explodes like one of its grenades, this can cause a chain reaction. Don't use too many of these or one lucky shot could destroy your whole attack force.
+Strength: Devastates drones, long LOS, can take a lot of fire from Predators
+Weakness: Explodes big and is unprotected against long range weapons or strong explosives
+
+Buildings:
+
+Energy Structure.
+	The power plant and energy storage.
+
+Automatic Mining System.
+	A metal extractor.
+
+Drone factory.
+	What the name says, a factory for mass-producing drones.
+
+Heavy Vehicle Factory
+	The factory for larger units. It's technically not necessary to gain the larger units (other than the Tiger) but it can accept waypoints, autogrouping, etc and builds stuff pretty fast.
+
+Concrete MG turret.
+	A defensive structure with a heavy machinegun (same thing as the ones on the Linebreaker and Tiger). It's effective against drones but it's no Trireme so don't expect it to stop an entire attack force alone. It's more effective if you can distract the enemy with some cannon fodder. Its script makes it aim into the direction of the first aim order it received in the last batch (i.e. between automatic weapon resets) when it has nothing to do which hopefully makes it aim in the direction the next attack force will come from.
+
+Cinder lasercanon turret.
+	Like the Concrete but mounts one of the lasercannons from the Tiger. It has a large range and is the most effective against heavy units among the turrets. It has low HP and should be built behind other defenses.
+
+Brick grenade launcher turret.
+	Another turret, this one comes with the grenade launcher from the Linebreaker and Tiger. It will rip a chunk out of any attacking drone force.
+
+Orbital Uplink.
+	The super weapon in this game. It can make laser blasts rain down on any spot within a large range. You can have at most 2 of these and need the upgrade "Orbital Weapons Platform" to use them.
+
+Upgrade Center.
+	As the name suggests, this is where you get upgrades for your units and weapons. You can have only one of these.
+
+
+Upgrades:
+
+Radar Accuracy Upgrade.
+	Increases radar accuracy. Can be researched up to three times, increasing the accuracy each time.
+
+Falcon Artillery Missile.
+	All Falcon drones built after this upgrade is complete will have an additional launcher that fires an indirect missile.
+
+Ballistic Missiles.
+	With this the Titan can use its missile bays to bombard an area.
+
+Heavy Weapons Deployment.
+	The most important upgrade there is. The Trireme gains four more cannons, the Linebreaker a grenade launcher, the Tiger two lascannons, an additional ion cannon barrel and a grenade launcher, the ACV an orbital missile and all turrets more powerful weapons.
+
+Orbital Weapons Platform.
+	allows you to use the Orbital Uplink to bombard areas with orbital laser fire.
+
+Titan Shield.
+	The Titan gains a shield that can stop any attack but needs a lot of energy to be used.
+
+Base Shield.
+	All Automated Mining Systems get equipped with shields that stop artillery and orbital weapons. They are limited but any protection is better than having the full volley land in your base, no?
+
+Cruise Engine Upgrade.
+	Increases the speed of the Titan and Trireme.
+
+
+
+CHANGELOG: (at least what I can recall)
+
+0.4:
+-Decreased metal values (both gain and costs)
+-Revamped energy use completely (no longer used to gain upgrades)
+-Added Research Center and all researches and associated effects
+-Changed Eagle into a completely different role
+-Orbital Uplink no longer needs a geovent but is hardcapped at 2.
+-Began adding unit icons
+-Trireme weapon arcs widened, weapon changed to rapid fire projectile laser (effectively a buff)
+-Tiger ion cannon explosion effect changed
+-Grenadelauncher weapon (on all users) buffed
+-Cinder HP reduced greatly, cost increased (is now very fragile, to be built behind other defenses)
+-Concrete HP buffed
+-Brick cost decreased
+
+0.03a:
+-Decreased Pidgeon and Predator energy cost to allow building them from the beginning.
+
+0.03:
+-Fixed several glitches that were introduced by changed behaviour in later Spring versions (e.g. invisible Trireme, unbuildable Uplink)
+-Changed Titan and Trireme to planes. Until the Spring version with AirHoverStrafe is released this results in the Titan flying backwards when ordered to attack. Both units can pass over all terrain and buildings. Drones might get similar changes once AirHoverStrafe is in there.
+-Added custom explosion generators (mostly taken from Dozerz).
+-Changed the build effects to avoid the nanoframe effect.
+-Fixed several stupid script errors I made as a n00b way back when. Most notable is the Titan taking a while before firing, it's supposed to open its missile hatches but I didn't know how to implement movement when I wrote the script.
+-Turned Titan missiles into high-arc ballistic projectiles because the high-arc missile aiming code doesn't take height differences into account.
+-Added Melter Laser weapon to the Titan because that build laser just begged to be used on enemies.
+-The Trireme's various lasers are now mounted in different directions, damage was boosted to compensate for that. Triremes are most effective when drones approach them from all sides now.
+-Removed Sniper shield just because.
+-Made the Tiger main gun fire both barrels at the same time, rate of fire greatly reduced.
+-Changed some sound effects to give more aural variety.
+-Mexes no longer cause a disco when built and their shields don't block friendly arty which should reduce the number of Titan suicides.
+-Drone build times reduced since I now know how to prevent Spring from "overcharging" on units with short buildtimes.
+
+0.02:
+-Introduced Tiger MBT, Mining System and defensive turrets.
+-Removed Pidgeon's anti-arty shield since the AMS now fulfills the function of preventing artillery from hitting your base easily.
+-Buffed Titan missile area of effect to make it more effective against unit groupings (since it's already blocked by the AMS shield).
+-Made grenade launcher require 16000 Energy since it is a very potent weapon against drones and now available on turrets that can be afforded before 16000 Energy is available.
+-Drones and Triremes finally stay above water. Their max slope has been reduced as well to make the terrain affect unit movements more.
+-Weakened Trireme and Linebreaker explosion, increased Linebreaker HP.
+-Weakened Sniper's shield recharge, it was waaaay too good at blocking missiles. The shield is now visible.
+-Added mention of the energy storages that make a unit work (better) to the descriptions for easier remembering.
+
+
+0.01:
+-Introduced Heavy Vehicle Factory.
+-Turned drone laser into laser projectile weapon because the Titan shield will block beam lasers even without sufficient energy present (engine problem).
+-Reduced drone missile range 1500->1200.
+-Made sniper drones cheaper. They are no longer the most expensive drones (which made no sense since missile drones were almost as good for sniping and a lot better against big units).
+-Snipers have a shield against sniper weapons (sniper beam, direct missile) that will stop one or two shots once in a while.
+-Increased Trireme hitpoints 9600->15000.
+-Changed Orbital Uplink weapon to projectile laser. That probably tightened its spread as the wobble and sprayangle tags aren't comparable in the least.
+-Changed Linebreaker machineguns to projectile lasers instead of plasma (cosmetic).
+-Removed explosions when sniper and missile drones fire (cosmetic).
+-Changed Energy Structure model and script to reflect the original plan for it (wasn't done earlier because I lacked experience and ran into errors I've learned to solve since). (cosmetic)
+-Changed explosion of Energy Structure to prevent chain reactions in large arrays.
+-Made Titan shield no longer repulsing (since it didn't stop orbital weapons that way), shots are now destroyed upon hitting it.
+-Changed builder drone shield to allow for friendly ammunitions to pass through to prevent Titan self destructing when firing near such drones.
+-Doubled ACV machinegun rate of fire.
+-Added "The Hunted".
+
+
+--KDR_11k (KDR_11k@web.de)

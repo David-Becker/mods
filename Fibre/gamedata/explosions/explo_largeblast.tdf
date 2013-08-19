@@ -1,0 +1,82 @@
+[explo_largeblast]
+{
+	[circle]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=0;
+			sizemod=.85;
+			pos=0, 1.0, 0;
+			emitVector=0,1,0;
+			gravity=0, 0, 0;
+			Texture=smoke1;
+			colorMap=1 .9 .4 .1   .8 .3 0 .1   0 0 0 0;
+			airdrag=.9;
+			particleLife=7;
+			particleLifeSpread=16;
+			numParticles=15;
+			particleSpeed=6;
+			particleSpeedSpread=9;
+			particleSize=40;
+			particleSizeSpread=30;
+			emitRot=50;
+			emitRotSpread=30;
+			directional=0;
+			alwaysVisible=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=1;
+	}
+	[spew]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=0;
+			sizemod=1;
+			pos=0, 1.0, 0;
+			emitVector=0,1,0;
+			gravity=0, 0, 0;
+			Texture=puff;
+			colorMap=1 .9 .1 .1   .5 .3 0 .1   0 0 0 0;
+			airdrag=1;
+			particleLife=9;
+			particleLifeSpread=5;
+			numParticles=5 r10;
+			particleSpeed=14;
+			particleSpeedSpread=12;
+			particleSize=5;
+			particleSizeSpread=2;
+			emitRot=0;
+			emitRotSpread=90;
+			directional=1;
+			alwaysVisible=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+	[ring1]
+	{
+		class = CBitmapMuzzleFlame;
+
+		[properties]
+      	{
+         	dir = 0, 1, 0.01;
+         	colorMap=1 .9 .3 .1   .5 .2 0 .1   0 0 0 0;
+         	pos = 0, 6, 0;
+          	size=3;
+          	length=1;
+          	sizeGrowth=50;
+          	ttl=6;
+          	frontOffset=0;
+          	sideTexture=null;
+          	frontTexture=shockwave;
+          	alwaysVisible=1;
+      	}
+		water=1;
+		air=1;
+		ground=1;
+	}
+}

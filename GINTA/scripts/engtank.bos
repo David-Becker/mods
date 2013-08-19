@@ -1,0 +1,119 @@
+piece body, platform, cockpit, engine, arm0, arm1, shovel, emitter0, emitter1;
+
+#include "exptype.h"
+#include "sfxtype.h"
+
+#define SIG_Build 1
+#define SIG_StopSmoke 2
+
+Create()
+{
+}
+
+Killed(severity, corpsetype)
+{
+	explode platform type SHATTER;
+	explode cockpit type FALL | SMOKE;
+	explode engine type FALL | FIRE | SMOKE;
+	explode arm0 type FALL | SMOKE;
+	explode arm1 type FALL;
+	explode shovel type FALL | FIRE;
+	hide platform;
+	hide cockpit;
+	hide engine;
+	hide arm0;
+	hide arm1;
+	hide shovel;
+	move body to y-axis [-3] speed [1.5];
+	wait-for-move body along y-axis;
+	return 3;
+}
+
+Sweetspot(piecenum)
+{
+	piecenum=platform;
+}
+
+SmokeEmitters()
+{
+	set-signal-mask SIG_StopSmoke;
+	while(1)
+	{
+		emit-sfx SFXTYPE_BLACKSMOKE from emitter0;
+		emit-sfx SFXTYPE_BLACKSMOKE from emitter1;
+		sleep 60;
+	}
+}
+
+BuildAnim(heading)
+{
+	while(1)
+	{
+		//aim at random spot
+		turn platform to y-axis (heading + rand(<-30>,<30>)) speed <30>;
+		wait-for-turn platform around y-axis;
+		
+		//move into position for scratching
+		turn arm0 to x-axis <15> speed <32>;
+		turn arm1 to x-axis <-90> speed <48>;
+		turn shovel to x-axis <-90> speed <60>;
+		wait-for-turn arm1 around x-axis;
+		start-script SmokeEmitters();
+		
+		//scratch
+		turn arm0 to x-axis <10> speed <8>;
+		turn arm1 to x-axis <-50> speed <60>;
+		turn shovel to x-axis <-50> speed <60>;
+		wait-for-turn arm1 around x-axis;
+		signal SIG_StopSmoke;
+		
+		//return to aiming position
+		turn arm0 to x-axis <0> speed <32>;
+		turn arm1 to x-axis <-60> speed <32>;
+		turn shovel to x-axis <-130> speed <90>;
+		wait-for-turn shovel around x-axis;
+	}
+}
+
+StartBuilding(heading)
+{
+	signal SIG_Build;
+	set-signal-mask SIG_Build;
+	
+	//aim
+	turn platform to y-axis heading speed <120>;
+	wait-for-turn platform around y-axis;
+	
+	//lift arm
+	turn arm0 to x-axis <-10> speed <16>;
+	turn arm1 to x-axis <-60> speed <32>;
+	turn shovel to x-axis <-130> speed <60>;
+	wait-for-turn arm0 around x-axis;
+	
+	//lower arm0 again since it was raised to prevent the shovel from colliding with the body
+	turn arm0 to x-axis <0> speed <16>;
+	wait-for-turn arm0 around x-axis;
+	wait-for-turn arm1 around x-axis;
+	start-script BuildAnim(heading);
+	set INBUILDSTANCE to 1;
+}
+
+StopBuilding()
+{
+	signal SIG_Build;
+	signal SIG_StopSmoke;
+	set-signal-mask SIG_Build;
+	set INBUILDSTANCE to 0;
+	
+	turn arm0 to x-axis <-10> speed <16>;
+	turn arm1 to x-axis <0> speed <32>;
+	turn shovel to x-axis <0> speed <60>;
+	wait-for-turn arm1 around x-axis;
+	turn arm0 to x-axis <0> speed <32>;
+	turn platform to y-axis <0> speed <120>;
+}
+
+QueryNanoPiece(piecenum)
+{
+	piecenum=emitter0;
+}

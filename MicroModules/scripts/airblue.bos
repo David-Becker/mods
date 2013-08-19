@@ -1,0 +1,109 @@
+piece base, body, wingl, wingr, gp0, gp1, gp2, ex;
+
+#include "blob.h"
+
+static-var gp, burst, b, shooting;
+
+ChangedBlobCount(type, count, root) {
+	if (type==2) {
+		burst=count + 1;
+		get WEAPON_SPRAY(-1, root * 640);
+		if (!shooting) b=burst;
+	}
+}
+
+StopMoving() {
+	move wingr to x-axis [-6] speed [6];
+	move wingr to y-axis [3] speed [3];
+	move wingr to z-axis [-2] speed [2];
+	move wingl to x-axis [6] speed [6];
+	move wingl to y-axis [3] speed [3];
+	move wingl to z-axis [-2] speed [2];
+}
+
+MoveRate1() {
+	move wingr to x-axis 0 speed [6];
+	move wingr to y-axis 0 speed [3];
+	move wingr to z-axis 0 speed [6];
+	move wingl to x-axis 0 speed [6];
+	move wingl to y-axis 0 speed [3];
+	move wingl to z-axis 0 speed [6];
+}
+
+MoveRate2() {
+	call-script MoveRate1();
+}
+
+
+Create() {
+	call-script ChangedBlobCount(1,0,0);
+	move wingr to x-axis [-6] now;
+	move wingr to y-axis [3] now;
+	move wingr to z-axis [-2] now;
+	move wingl to x-axis [6] now;
+	move wingl to y-axis [3] now;
+	move wingl to z-axis [-2] now;
+}
+
+Killed() {
+	hide body;
+	hide wingl;
+	hide wingr;
+	explode wingl type FALL | SMOKE;
+	explode wingr type FALL | SMOKE;
+}
+
+ResetAim() {
+	sleep 1000;
+	b=burst;
+	shooting=0;
+}
+
+QueryWeapon1(p) {
+	p=gp0 + gp;
+}
+
+AimFromWeapon1(p) {
+	p=body;
+}
+
+AimWeapon1(h,p) {
+	signal SIG_Aim;
+	set-signal-mask SIG_Aim;
+	start-script ResetAim();
+	return 1;
+}
+
+Shot1() {
+	if (gp) emit-sfx 1024 from gp0;
+	else emit-sfx 1024 from gp1;
+	gp = !gp;
+	if (gp) {
+		if (b > 1) {
+			shooting=1;
+			get WEAPON_RELOADSTATE(-1,0); //instant reload
+			--b;
+		} 
+		else {
+			shooting=0;
+			b=burst;
+		}
+	}
+}
+
+
+QueryWeapon2(p) {
+	p=gp2;
+}
+
+AimFromWeapon2(p) {
+	p=body;
+}
+
+AimWeapon2(h,p) {
+	return 1;
+}
+
+Shot2() {
+	emit-sfx 1025 from gp2;
+}

@@ -1,0 +1,34 @@
+piece base, body;
+piece tbase, turret, gp00, gp01, gp02, gp03, gp04;
+
+#include "Fibre.h"
+
+static-var gun;
+#define SIG_Aim1 1
+
+Create() {
+	turn turret to x-axis <-20> now;
+}
+
+QueryWeapon1(p) {
+	p = gp00 + gun;
+}
+
+AimFromWeapon1(p) {
+	p=turret;
+}
+
+Shot1() {
+	gun = gun +1;
+	if (gun > 4) gun = 0;
+}
+
+AimWeapon1(h,p) {
+	signal SIG_Aim1;
+	set-signal-mask SIG_Aim1;
+	turn tbase to y-axis h speed <60>;
+	turn turret to x-axis 0 - p speed <40>;
+	wait-for-turn tbase around y-axis;
+	wait-for-turn turret around x-axis;
+	return 1;
+}

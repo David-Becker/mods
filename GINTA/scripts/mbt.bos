@@ -1,0 +1,164 @@
+piece base, body, turret, cannon, cn, machinegun, mg, ammosymbol, frontarmor;
+piece groundsmoke0, groundsmoke1, groundsmoke2, groundsmoke3, groundsmoke4, groundsmoke5;
+piece cnsmoke0, cnsmoke1, cnsmoke2, cnsmoke3, cnsmoke4;
+
+#include "SFXtype.h"
+#include "exptype.h"
+
+RefillAmmo()
+{
+	hide ammosymbol;
+}
+
+#define MAX_AMMO 20
+#define MAX_SECONDARY_AMMO 100
+#include "ammunition.h"
+
+#define SIG_Move 1
+#define SIG_Aim1 2
+
+static-var mainheading;
+
+
+Create()
+{
+	ammunition = 1;
+	hide ammosymbol;
+	spin ammosymbol around y-axis speed <180>;
+	start-script CheckForRefills();
+}
+
+Killed(severity, corpsetype)
+{
+	hide ammosymbol;
+	explode turret type SHATTER;
+	explode cannon type FALL | SMOKE;
+	explode machinegun type FALL | FIRE;
+	explode frontarmor type FALL | FIRE | SMOKE;
+	hide turret;
+	hide cannon;
+	hide machinegun;
+	emit-sfx SFXTYPE_BLACKSMOKE from groundsmoke0;
+	emit-sfx SFXTYPE_BLACKSMOKE from groundsmoke3;
+	emit-sfx SFXTYPE_BLACKSMOKE from groundsmoke1;
+	emit-sfx SFXTYPE_BLACKSMOKE from groundsmoke4;
+	emit-sfx SFXTYPE_BLACKSMOKE from groundsmoke2;
+	emit-sfx SFXTYPE_BLACKSMOKE from groundsmoke5;
+	move base to y-axis [-3] speed [1.5];
+	wait-for-move base along y-axis;
+	return (3);
+}
+
+/*StartMoving()
+{
+	signal SIG_Move;
+	set-signal-mask SIG_Move;
+	while(1)
+	{
+		emit-sfx SFXTYPE_WHITESMOKE from groundsmoke2;
+		emit-sfx SFXTYPE_WHITESMOKE from groundsmoke5;
+		sleep 400;
+	}
+}
+
+StopMoving()
+{
+	signal SIG_Move;
+}*/
+
+Sweetspot(piecenum)
+{
+	piecenum=turret;
+}
+
+//Cannon
+
+AimWeapon1(h,p)
+{
+	signal SIG_Aim1;
+	set-signal-mask SIG_Aim1;
+	if (ammunition > 0)
+	{
+		mainheading = h;
+		turn turret to y-axis h speed <80>;
+		turn cannon to x-axis 0-p speed <60>;
+		wait-for-turn turret around y-axis;
+		wait-for-turn cannon around x-axis;
+		return TRUE;
+	}
+	else
+	{
+		show ammosymbol;
+		return FALSE;
+	}
+}
+
+FireWeapon1()
+{
+	--ammunition;
+	emit-sfx SFXTYPE_VTOL from cn;
+	emit-sfx SFXTYPE_BLACKSMOKE from cnsmoke4;
+	emit-sfx SFXTYPE_BLACKSMOKE from groundsmoke2;
+	emit-sfx SFXTYPE_BLACKSMOKE from groundsmoke5;
+	sleep 50;
+	emit-sfx SFXTYPE_VTOL from cnsmoke2;
+	emit-sfx SFXTYPE_VTOL from cnsmoke0;
+	sleep 50;
+	emit-sfx SFXTYPE_VTOL from cnsmoke1;
+	emit-sfx SFXTYPE_VTOL from cnsmoke3;
+}
+
+QueryWeapon1(piecenum)
+{
+	piecenum=cn;
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum=machinegun;
+}
+
+
+//Armorshield
+
+AimWeapon2(h,p)
+{
+	return TRUE;
+}
+
+QueryWeapon2(piecenum)
+{
+	piecenum=frontarmor;
+}
+
+//Machinegun
+
+AimWeapon3(h,p)
+{
+	if (secondary_ammo > 0) {
+		turn machinegun to y-axis (h - mainheading) speed <120>;
+		turn machinegun to x-axis (0 - p) speed <120>;
+		wait-for-turn turret around y-axis;
+		wait-for-turn machinegun around y-axis;
+		return TRUE;
+	}
+	else {
+		return FALSE;
+	}
+}
+
+AimFromWeapon3(piecenum)
+{
+	piecenum=machinegun;
+}
+
+QueryWeapon3(piecenum)
+{
+	piecenum=mg;
+}
+
+FireWeapon3(piecenum)
+{
+	--secondary_ammo;
+	emit-sfx SFXTYPE_VTOL from mg;
+}

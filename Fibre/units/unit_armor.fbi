@@ -1,0 +1,71 @@
+[UNITINFO]
+{
+	Name=Tank;
+	Unitname=unit_armor;
+	Description=Heavy unit;
+
+	// Required Tags
+	Category=UNIT GROUND NOTSMALL NOTINFRA;
+	FootprintX=2;
+	FootprintZ=2;
+	MaxDamage=1100;
+	IdleAutoHeal=150;
+	BuildCostEnergy=100;
+	BuildCostMetal=20;
+	maxSlope=22;
+	ObjectName=unit_armor.s3o;
+	Side=ANY;
+	//SoundCategory=CITADEL;
+
+	// Movement
+	CanMove=1;
+	MaxVelocity=1.8;
+	Acceleration=4;
+	Brakerate=.6;
+	TurnRate=600;
+	MovementClass=Tank;
+
+	// Airplane Moventment
+
+	// Buildings
+
+	// Construction
+	ShowNanoFrame=0;
+	LevelGround=0;
+
+	// Resources
+	EnergyMake=0;
+	EnergyStorage=100;
+	MetalStorage=0;
+	MetalMake=0;
+	Reclaimable=0;
+
+	// Abilities
+	CanStop=1;
+	SelfDestructCountdown=1;
+
+	// Sight/Radar
+	RadarDistance=0;
+	SightDistance=0;
+	SeismicSignature=0;
+
+	// Weapons
+	Weapon1=UnitCannon;
+	Weapon2=UnitMG;
+	WeaponSlaveTo2=1;
+	OnlyTargetCategory2=SMALL;
+	NoChaseCategory=AIR;
+	ExplodeAs=DeathLarge;
+
+	// Tracks/Flares
+
+	// Watersettings
+
+	// Misc
+	SmoothAnim=0;
+
+	[SFXTypes]
+	{
+		explosionGenerator0=custom:muzzle_shredder;
+	}
+}

@@ -1,0 +1,129 @@
+piece base, body, block, frontwheelarmor, rearwheelarmor;
+piece dish, radar, orbit, orbiter;
+piece wheels0, wheels1, wheels2;
+piece turretbase, turretl, muzzle0, turretr, muzzle1;
+
+#define SIG_Aim0 2
+#define SIG_Aim1 4
+
+#include "exptype.h"
+#define MELTER_DEPTH [-24]
+#include "buildFX_melter.h"
+
+#define UPGRADE_BREAK_ON UPG_HEAVYWEAPONS
+#include "upgradesystem.h"
+
+Create()
+{
+	start-script buildFX();
+	start-script CheckForUpgrades();
+	spin orbiter around y-axis speed <1500>;
+}
+
+Activate()
+{
+	set ACTIVATION to 1;
+	dont-cache radar;
+	dont-cache dish;
+	spin radar around y-axis speed <80>;
+	spin dish around y-axis speed <20>;
+}
+
+Deactivate()
+{
+	set ACTIVATION to 0;
+	turn radar to y-axis <0> speed <80>;
+	turn dish to y-axis <0> speed <20>;
+}
+
+StartMoving()
+{
+	spin wheels0 around x-axis speed <200>;
+	spin wheels1 around x-axis speed <200>;
+	spin wheels2 around x-axis speed <200>;
+}
+
+StopMoving()
+{
+	stop-spin wheels0 around x-axis;
+	stop-spin wheels1 around x-axis;
+	stop-spin wheels2 around x-axis;
+}
+
+// ICBM
+AimWeapon1(heading,pitch)
+{
+	return(upgrades == (upgrades | UPG_HEAVYWEAPONS));
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum=orbit;
+}
+
+QueryWeapon1(piecenum)
+{
+	piecenum=orbit;
+}
+
+// MG turrets
+AimWeapon2(heading,pitch)
+{
+	signal SIG_Aim0;
+	set-signal-mask SIG_Aim0;
+	turn turretl to y-axis heading speed <110>;
+	wait-for-turn turretl around y-axis;
+	return(TRUE);
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum=turretl;
+}
+
+QueryWeapon2(piecenum)
+{
+	piecenum=muzzle0;
+}
+
+
+AimWeapon3(heading,pitch)
+{
+	signal SIG_Aim1;
+	set-signal-mask SIG_Aim1;
+	turn turretr to y-axis heading speed <110>;
+	wait-for-turn turretr around y-axis;
+	return(TRUE);
+}
+
+AimFromWeapon3(piecenum)
+{
+	piecenum=turretr;
+}
+
+QueryWeapon3(piecenum)
+{
+	piecenum=muzzle1;
+}
+
+
+Killed(severity, corpsetype)
+{
+	explode wheels0 type FALL | SMOKE;
+	explode wheels1 type FALL | SMOKE;
+	explode wheels2 type FALL | SMOKE;
+	explode turretbase type SHATTER | FIRE;
+	explode turretl type FALL | FIRE | SMOKE;
+	explode turretr type FALL | FIRE | SMOKE;
+	explode radar type FALL | FIRE | SMOKE;
+	explode dish type FALL | FIRE | SMOKE;
+	corpsetype=1;
+	if (severity>60)
+	{
+		corpsetype=3;
+		explode block type FALL | SMOKE;
+		explode frontwheelarmor type FALL | SMOKE;
+		explode rearwheelarmor type FALL | SMOKE;
+		explode body type SHATTER;
+	}
+}

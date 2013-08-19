@@ -1,0 +1,13 @@
+[SIDE0]
+{
+	name=Master Blob;
+	commander=master;
+}
+[SIDE1]
+{
+	name=Master Blob again because Spring demands it;
+	commander=master;
+}
+[CANBUILD]
+{
+}

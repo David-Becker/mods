@@ -1,0 +1,77 @@
+[effect_teleporter]
+{
+	[circle]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=0;
+			sizemod=1;
+			pos=0, 3, 0;
+			emitVector=0,1,0;
+			gravity=0, 0, 0;
+			Texture=smoke1;
+			colorMap=.2 .1 .4 .1   .15 .15 .5 .1   0 0 0 0;
+			airdrag=.94;
+			particleLife=60;
+			particleLifeSpread=30;
+			numParticles=25;
+			particleSpeed=4;
+			particleSpeedSpread=1;
+			particleSize=30;
+			particleSizeSpread=0;
+			emitRot=80;
+			emitRotSpread=10;
+			directional=0;
+			alwaysVisible=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+	[charge]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=0;
+			sizemod=.9;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			Texture=chargeparticles;
+			colorMap=.2 .1 .4 .1   .15 .15 .5 .1   0 0 0 0;
+			airdrag=.95;
+			particleLife=8;
+			particleLifeSpread=0;
+			numParticles=3;
+			particleSpeed=0.01;
+			particleSpeedSpread=0;
+			particleSize=40;
+			particleSizeSpread=10;
+			emitRot=0;
+			emitRotSpread=180;
+			directional=1;
+			alwaysVisible=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+	[spikes]
+	{
+		class=explspike;
+		[properties]
+		{
+			alwaysvisible=1;
+			dir=-1 r2, r1, -1 r2;
+			width=7;
+			length=90;
+			alpha=0.9;
+			alphadecay=0.1;
+			color=.3, .2, 1;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=6;
+	}
+}

@@ -1,0 +1,50 @@
+piece base, foot, pillar, antenna, dishl, dishr, tip;
+
+static-var target, complete;
+
+#define SIG_Aim 1
+
+#include "fibre.h"
+
+ResetDish() {
+	sleep 2000;
+	target = 0;
+	turn dishl to z-axis <0> speed <90>;
+	turn dishr to z-axis <0> speed <90>;
+	wait-for-turn dishr around z-axis;
+	turn pillar to y-axis 0 speed <60>;
+	turn antenna to x-axis <0> speed <60>;
+}
+
+AimDish(t) {
+	signal SIG_Aim;
+	set-signal-mask SIG_Aim;
+	while(!complete) sleep 250;
+	target = t;
+	turn pillar to y-axis (get XZ_ATAN((get PIECE_XZ(base)) - (get UNIT_XZ(target)))) speed <60>;
+	turn antenna to x-axis <90> speed <60>;
+	wait-for-turn antenna around x-axis;
+	turn dishl to z-axis <-90> speed <90>;
+	turn dishr to z-axis <90> speed <90>;
+	wait-for-turn dishl around z-axis;
+	wait-for-turn pillar around y-axis;
+	//get PRINT(get XZ_HYPOT((get PIECE_XZ(base)) - (get UNIT_XZ(target))) / [1]);
+	set CEG_DAMAGE to get XZ_HYPOT((get PIECE_XZ(base)) - (get UNIT_XZ(target))) / [1] - 50;
+	start-script ResetDish();
+	while(target) {
+		if ((20 <= get POWERLEVEL) && (990 >= get POWERLEVEL(target))) {
+			set POWERLEVEL to (get POWERLEVEL) - 20;
+			get POWERLEVEL(0-target, 10 + get POWERLEVEL(target));
+			emit-sfx 1024 from tip;
+		}
+		sleep 500;
+	}
+}
+
+Completed() {
+	complete=1;
+}
+
+Create() {
+	turn tip to x-axis <-90> now;
+}

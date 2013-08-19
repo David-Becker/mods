@@ -1,0 +1,315 @@
+piece base, body, tail, tailrotor, rotorbase, rotor, wing0, wing1, ammosymbol;
+piece missilepod0, mp0, missilepod1, mp1, machinegun, mg;
+piece atgm0, atgm1, atgm2, atgm3, atgm4, atgm5, atgm6, atgm7;
+
+#include "SFXtype.h"
+#include "exptype.h"
+
+#define SIG_Aim1 1
+#define SIG_Aim2 2
+#define SIG_Aim3 4
+#define SIG_Aim4 8
+
+static-var atgmcounter, mpod;
+
+#define CUSTOM_CONDITION ammunition < MAX_AMMO || secondary_ammo < MAX_SECONDARY_AMMO || atgmcounter > 0
+
+RefillAmmo()
+{
+	hide ammosymbol;
+	atgmcounter=0;
+	show atgm0;	
+	show atgm1;	
+	show atgm2;	
+	show atgm3;	
+	show atgm4;	
+	show atgm5;	
+	show atgm6;	
+	show atgm7;
+	show missilepod0;
+	show missilepod1;	
+}
+
+#define MAX_AMMO 300
+#define MAX_SECONDARY_AMMO 14
+
+#include "ammunition.h"
+
+Create()
+{
+	hide ammosymbol;
+	spin rotor around y-axis speed <1500>;
+	spin tailrotor around x-axis speed <800>;
+	spin ammosymbol around y-axis speed <180>;
+	ammunition=100;
+	start-script CheckForRefills();
+}
+
+Killed(severity, corpsetype)
+{
+	corpsetype=3;
+	move body to y-axis [-30] speed [8];
+	spin body around y-axis speed <90>;
+	
+	if (atgmcounter < 1) explode atgm0 type FALL | FIRE;
+	hide atgm0;
+	if (atgmcounter < 2) explode atgm1 type FALL | FIRE;
+	hide atgm1;
+	if (atgmcounter < 3) explode atgm2 type FALL | FIRE;
+	hide atgm2;
+	if (atgmcounter < 4) explode atgm3 type FALL | FIRE;
+	hide atgm3;
+	if (atgmcounter < 5) explode atgm4 type FALL | FIRE;
+	hide atgm4;
+	if (atgmcounter < 6) explode atgm5 type FALL | FIRE;
+	hide atgm5;
+	if (atgmcounter < 7) explode atgm6 type FALL | FIRE;
+	hide atgm6;
+	if (atgmcounter < 8) explode atgm7 type FALL | FIRE;
+	hide atgm7;
+
+	explode tail type FALL | FIRE | SMOKE;
+	explode tailrotor type FALL;
+	hide tail;
+	hide tailrotor;
+	sleep 800;
+
+	explode rotorbase type FALL | FIRE | SMOKE;
+	explode rotor type FALL;
+	explode machinegun type FALL;
+	hide rotorbase;
+	hide rotor;
+	hide machinegun;
+	sleep 600;
+
+	explode wing0 type FALL | FIRE | SMOKE;
+	explode missilepod0 type FALL | FIRE;
+	hide wing0;
+	hide missilepod0;
+	sleep 300;
+
+	explode wing1 type FALL | FIRE | SMOKE;
+	explode missilepod1 type FALL | FIRE;
+	hide wing1;
+	hide missilepod1;
+	sleep 1200;
+
+	explode body type SHATTER;
+	hide body;
+	
+	return 3;
+}
+
+ResetAim()
+{
+	sleep 8000;
+	turn body to y-axis 0 speed <180>;
+	turn machinegun to x-axis 0 speed <240>;
+}
+
+
+//Machinegun
+
+AimWeapon4(h,p)
+{
+	signal SIG_Aim1;
+	set-signal-mask SIG_Aim1;
+	if (ammunition>0)
+	{
+		wait-for-turn body around x-axis;
+		wait-for-turn machinegun around y-axis;
+		return TRUE;
+	}
+	else
+	{
+		show ammosymbol;
+		return FALSE;
+	}
+}
+
+AimFromWeapon4(piecenum)
+{
+	piecenum=body;
+}
+
+QueryWeapon4(piecenum)
+{
+	piecenum=mg;
+}
+
+FireWeapon4()
+{
+	--ammunition;
+	emit-sfx SFXTYPE_VTOL from mg;
+}
+
+
+//Guided missiles
+AimWeapon2(h,p)
+{
+	signal SIG_Aim2;
+	set-signal-mask SIG_Aim2;
+	if (atgmcounter<8)
+	{
+		wait-for-turn body around x-axis;
+		return TRUE;
+	}
+	else
+	{
+		show ammosymbol;
+		return FALSE;
+	}
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum=body;
+}
+
+QueryWeapon2(piecenum)
+{
+	if (atgmcounter==0)
+	{
+		piecenum = atgm0;
+		return TRUE;
+	}
+	if (atgmcounter==1)
+	{
+		piecenum = atgm1;
+		return TRUE;
+	}
+	if (atgmcounter==2)
+	{
+		piecenum = atgm2;
+		return TRUE;
+	}
+	if (atgmcounter==3)
+	{
+		piecenum = atgm3;
+		return TRUE;
+	}
+	if (atgmcounter==4)
+	{
+		piecenum = atgm4;
+		return TRUE;
+	}
+	if (atgmcounter==5)
+	{
+		piecenum = atgm5;
+		return TRUE;
+	}
+	if (atgmcounter==6)
+	{
+		piecenum = atgm6;
+		return TRUE;
+	}
+	if (atgmcounter==7)
+	{
+		piecenum = atgm7;
+		return TRUE;
+	}
+}
+
+EndBurst2()
+{
+	if (atgmcounter==0)
+	{
+		hide atgm0;
+	}
+	if (atgmcounter==1)
+	{
+		hide atgm1;
+	}
+	if (atgmcounter==2)
+	{
+		hide atgm2;
+	}
+	if (atgmcounter==3)
+	{
+		hide atgm3;
+	}
+	if (atgmcounter==4)
+	{
+		hide atgm4;
+	}
+	if (atgmcounter==5)
+	{
+		hide atgm5;
+	}
+	if (atgmcounter==6)
+	{
+		hide atgm6;
+	}
+	if (atgmcounter==7)
+	{
+		hide atgm7;
+	}
+	++atgmcounter;
+}
+
+
+//Unguided missiles
+AimWeapon3(h,p)
+{
+	signal SIG_Aim3;
+	set-signal-mask SIG_Aim3;
+	if (secondary_ammo>0)
+	{
+		wait-for-turn body around x-axis;
+		return TRUE;
+	}
+	else
+	{
+		show ammosymbol;
+		return FALSE;
+	}
+}
+
+AimFromWeapon3(piecenum)
+{
+	piecenum=body;
+}
+
+QueryWeapon3(piecenum)
+{
+	if (mpod) {
+		piecenum=mp0;
+	}
+	else
+	{
+		piecenum=mp1;
+	}
+}
+
+FireWeapon3()
+{
+	--secondary_ammo;
+}
+
+EndBurst3()
+{
+	mpod= 1 - mpod;
+}
+
+
+//Targeting laser
+
+AimFromWeapon1(piecenum)
+{
+	piecenum=body;
+}
+
+AimWeapon1(h,p)
+{
+	signal SIG_Aim4;
+	set-signal-mask SIG_Aim4;
+	turn body to y-axis h speed <180>;
+	turn machinegun to x-axis (0 - p) speed <240>;
+	start-script ResetAim();
+	return FALSE;
+}
+
+QueryWeapon1(piecenum)
+{
+	piecenum=mg;
+}

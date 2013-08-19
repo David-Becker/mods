@@ -1,0 +1,31 @@
+piece base, body, attacher;
+
+#include "exptype.h"
+
+#define MELTER_DEPTH [-30]
+#include "buildFX_melter.h"
+
+Create()
+{
+	start-script buildFX();
+}
+
+Killed(severity, corpsetype)
+{
+	explode body type SHATTER;
+}
+
+Activate()
+{
+	set INBUILDSTANCE to 1;
+}
+
+Deactivate()
+{
+	set INBUILDSTANCE to 0;
+}
+
+QueryBuildInfo(piecenum)
+{
+	piecenum=attacher;
+}

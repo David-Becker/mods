@@ -1,0 +1,64 @@
+[UNITINFO]
+{
+	Name=Shipyard;
+	Unitname=factory_ship;
+	Description=Builds bombardement ships;
+
+	// Required Tags
+	Category=FACTORY BUILDING GROUND NOTSMALL NOTINFRA;
+	FootprintX=5;
+	FootprintZ=4;
+	MaxDamage=10000;
+	IdleAutoHeal=0;
+	BuildCostEnergy=500;
+	ObjectName=factory_ship.s3o;
+	BuildPic=factory_ship.tga;
+	floater=1;
+	Side=ANY;
+	//SoundCategory=NODE;
+
+	// Movement
+	CanMove=0;
+
+	// Airplane Moventment
+
+	// Buildings
+	yardmap=o;
+	minWaterDepth=15;
+
+	// Construction
+	ShowNanoFrame=0;
+	LevelGround=1;
+
+	// Resources
+	EnergyMake=40;
+	EnergyStorage=300;
+	MetalStorage=0;
+	MetalMake=0;
+	Reclaimable=0;
+
+	// Abilities
+	CanStop=1;
+	SelfDestructCountdown=1;
+	onOffable=1;
+	activateWhenBuilt=1;
+
+	// Sight/Radar
+	RadarDistance=0;
+	SightDistance=0;
+	SeismicSignature=0;
+
+	// Weapons
+	ExplodeAs=DeathLarge;
+
+	// Tracks/Flares
+
+	// Watersettings
+
+	// Misc
+	SmoothAnim=0;
+
+	[SFXTypes]
+	{
+	}
+}

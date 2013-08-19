@@ -1,0 +1,85 @@
+[UNITINFO]
+{
+	Name=Missile Cruiser;
+	Unitname=unit_ship;
+	Description=Heavy bombardement vessel;
+
+	// Required Tags
+	Category=UNIT GROUND NOTSMALL SHIP NOTINFRA;
+	FootprintX=3;
+	FootprintZ=3;
+	MaxDamage=2000;
+	IdleAutoHeal=200;
+	BuildCostEnergy=300;
+	BuildCostMetal=80;
+	minWaterDepth=10;
+	ObjectName=unit_ship.s3o;
+	Side=ANY;
+	//SoundCategory=CITADEL;
+
+	// Movement
+	CanMove=1;
+	MaxVelocity=.8;
+	Acceleration=.2;
+	Brakerate=.6;
+	TurnRate=300;
+	MovementClass=SHIP;
+
+	// Airplane Moventment
+
+	// Buildings
+
+	// Construction
+	ShowNanoFrame=0;
+	LevelGround=0;
+
+	// Resources
+	EnergyMake=0;
+	EnergyStorage=100;
+	MetalStorage=0;
+	MetalMake=0;
+	Reclaimable=0;
+
+	// Abilities
+	CanStop=1;
+	SelfDestructCountdown=1;
+
+	// Sight/Radar
+	RadarDistance=0;
+	SightDistance=0;
+	SeismicSignature=0;
+
+	// Weapons
+	Weapon1=UnitSeaCannon;
+	OnlyTargetCategory1=GROUND;
+	WeaponMainDir1=0 0 1;
+	MaxAngleDif1=210;
+
+	Weapon2=UnitSeaCannon;
+	OnlyTargetCategory2=GROUND;
+	WeaponMainDir2=0 0 1;
+	MaxAngleDif2=210;
+
+	Weapon3=UnitSeaCannon;
+	OnlyTargetCategory3=GROUND;
+	WeaponMainDir3=0 0 -1;
+	MaxAngleDif3=210;
+
+	Weapon4=UnitSeaMissile;
+	BadTargetCategory4=UNIT;
+
+	NoChaseCategory=AIR;
+	ExplodeAs=DeathLarge;
+
+	// Tracks/Flares
+
+	// Watersettings
+
+	// Misc
+	SmoothAnim=0;
+
+	[SFXTypes]
+	{
+		explosionGenerator0=custom:muzzle_shredder;
+	}
+}

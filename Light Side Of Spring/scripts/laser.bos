@@ -1,0 +1,40 @@
+piece base, body, emitter;
+
+#include "exptype.h"
+
+Align(h) {
+	set HEADING to h;
+	//get PRINT(h);
+}
+
+static-var reloading;
+
+Reload() {
+	sleep 5000;
+	reloading=0;
+}
+
+Fire(did) {
+	if (!reloading) {
+		reloading=1;
+		emit-sfx 2049 from emitter;
+		//play-sound ("BeamShot",5);
+		start-script Reload();
+		did=1;
+	}
+}
+
+Guide() {
+	while(1) {
+		emit-sfx 2048 from emitter;
+		sleep 250;
+	}
+}
+
+Create() {
+	start-script Guide();
+}
+
+StartBuilding() {
+	set INBUILDSTANCE to 1;
+}

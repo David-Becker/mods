@@ -1,0 +1,13 @@
+piece base, foot, pole, flag;
+
+Create() {
+	sleep 30;
+}
+
+HitByWeaponId() {
+	return 0;
+}
+
+SetCharge(level) {
+	move pole to y-axis 56 * level speed [32];
+}

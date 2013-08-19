@@ -1,0 +1,25 @@
+[effect_supercharger]
+{
+	[shock]
+	{
+		class = CBitmapMuzzleFlame;
+
+		[properties]
+      	{
+         	dir = dir;
+         	colorMap=1 1 1 .1   .5 .8 1 .1   0 0 0 0;
+         	pos = 0, 0, 0;
+          	size=6 r3;
+          	length=10 r3;
+          	sizeGrowth=1;
+          	ttl=6;
+          	frontOffset=0;
+          	sideTexture=lightning;
+          	frontTexture=null;
+          	alwaysVisible=1;
+      	}
+		water=1;
+		air=1;
+		ground=1;
+	}
+}

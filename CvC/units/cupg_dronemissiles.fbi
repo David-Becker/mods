@@ -1,0 +1,79 @@
+[UNITINFO]
+{
+	Name=Falcon Artillery Missiles;
+	UnitName=CUPG_DRONEMISSILES;
+
+	//    Required Tags
+	BuildCostEnergy=0;
+	BuildCostMetal=0;
+	BuildTime=200000;
+	Category=UPGRADE;
+	Description=- Allows all newly built Falcons to fire ballistic missiles;
+	FootprintX=1;
+	FootprintZ=1;
+	MaxDamage=100000;
+	ObjectName=Upgrade_DroneMissiles.s3o;
+	buildpic=cdromsl.bmp;
+	Side=COSMOS;
+	UnitRestricted=1;
+	icontype=upgrade64;
+
+	//    Movement
+	BrakeRate=600;
+	//MovementClass=TANKHOVER2;
+	Acceleration=300;
+	CanMove=1;
+	CanFly=1;
+	CanHover=1;
+	AirHoverFactor=0;
+	CruiseAlt=65536;
+	MaxSlope=30;
+	MaxVelocity=1024;
+	TurnRate=160;
+	stealth=1;
+	init_cloaked=1;
+	//Upright=1;
+	//Floater=1;
+
+	//    Airplane Moventment
+
+	//    Buildings
+
+	//    Construction
+	Builder=1;	//Workaround to make the thing fly. No idea why Spring messes up without it
+	CanReclaim=0;
+	CanRepair=0;
+	CanAssist=0;
+	CanRestore=0;
+	WorkerTime=300;
+
+	//    Resources
+	EnergyMake=0;
+	EnergyStorage=0;
+	EnergyUse=0;
+	MetalStorage=0;
+	MetalMake=0;
+
+
+	//    Abilities
+	CanAttack=0;
+	CanStop=1;
+	CanBuild=1;
+
+	//    Sight/Radar
+	RadarDistance=0;
+	SightDistance=0;
+
+	//    Weapons
+	
+	Weapon1=UpgradeKiller;
+	OnlyTargetcategory1=VOID;
+	//    Tracks/Flares
+
+	//    Watersettings
+
+	//    Misc
+	SmoothAnim=0;
+
+	ShowNanoFrame=0;
+}

@@ -1,0 +1,16 @@
+[MOD]
+{
+	Name=Fibre;
+	version=v13.1;
+	Description=Turret Battles;
+	ModType=1;
+
+	NumDependencies=1;
+	Depend0=springcontent.sdz;
+
+	[NTAI]
+	{
+		tdfpath=Fibre;
+	}
+}
+

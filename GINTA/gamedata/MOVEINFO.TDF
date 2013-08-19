@@ -1,0 +1,10 @@
+[CLASS0]
+	{
+	Name=Tank;
+	FootprintX=2;
+	FootprintZ=2;
+	MaxWaterDepth=4;
+	MaxSlope=17;
+	CrushStrength=60;
+	}
+

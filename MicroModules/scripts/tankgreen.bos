@@ -1,0 +1,52 @@
+piece base, body, turret, gp;
+
+#include "blob.h"
+
+static-var burst, b, shooting;
+
+ChangedBlobCount(type, count, root) {
+	if (type==2) {
+		burst=count + 1;
+		if (!shooting) b=burst;
+	}
+}
+
+Create() {
+	call-script ChangedBlobCount(2,0,0);
+}
+
+ResetAim() {
+	sleep 4000;
+	turn turret to y-axis 0 speed <240>;
+	b=burst;
+	shooting=0;
+}
+
+QueryWeapon1(p) {
+	p=gp;
+}
+
+AimFromWeapon1(p) {
+	p=turret;
+}
+
+AimWeapon1(h,p) {
+	signal SIG_Aim;
+	set-signal-mask SIG_Aim;
+	start-script ResetAim();
+	turn turret to y-axis h speed <240>;
+	wait-for-turn turret around y-axis;
+	return 1;
+}
+
+Shot1() {
+	if (b > 1) {
+		shooting=1;
+		get WEAPON_RELOADSTATE(-1,0); //instant reload
+		--b;
+	} 
+	else {
+		shooting=0;
+		b=burst;
+	}
+}

@@ -1,0 +1,59 @@
+piece base, body, turret, ring, barrel, gp, mg;
+
+#define SIG_Aim 1
+#define SIG_Fire 2
+#include "Fibre.h"
+
+AimFromWeapon1(p) {
+	p=turret;
+}
+
+QueryWeapon1(p) {
+	p=gp;
+}
+
+ResetAim() {
+	sleep 2000;
+	turn turret to y-axis 0 speed <240>;
+	turn ring to x-axis 0 speed <180>;
+}
+
+AimWeapon1(h,p) {
+	signal SIG_Aim;
+	set-signal-mask SIG_Aim;
+	turn turret to y-axis h speed <240>;
+	turn ring to x-axis <0>-p speed <180>;
+	wait-for-turn turret around y-axis;
+	wait-for-turn ring around x-axis;
+	start-script ResetAim();
+	return 1;
+}
+
+FireWeapon1() {
+	signal SIG_Fire;
+	set-signal-mask SIG_Fire;
+	move barrel to z-axis [-3] speed [32];
+	wait-for-move barrel along z-axis;
+	move barrel to z-axis 0 speed [6];
+}
+
+QueryWeapon2(p) {
+	p=mg;
+}
+
+AimFromWeapon2(p) {
+	p=mg;
+}
+
+AimWeapon2(h,p) {
+	turn mg to x-axis 0-p now;
+	return 1;
+}
+
+Shot2() {
+	emit-sfx 1024 from mg;
+}
+
+BlockShot2(target, block) {
+	block = target != get TARGET_ID(1);
+}

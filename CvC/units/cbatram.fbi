@@ -1,0 +1,79 @@
+[UNITINFO]
+{
+	Name=Linebreaker;
+	UnitName=CBATRAM;
+	
+	//    Required Tags
+	BuildCostEnergy=0;
+	BuildCostMetal=10000;
+	BuildTime=66000;
+	Category=BATRAM LARGE NOTSMALL NOTBUILDING ALL ;
+	Description=- Destroys everything in front of it;
+	FootprintX=6;
+	FootprintZ=6;
+	MaxDamage=37000;
+	ObjectName=CosmosBatteringRam.s3o;
+	buildpic=cbatram.bmp;
+	icontype=batram;
+	Side=COSMOS;
+	SoundCategory=ARM_HOVER_BIG;
+	TEDClass=TANK;
+	
+	//    Movement
+	BrakeRate=0.8;
+	MovementClass=DefaultMoveType;
+	Acceleration=0.4;
+	CanMove=1;
+	MaxVelocity=0.8;
+	TurnRate=80;
+	MaxSlope=24;
+	
+	//    Airplane Moventment
+	
+	//    Buildings
+	
+	//    Construction
+	
+	//    Resources
+	EnergyMake=10;
+	EnergyStorage=0;
+	EnergyUse=0;
+	MetalStorage=300;
+	MetalMake=80;
+	
+	
+	//    Abilities
+	CanAttack=1;
+	CanStop=1;
+	
+	//    Sight/Radar
+	RadarDistance=0;
+	SightDistance=750;
+	
+	//    Weapons
+	OnlyTargetCategory=All;
+	Weapon1=Big_PlasmaStorm_DISINTEGRATOR;
+	WeaponMainDir1=0 0 1;
+	MaxAngleDif1=25;
+	Weapon2=Big_HeavyMachineGun;
+	Weapon3=Big_HeavyMachineGun;
+	Weapon4=Big_GrenadeLauncher;
+	wpri_badTargetCategory=AIR;
+	BadTargetCategory=AIR;
+	ExplodeAs=Trireme_Disinfector;
+	SelfDestructAs=Trireme_Disinfector;
+	NoChaseCategory=VTOL;
+	
+	//    Tracks/Flares
+	
+	//    Watersettings
+
+	//    Misc
+	SmoothAnim=0;
+	
+	ShowNanoFrame=0;
+        [SFXTypes]
+	{
+	       explosiongenerator0=custom:buildFX_melter_large;
+       	}
+}

@@ -1,0 +1,108 @@
+[explo_pillar]
+{
+	[emitter]
+	{
+		class=CExpGenSpawner;
+		[properties]
+		{
+			delay=0 i1;
+			dir=0,1,0;
+			damage=1;
+			explosionGenerator=custom:explo_pillar_part;
+			speed=0,0,0;
+			pos=0,0 i5,0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=10;
+	}
+	[spew]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=0;
+			sizemod=1;
+			pos=0, 1.0, 0;
+			emitVector=0,1,0;
+			gravity=0, 0, 0;
+			Texture=puff;
+			colorMap=1 .9 .1 .1   .5 .3 0 .1   0 0 0 0;
+			airdrag=1;
+			particleLife=6;
+			particleLifeSpread=2;
+			numParticles=5 r10;
+			particleSpeed=5;
+			particleSpeedSpread=4;
+			particleSize=3;
+			particleSizeSpread=2;
+			emitRot=60;
+			emitRotSpread=10;
+			directional=1;
+			alwaysVisible=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+	[circle]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=1;
+			sizemod=.9;
+			pos=0, 1.0, 0;
+			emitVector=0,1,0;
+			gravity=0, 0, 0;
+			Texture=smoke1;
+			colorMap=1 .9 .4 .1   .8 .3 0 .1   0 0 0 1   0 0 0 1   0 0 0 .5   0 0 0 0;
+			airdrag=.95;
+			particleLife=32;
+			particleLifeSpread=14;
+			numParticles=12;
+			particleSpeed=3;
+			particleSpeedSpread=1.6;
+			particleSize=12;
+			particleSizeSpread=20;
+			emitRot=50;
+			emitRotSpread=30;
+			directional=0;
+			alwaysVisible=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+}
+
+[explo_pillar_part]
+{
+	[circle]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=1;
+			sizemod=1;
+			pos=0, 1.0, 0;
+			emitVector=0,1,0;
+			gravity=0, 0, 0;
+			Texture=smoke1;
+			colorMap=1 .9 .4 .1   .8 .3 0 .1   0 0 0 1   0 0 0 1   0 0 0 .5   0 0 0 0;
+			airdrag=.95;
+			particleLife=16;
+			particleLifeSpread=14;
+			numParticles=4;
+			particleSpeed=1;
+			particleSpeedSpread=1.6;
+			particleSize=12;
+			particleSizeSpread=20;
+			emitRot=50;
+			emitRotSpread=60;
+			directional=0;
+			alwaysVisible=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+}

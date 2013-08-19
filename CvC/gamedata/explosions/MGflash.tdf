@@ -1,0 +1,23 @@
+[MGflash]
+{
+   [flare]
+   {
+	class = CBitmapMuzzleFlame;
+
+	[properties]
+      	{
+         	dir = dir;
+         	colorMap=1 1 1 0.01	0.8 0.6 0 0.01	0 0 0 0;
+          	size=3;
+          	length=10;
+          	sizeGrowth=1;
+          	ttl=2;
+          	frontOffset=0;
+          	sideTexture=muzzleside;
+          	frontTexture=muzzlefront;
+      	}
+   water=1;
+   air=1;
+   ground=1;
+   }
+}

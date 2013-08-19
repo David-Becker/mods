@@ -1,0 +1,7 @@
+piece base, body, coverl, coverr, sideil, sideir, sideol, sideor;
+
+#include "exptype.h"
+
+Create() {
+	sleep 30;
+}

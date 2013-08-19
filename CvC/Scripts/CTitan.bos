@@ -1,0 +1,200 @@
+// CTitan.bos //
+
+piece body, mesh, cover0, cover1, cover2, tube00, tube01, tube10, tube11, tube20, tube21, nanoemitter;
+
+static-var launcher, isopen, isopening, isbuilding, basespeed, faster_speed;
+
+#define SIG_Aim 1
+#define SIG_Build 4
+#define SIG_Fire 2
+#define SIG_Faster 8
+#include "exptype.h"
+
+#define Turnrate <60>
+
+#define LAUNCHERCOVER_DELAY 1000
+
+Faster() //workaround to prevent the unit from constantly resetting the MAX_SPEED
+{
+	signal SIG_Faster;
+	set-signal-mask SIG_Faster;
+	while (!isbuilding) {
+		set MAX_SPEED to faster_speed;
+		sleep 30;
+	}
+}
+
+#define UPGRADE_ACTION if((upgrades == (upgrades|UPG_CRUISEENGINES)) && !isbuilding) start-script Faster();
+#define UPGRADE_BREAK_ON UPG_TITANMISSILES | UPG_TITANSHIELD | UPG_CRUISEENGINES
+#include "upgradesystem.h"
+
+Open()
+{
+	set-signal-mask 0;
+	isopening=1;
+	move cover0 to z-axis [-4] speed [2];
+	sleep LAUNCHERCOVER_DELAY;
+	move cover1 to z-axis [-4] speed [2];
+	sleep LAUNCHERCOVER_DELAY;
+	move cover2 to z-axis [-4] speed [2];
+	wait-for-move cover2 along z-axis;
+	isopening=0;
+	isopen=1;
+}
+
+Close()
+{
+	set-signal-mask SIG_Aim;
+	sleep 5000;
+//	turn body to y-axis 0 speed Turnrate;
+	isopen=0;
+	move cover2 to z-axis 0 speed [2];
+	sleep LAUNCHERCOVER_DELAY;
+	move cover1 to z-axis 0 speed [2];
+	sleep LAUNCHERCOVER_DELAY;
+	move cover0 to z-axis 0 speed [2];
+	sleep LAUNCHERCOVER_DELAY;
+	launcher = 0;
+}
+
+Create()
+{
+	turn nanoemitter to x-axis <20> now;
+	launcher=0;
+	isopen=0;
+	basespeed=get MAX_SPEED;
+	faster_speed=(basespeed *16)/10;
+	start-script CheckForUpgrades();
+}
+
+CycleFirepoint()
+{
+	signal SIG_Fire;
+	set-signal-mask SIG_Fire;
+	launcher=0;
+	while(1) {
+		sleep 30;
+		launcher=launcher+1;
+		if (launcher==6)
+		{
+			launcher=0;
+		}
+	}
+}
+
+QueryPrimary(piecenum)
+{
+	if (launcher==0) piecenum=tube00;
+	else if (launcher==1) piecenum=tube01;
+	else if (launcher==2) piecenum=tube11;
+	else if (launcher==3) piecenum=tube10;
+	else if (launcher==4) piecenum=tube20;
+	else if (launcher==5) piecenum=tube21;
+	else piecenum=tube00;
+}
+
+FirePrimary()
+{
+	start-script CycleFirepoint();
+}
+
+AimFromPrimary(piecenum)
+{
+	piecenum=body;
+}
+
+AimPrimary(heading,pitch)
+{
+	if (upgrades != (upgrades | 2)) return 0;
+	signal SIG_Aim;
+	set-signal-mask SIG_Aim;
+	if(!isopen && !isopening) start-script Open();
+	start-script Close();
+	wait-for-turn body around y-axis;
+	return(isopen);
+}
+
+EndBurst1()
+{
+	signal SIG_Fire;
+}
+
+AimWeapon2(heading,pitch)
+{
+	return(upgrades==(upgrades | 4));
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum=body;
+}
+
+QueryWeapon2(piecenum)
+{
+	piecenum=body;
+}
+
+IdleGuns()
+{
+	sleep 5000;
+	turn body to y-axis 0 speed Turnrate;
+}
+
+AimWeapon4(heading, pitch)
+{
+	turn body to y-axis heading speed Turnrate;
+	wait-for-turn body around y-axis;
+	start-script IdleGuns();
+	return !isbuilding;
+}
+
+QueryWeapon4(piecenum)
+{
+	piecenum=nanoemitter;
+}
+
+StartBuilding(heading,pitch)
+{
+	signal SIG_Build;
+	signal SIG_Faster;
+	set-signal-mask SIG_Build;
+	start-script Close();
+	isbuilding=1;
+	set MAX_SPEED to 1;
+//	turn body to y-axis heading speed Turnrate;
+//	wait-for-turn body around y-axis;
+	set INBUILDSTANCE to TRUE;
+}
+
+StopBuilding()
+{
+	set INBUILDSTANCE to FALSE;
+	isbuilding=0;
+	if (upgrades != (upgrades | UPG_CRUISEENGINES))
+		set MAX_SPEED to basespeed;
+	else
+		start-script Faster();
+//	signal SIG_Aim;
+//	set-signal-mask SIG_Aim | SIG_Build;
+//	turn body to y-axis <0> speed Turnrate;
+}
+
+SweetSpot(piecenum)
+{
+	piecenum=body;
+}
+
+QueryNanoPiece(piecenum)
+{
+	emit-sfx 2050 from nanoemitter;
+	piecenum=nanoemitter;
+}
+
+Killed(severity,corpsetype)
+{
+	corpsetype=3;
+	explode mesh type SHATTER | FIRE;
+	explode cover0 type FALL | FIRE | SMOKE;
+	explode cover1 type FALL | FIRE | SMOKE;
+	explode cover2 type FALL | FIRE | SMOKE;
+}

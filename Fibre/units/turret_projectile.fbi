@@ -1,0 +1,66 @@
+[UNITINFO]
+{
+	Name=Poison;
+	Unitname=turret_projectile;
+	Description=Launchable turret;
+
+	// Required Tags
+	Category=TURRET BUILDING GROUND SMALL NOTINFRA;
+	FootprintX=1;
+	FootprintZ=1;
+	MaxDamage=400;
+	IdleAutoHeal=0;
+	BuildCostEnergy=120;
+	maxSlope=36;
+	ObjectName=turret_projectile.s3o;
+	//BuildPic=turret_shredder.tga;
+	Side=ANY;
+	//SoundCategory=CITADEL;
+
+	// Movement
+	CanMove=0;
+
+	// Airplane Moventment
+
+	// Buildings
+	yardmap=o;
+	floater=1;
+
+	// Construction
+	ShowNanoFrame=0;
+	LevelGround=0;
+
+	// Resources
+	EnergyMake=0;
+	EnergyStorage=1;
+	MetalStorage=0;
+	MetalMake=0;
+	Reclaimable=0;
+
+	// Abilities
+	CanStop=1;
+	SelfDestructCountdown=1;
+	onOffable=1;
+	activateWhenBuilt=1;
+
+	// Sight/Radar
+	RadarDistance=0;
+	SightDistance=0;
+	SeismicSignature=0;
+
+	// Weapons
+	Weapon1=TurretLaser;
+	ExplodeAs=DeathMed;
+
+	// Tracks/Flares
+
+	// Watersettings
+
+	// Misc
+	SmoothAnim=0;
+
+	[SFXTypes]
+	{
+		explosionGenerator0=custom:muzzle_shredder;
+	}
+}

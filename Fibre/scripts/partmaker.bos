@@ -1,0 +1,11 @@
+piece base, body, wheel, top;
+
+#include "Fibre.h"
+
+Completed() {
+	spin wheel around y-axis speed <120>;
+}
+
+Indicate() {
+	emit-sfx 1024 from top;
+}

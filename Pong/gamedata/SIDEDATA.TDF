@@ -1,0 +1,8 @@
+[SIDE0]
+{
+	name=player;
+	commander=paddle;
+}
+[CANBUILD]
+{
+}

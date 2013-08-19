@@ -1,0 +1,205 @@
+[TITAN_MISSILES]
+{
+	ID=17495;
+	name=TitanMissiles;
+	rendertype=1;
+	//lineofsight=1;
+	ballistic=1;
+	turret=1;
+	//minangle=0;
+	//vlaunch=0;
+	
+	//Trajectoryheight=1;
+	//Wobble=1750;
+	sprayangle=512;
+
+	burst=48;
+	burstrate=0.06;
+	
+	//MyGravity=1000;
+
+	model=TitanMissile.s3o;
+	range=2500;
+	reloadtime=25;
+	//noautorange=1;
+	weapontimer=6;
+	flighttime=8000;
+	weaponvelocity=700;
+	weaponacceleration=700;
+	startvelocity=700;
+	turnrate=0;
+	areaofeffect=140;
+	edgeeffectiveness=0.3;
+	energypershot=0;
+	metalpershot=0;
+	soundstart=misicbm1;
+	soundhit=xplomed4;
+	tracking=0;
+	guidance=0;
+	tolerance=4000;
+	commandfire=0;
+	shakemagnitude=8;
+	shakeduration=0.5;
+	explosiongenerator=custom:arty;
+	startsmoke=1;
+	interceptedbyshieldtype=4; //Artillery
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+	[DAMAGE]
+	{
+		default=600;
+		//Swarm=80;
+	}
+}
+
+[TITAN_MELTERLASER]
+	{
+	name=Melter Laser;
+	rendertype=0;
+	lineofsight=1;
+	turret=1;
+	range=256;
+
+	beamtime=0.05;
+	beamlaser=1;
+	RGBcolor=1 .6 .2;
+	largebeamlaser=1;
+	thickness=20;
+	laserflaresize=4;
+	intensity=1;
+
+	reloadtime=4;
+
+	areaofeffect=16;
+
+	tolerance=1000;
+
+	interceptedbyshieldtype=0; //effect
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+	explosiongenerator=custom:buildFX_melter_small;
+	[DAMAGE]
+		{
+		default=0.000001;
+		}
+	}
+
+[TITAN_BATTLEMELTER]
+	{
+	name=Melter Laser;
+	rendertype=0;
+	lineofsight=1;
+	turret=1;
+	range=360;
+
+	beamtime=.5;
+	beamlaser=1;
+	RGBcolor=1 .6 .2;
+	largebeamlaser=1;
+	thickness=20;
+	laserflaresize=4;
+	intensity=1;
+
+	reloadtime=.5;
+
+	areaofeffect=128;
+
+	tolerance=1000;
+
+	interceptedbyshieldtype=0; //effect
+	impulsefactor=0;
+	impulseboost=0;
+	craterfactor=0;
+	craterboost=0;
+	explosiongenerator=custom:buildFX_melter_small;
+	[DAMAGE]
+		{
+		default=1500;
+		}
+	}
+
+[TITAN_NUKES]
+{
+	ID=17496;
+	name=TitanNukes;
+	rendertype=1;
+	lineofsight=1;
+	ballistic=0;
+	turret=0;
+	minangle=0;
+	vlaunch=1;
+	
+	Trajectoryheight=0;
+	Wobble=0;
+	
+	burst=6;
+	burstrate=0.3;
+	
+	model=TitanMissile.s3o;
+	range=10240;
+	reloadtime=8;
+	noautorange=1;
+	weapontimer=6;
+	flighttime=8000;
+	weaponvelocity=400;
+	weaponacceleration=400;
+	turnrate=0;
+	areaofeffect=2048;
+	edgeeffectiveness=1;
+	energypershot=20000;
+	metalpershot=10000;
+	soundstart=misicbm1;
+	soundhit=xplonuk4;
+	firestarter=0;
+	smokedelay=.1;
+	selfprop=1;
+	smoketrail=1;
+	propeller=1;
+	twophase=1;
+	guidance=1;
+	tolerance=4000;
+	stockpile=0;
+	commandfire=1;
+	shakemagnitude=50;
+	shakeduration=1.5;
+	startsmoke=1;
+	explosiongenerator=custom:nuke;
+	[DAMAGE]
+	{
+		default=25000;
+		Titan=2500;
+		It=1000;
+	}
+}
+
+	//Melee 1, Sniper 2, Artillery 4, Super 8, Antishield 16
+
+[TITAN_SHIELD]
+{
+ID=133;
+name=Shield;
+IsShield=1;
+ShieldRepulser=0;
+SmartShield=0;
+ExteriorShield=1;
+VisibleShield=1;
+VisibleShieldRepulse=1;
+ShieldEnergyUse=300;
+ShieldForce=50000;
+ShieldRadius=400;
+ShieldMaxSpeed=25000;
+ShieldPower=0;
+ShieldInterceptType=31;
+ShieldGoodColor=0.925 1 0.875;
+ShieldBadColor=0.35 0.275 0.225;
+ShieldAlpha=0.4;
+[DAMAGE]
+{
+default=10;
+}
+}
+

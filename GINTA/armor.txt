@@ -1,0 +1,17 @@
+[ARMORED]
+{
+	mbt=1;
+}
+
+[CONCRETE]
+{
+	mainfac=1;
+}
+
+[UNARMORED]
+{
+}
+
+[ORGANIC]
+{
+}

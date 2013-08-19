@@ -1,0 +1,45 @@
+[UNITINFO]
+	{
+	UnitName=CMEX;
+	Version=1;
+	Side=COSMOS;
+	Objectname=CMex.s3o;
+	Designation=CMex;
+	Name=Automated Mining System;
+	Description=- Extracts and refines ore;
+	buildpic=cmex.bmp;
+	FootprintX=3;
+	FootprintZ=3;
+	BuildCostEnergy=0;
+	BuildCostMetal=50;
+	MaxDamage=3500;
+	MaxWaterDepth=0;
+	MaxSlope=40;
+	EnergyUse=0;
+	BuildTime=3200;
+	WorkerTime=0;
+	BMcode=0;
+	Builder=0;
+	ThreeD=1;
+	ZBuffer=1;
+	NoAutoFire=0;
+	SightDistance=250;
+	RadarDistance=0;
+	SoundCategory=CORE_GEO;
+	EnergyStorage=0;
+	MetalStorage=350;
+	ExplodeAs=TITAN_MISSILE;
+	SelfDestructAs=Big_ICBM;
+	Category=MEX HARMLESS LARGE NOTSMALL BUILDING ALL ;
+	TEDClass=METAL;
+	YardMap=oooo oooo oooo oooo;
+	ExtractsMetal=0.01;
+	buildangle=4096;
+	ActivateWhenBuilt=1;
+	Weapon1=Mex_Shield;
+	shownanoframe=0;
+        [SFXTypes]
+	{
+	       explosiongenerator0=custom:buildFX_melter;
+       	}
+}

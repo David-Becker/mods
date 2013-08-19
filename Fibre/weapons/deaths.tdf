@@ -1,0 +1,67 @@
+[DeathSmall]
+	{
+	name=RIP;
+	rendertype=1;
+	lineofsight=1;
+	WeaponType=Cannon;
+	alwaysVisible=1;
+
+	areaofeffect=0;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	explosionGenerator=custom:explo_small;
+
+	[DAMAGE]
+		{
+		default=0;
+		}
+	}
+
+[DeathMed]
+	{
+	name=RIP;
+	rendertype=1;
+	lineofsight=1;
+	WeaponType=Cannon;
+	alwaysVisible=1;
+
+	areaofeffect=0;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	explosionGenerator=custom:explo_med;
+
+	[DAMAGE]
+		{
+		default=0;
+		}
+	}
+
+
+[DeathLarge]
+	{
+	name=RIP;
+	rendertype=1;
+	lineofsight=1;
+	WeaponType=Cannon;
+	alwaysVisible=1;
+
+	areaofeffect=0;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	explosionGenerator=custom:explo_large;
+
+	[DAMAGE]
+		{
+		default=0;
+		}
+	}
+

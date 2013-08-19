@@ -1,0 +1,83 @@
+[Missile_Gunship_Unguided]
+	{
+	name=ATGR;
+	rendertype=1;
+	lineofsight=1;
+	smoketrail=1;
+	selfprop=1;
+	turnrate=0;
+	guidance=0;
+	tracks=1;
+	wobble=1024;
+	model=Gunship_ATGM.s3o;
+
+	turret=1;
+	range=2048;
+	weaponvelocity=768;
+	startvelocity=768;
+	waponaccelleration=128;
+	weapontimer=3;
+	burnblow=1;
+	
+	reloadtime=0.5;
+
+	areaofeffect=48;
+	collidefriendly=0;
+	avoidfriendly=0;
+	
+	tolerance=1000;
+
+	impulsefactor=0; 
+	impulseBoost=0; //Thanks, Argh.
+	craterMult=0; 
+	craterBoost=0;
+	
+	interceptedbyshieldtype=1; //Standard Armor
+	[DAMAGE]
+		{
+		default=3000;
+		Armored=900;
+		}
+	}
+
+[Missile_Gunship_ATGM]
+	{
+	name=ATGM;
+	rendertype=4;
+	lineofsight=1;
+	smoketrail=1;
+	selfprop=1;
+	turnrate=5120;
+	guidance=1;
+	tracks=1;
+	wobble=0;
+	model=Gunship_ATGM.s3o;
+
+	turret=1;
+	range=4096;
+	weaponvelocity=1024;
+	startvelocity=1024;
+	waponaccelleration=128;
+	weapontimer=4;
+	burnblow=1;
+	
+	reloadtime=5;
+
+	areaofeffect=16;
+	collidefriendly=0;
+	avoidfriendly=0;
+	
+	tolerance=1000;
+
+	impulsefactor=0; 
+	impulseBoost=0; //Thanks, Argh.
+	craterMult=0; 
+	craterBoost=0;
+	
+	interceptedbyshieldtype=1; //Standard Armor
+	[DAMAGE]
+		{
+		default=5500;
+		Concrete=1200;
+		}
+	}

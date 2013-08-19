@@ -1,0 +1,70 @@
+[UNITINFO]
+{
+	Name=Node;
+	Unitname=node;
+	Description=Node;
+
+	// Required Tags
+	Category=NODE BUILDING GROUND NOTSMALL INFRA;
+	FootprintX=1;
+	FootprintZ=1;
+	MaxDamage=5000;
+	IdleAutoHeal=0;
+	BuildCostEnergy=300;
+	ObjectName=node.s3o;
+	BuildPic=node.tga;
+	Side=ANY;
+	//SoundCategory=NODE;
+
+	// Movement
+	CanMove=0;
+
+	// Airplane Moventment
+
+	// Buildings
+	yardmap=o;
+	maxSlope=36;
+	floater=1;
+
+	// Construction
+	ShowNanoFrame=0;
+	LevelGround=1;
+
+	// Resources
+	EnergyMake=0;
+	EnergyStorage=0;
+	MetalStorage=0;
+	MetalMake=0;
+	Reclaimable=0;
+
+	// Abilities
+	CanStop=1;
+	SelfDestructCountdown=1;
+
+	// Sight/Radar
+	RadarDistance=0;
+	SightDistance=0;
+	SeismicSignature=0;
+	SeismicDistance=200;
+
+	// Weapons
+	ExplodeAs=DeathLarge;
+
+	// Tracks/Flares
+
+	// Watersettings
+
+	// Misc
+	SmoothAnim=0;
+	weapon1=NodeRange;
+	onlyTargetCategory1=VOID;
+	canAttack=0;
+
+	[SFXTypes]
+	{
+		explosionGenerator0=custom:trail_node;
+		explosionGenerator1=custom:effect_node_impact;
+		explosionGenerator2=custom:effect_node;
+		explosionGenerator3=custom:effect_node_full;
+	}
+}

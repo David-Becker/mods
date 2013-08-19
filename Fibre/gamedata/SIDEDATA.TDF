@@ -1,0 +1,30 @@
+[SIDE0]
+	{
+	name=Player;
+	commander=citadel;
+	}
+[CANBUILD]
+{
+	[citadel] {
+		canBuild1=node;
+		canBuild2=transmitter;
+		canBuild3=teleporter;
+		canBuild4=partmaker;
+		canBuild5=repair;
+		canBuild10=turret_laser;
+		canBuild11=turret_rocket;
+		canBuild12=turret_globber;
+		canBuild13=turret_shredder;
+		canBuild14=turret_sea;
+		canBuild15=turret_mortar;
+		canBuild16=turret_starfire;
+		canBuild17=turret_howitzer;
+		canBuild18=turret_cruisemissile;
+		canBuild19=turret_launcher;
+		canBuild20=factory_light;
+		canBuild21=factory_armor;
+		canBuild22=factory_gunship;
+		canBuild23=factory_bomber;
+		canBuild24=factory_ship;
+	}
+}

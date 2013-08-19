@@ -1,0 +1,91 @@
+[UNITINFO]
+{
+	Name=Titan;
+	UnitName=CTITAN;
+
+	//    Required Tags
+	BuildCostEnergy=65535;
+	BuildCostMetal=65535;
+	BuildTime=65535;
+	Category=COMMANDER LARGE NOTSMALL NOTBUILDING FLYING ALL ;
+	Description=- Mobile headquarters;
+	FootprintX=6;
+	FootprintZ=6;
+	YardMap=y;
+	MaxDamage=12200;
+	ObjectName=CTitan.s3o;
+	IconType=titan;
+	Side=COSMOS;
+	SoundCategory=ARM_HOVER_BIG;
+	TEDClass=TANK;
+	NoAutoFire=0;
+	Commander=1;
+	ImmuneToParalyzer=1;
+	HighTrajectory=1;
+
+	//    Movement
+	BrakeRate=0.8;
+	//MovementClass=TANKHOVER2;
+	Acceleration=0.15;
+	CanMove=1;
+	CanFly=1;
+	CanHover=1;
+	CruiseAlt=100;
+	AirHoverFactor=0;
+	AirStrafe=0;
+	HoverAttackStrafe=0;
+
+	MaxVelocity=1.5;
+	TurnRate=160;
+	//Upright=1;
+	//Floater=1;
+
+	//    Airplane Moventment
+
+	//    Buildings
+
+	//    Construction
+	Builder=1;
+	WorkerTime=320;
+	Builddistance=400;
+
+	//    Resources
+	EnergyMake=100;
+	EnergyStorage=1000;
+	EnergyUse=0;
+	MetalStorage=1000;
+	MetalMake=10;
+	
+	
+	//    Abilities
+	CanAttack=1;
+	CanStop=1;
+	CanBuild=1;
+	ShowNanoSpray=0;
+
+	//    Sight/Radar
+	RadarDistance=2048;
+	SightDistance=960;
+
+	//    Weapons
+	OnlyTargetCategory=All;
+	Weapon1=TITAN_MISSILES;
+	Weapon2=TITAN_SHIELD;
+	Weapon3=TITAN_MELTERLASER;
+	OnlyTargetCategory3=VOID;
+	Weapon4=TITAN_BATTLEMELTER;
+	WeaponSlaveTo4=1;
+
+	BadTargetCategory=AIR;
+	ExplodeAs=TITAN_NUKES;
+	SelfDestructAs=TITAN_NUKES;
+	NoChaseCategory=VTOL;
+	
+	//    Tracks/Flares
+
+	//    Watersettings
+
+	//    Misc
+	SmoothAnim=0;
+	
+}

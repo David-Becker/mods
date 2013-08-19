@@ -1,0 +1,28 @@
+piece base, body, gp;
+
+#include "Fibre.h"
+#define DRAIN 100
+
+Create() {
+	turn gp to x-axis <-30> now;
+}
+
+QueryWeapon1(p) {
+	p=gp;
+}
+
+AimFromWeapon1(p) {
+	p=gp;
+}
+
+AimWeapon1(h,p) {
+	return 1;
+}
+
+FireWeapon1() {
+	set POWERLEVEL to (get POWERLEVEL) - DRAIN;
+}
+
+BlockShot1(target, block) {
+	block = (!target) || ((get POWERLEVEL) < DRAIN);
+}

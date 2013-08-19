@@ -1,0 +1,119 @@
+piece base, body, threads, grenadelaunchers;
+piece core, cover, barrel, turret0, turret1;
+piece gun, mg0, mg1, grenade0, grenade1;
+
+static-var activegl;
+
+#define SIG_Aim0 1
+#define SIG_Aim1 2
+#define SIG_Aim2 4
+
+#include "exptype.h"
+#define MELTER_DEPTH [-24]
+#include "buildFX_melter.h"
+
+#define UPGRADE_BREAK_ON UPG_HEAVYWEAPONS
+#include "upgradesystem.h"
+
+Create()
+{
+	start-script CheckForUpgrades();
+	call-script buildFX();
+	spin core around z-axis speed <60>;
+}
+
+Killed (severity, corpsetype)
+{
+	explode threads type FALL | SMOKE;
+	explode grenadelaunchers type FALL | SMOKE;
+	explode turret0 type FALL | FIRE | SMOKE;
+	explode turret1 type FALL | FIRE | SMOKE;
+	explode body type SHATTER | FIRE | SMOKE;
+	explode core type SHATTER | FIRE | SMOKE;
+	explode cover type FALL | FIRE | SMOKE;
+	explode barrel type FALL | FIRE | SMOKE;
+	corpsetype=3; //since this thing has a volatile core
+}
+
+// plasmastorm
+AimWeapon1(heading, pitch)
+{
+	return(TRUE);
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = core;
+}
+
+QueryWeapon1(piecenum)
+{
+	piecenum = gun;
+}
+
+FireWeapon1()
+{
+	move barrel to z-axis [-2] speed [80];
+	wait-for-move barrel along z-axis;
+	move barrel to z-axis 0 speed [8];
+	wait-for-move barrel along z-axis;
+}
+
+//MGs
+AimWeapon2(heading, pitch)
+{
+	turn turret0 to y-axis heading speed <360>;
+	wait-for-turn turret0 around y-axis;
+	return(TRUE);
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum = turret0;
+}
+
+QueryWeapon2(piecenum)
+{
+	piecenum = mg0;
+}
+
+AimWeapon3(heading, pitch)
+{
+	turn turret1 to y-axis heading speed <360>;
+	wait-for-turn turret1 around y-axis;
+	return(TRUE);
+}
+
+AimFromWeapon3(piecenum)
+{
+	piecenum = turret1;
+}
+
+QueryWeapon3(piecenum)
+{
+	piecenum = mg1;
+}
+
+//Grenade Launchers
+AimWeapon4(heading, pitch)
+{
+	return(upgrades==(upgrades | UPG_HEAVYWEAPONS));
+}
+
+AimFromWeapon4(piecenum)
+{
+	piecenum = grenadelaunchers;
+}
+
+QueryWeapon4(piecenum)
+{
+	if (activegl==0)
+		piecenum = grenade0;
+	else
+		piecenum = grenade1;
+}
+
+FireWeapon4()
+{
+	activegl = 1 - activegl;
+}

@@ -1,0 +1,229 @@
+piece base, body, engine0, engine1, cover;
+piece rudder_l0, rudder_r0, rudder_l1, rudder_r1, rudder_l2, rudder_r2;
+piece gun0, gun1, gun2, gun3, gun4, gun5, gun6, gun7;
+
+static-var ismoving, faster_speed;
+
+#define SIG_Stop 2
+#define SIG_Faster 4
+
+#include "exptype.h"
+#define MELTER_DEPTH [-24]
+#include "buildFX_melter.h"
+
+Faster() //workaround to prevent the unit from constantly resetting the MAX_SPEED
+{
+	signal SIG_Faster;
+	set-signal-mask SIG_Faster;
+	while (1) {
+		set MAX_SPEED to faster_speed;
+		sleep 30;
+	}
+}
+
+#define UPGRADE_ACTION if(upgrades == (upgrades|UPG_CRUISEENGINES)) start-script Faster();
+#define UPGRADE_BREAK_ON UPG_HEAVYWEAPONS | UPG_CRUISEENGINES
+#include "upgradesystem.h"
+
+#define FRONT_ANGLE <-30>
+#define FORE_SPEED <180>
+#define BACK_ANGLE <40>
+#define BACK_SPEED <270>
+
+
+RudderAnimation()
+{
+	while(1) {
+		while(ismoving)
+		{
+			turn rudder_r0 to y-axis BACK_ANGLE speed BACK_SPEED;
+			turn rudder_l0 to y-axis 0-BACK_ANGLE speed BACK_SPEED;
+			sleep 100;
+			turn rudder_r1 to y-axis BACK_ANGLE speed BACK_SPEED;
+			turn rudder_l1 to y-axis 0-BACK_ANGLE speed BACK_SPEED;
+			sleep 100;
+			turn rudder_r2 to y-axis BACK_ANGLE speed BACK_SPEED;
+			turn rudder_l2 to y-axis 0-BACK_ANGLE speed BACK_SPEED;
+			sleep 700;
+			turn rudder_r0 to y-axis FRONT_ANGLE speed FORE_SPEED;
+			turn rudder_l0 to y-axis 0-FRONT_ANGLE speed FORE_SPEED;
+			sleep 100;
+			turn rudder_r1 to y-axis FRONT_ANGLE speed FORE_SPEED;
+			turn rudder_l1 to y-axis 0-FRONT_ANGLE speed FORE_SPEED;
+			sleep 100;
+			turn rudder_r2 to y-axis FRONT_ANGLE speed FORE_SPEED;
+			turn rudder_l2 to y-axis 0-FRONT_ANGLE speed FORE_SPEED;
+			sleep 400;
+		}
+		sleep 300;
+	}
+}
+
+Create()
+{
+	faster_speed = ((get MAX_SPEED) *15)/10;
+	start-script CheckForUpgrades();
+	start-script buildFX();
+	start-script RudderAnimation();
+}
+
+StartMoving()
+{
+	ismoving=1;
+}
+
+StopMoving()
+{
+	ismoving=0;
+}
+
+SweetSpot(piecenum)
+{
+	piecenum=body;
+}
+
+Killed(severity, corpsetype)
+{
+	explode cover type SHATTER;
+	explode rudder_r0 type FALL | FIRE | SMOKE;
+	explode rudder_r1 type FALL | FIRE | SMOKE;
+	explode rudder_r2 type FALL | FIRE | SMOKE;
+	explode rudder_l0 type FALL | FIRE | SMOKE;
+	explode rudder_l1 type FALL | FIRE | SMOKE;
+	explode rudder_l2 type FALL | FIRE | SMOKE;
+	explode engine0 type FALL | FIRE;
+	explode engine1 type FALL | FIRE;
+	corpsetype=1;
+	if (severity>60)
+	{
+		corpsetype=3;
+		explode body type SHATTER;
+	}
+}
+
+QueryWeapon1(piecenum)
+{
+	piecenum = gun0;
+}
+
+AimWeapon1(heading, pitch)
+{
+	return(TRUE);
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = gun0;
+}
+
+
+QueryWeapon2(piecenum)
+{
+	piecenum = gun1;
+}
+
+AimWeapon2(heading, pitch)
+{
+	return(TRUE);
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum = gun1;
+}
+
+
+QueryWeapon3(piecenum)
+{
+	piecenum = gun2;
+}
+
+AimWeapon3(heading, pitch)
+{
+	return(upgrades==(upgrades | UPG_HEAVYWEAPONS));
+}
+
+AimFromWeapon3(piecenum)
+{
+	piecenum = gun2;
+}
+
+
+QueryWeapon4(piecenum)
+{
+	piecenum = gun3;
+}
+
+AimWeapon4(heading, pitch)
+{
+	return(upgrades==(upgrades | UPG_HEAVYWEAPONS));
+}
+
+AimFromWeapon4(piecenum)
+{
+	piecenum = gun3;
+}
+
+
+QueryWeapon5(piecenum)
+{
+	piecenum = gun4;
+}
+
+AimWeapon5(heading, pitch)
+{
+	return(upgrades==(upgrades | UPG_HEAVYWEAPONS));
+}
+
+AimFromWeapon5(piecenum)
+{
+	piecenum = gun4;
+}
+
+
+QueryWeapon6(piecenum)
+{
+	piecenum = gun5;
+}
+
+AimWeapon6(heading, pitch)
+{
+	return(upgrades==(upgrades | UPG_HEAVYWEAPONS));
+}
+
+AimFromWeapon6(piecenum)
+{
+	piecenum = gun5;
+}
+
+
+QueryWeapon7(piecenum)
+{
+	piecenum = gun6;
+}
+
+AimWeapon7(heading, pitch)
+{
+	return(TRUE);
+}
+
+AimFromWeapon7(piecenum)
+{
+	piecenum = gun6;
+}
+
+
+QueryWeapon8(piecenum)
+{
+	piecenum = gun7;
+}
+
+AimWeapon8(heading, pitch)
+{
+	return(TRUE);
+}
+
+AimFromWeapon8(piecenum)
+{
+	piecenum = gun7;
+}

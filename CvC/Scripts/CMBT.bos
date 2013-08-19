@@ -1,0 +1,289 @@
+piece base, body, threads;
+piece turret, barrel, ioncannon0, ioncannon1;
+piece cannon0, cn0, cannon1, cn1, missilelauncher, missile0, missile1;
+piece machinegun0, mg0, machinegun1, mg1, machinegun2, mg2, machinegun3, mg3;
+
+static-var ic, ms, mainheading, restore_delay;
+
+#define SIG_Aim0 1
+#define SIG_Aim1 2
+#define SIG_Aim2 4
+#define SIG_Aim3 8
+#define SIG_Aim4 16
+#define SIG_Aim5 32
+#define SIG_Aim6 64
+#define SIG_Aim7 128
+
+#include "exptype.h"
+#define MELTER_DEPTH [-20]
+#include "buildFX_melter.h"
+
+#define UPGRADE_BREAK_ON UPG_HEAVYWEAPONS
+#include "upgradesystem.h"
+
+Create()
+{
+	turn machinegun0 to y-axis <45> now;
+	turn machinegun1 to y-axis <-45> now;
+	turn machinegun2 to y-axis <135> now;
+	turn machinegun3 to y-axis <-135> now;
+	start-script buildFX();
+	start-script CheckForUpgrades();
+}
+
+Killed(severity, corpsetype)
+{
+	explode machinegun0 type FALL | FIRE | SMOKE;
+	explode machinegun1 type FALL | FIRE | SMOKE;
+	explode machinegun2 type FALL | FIRE | SMOKE;
+	explode machinegun3 type FALL | FIRE | SMOKE;
+	explode cannon0 type FALL | FIRE | SMOKE;
+	explode cannon1 type FALL | FIRE | SMOKE;
+	explode missilelauncher type FALL | FIRE | SMOKE;
+	explode barrel type FALL | FIRE | SMOKE;
+	hide machinegun0;
+	hide machinegun1;
+	hide machinegun2;
+	hide machinegun3;
+	hide cannon0;
+	hide cannon1;
+	hide missilelauncher;
+	hide barrel;
+//	explode threads type SHATTER;
+//	corpsetype=1;
+//	if (severity>80)
+//	{
+//		explode body type SHATTER;
+//		explode turret type SHATTER;
+//		corpsetype=3;
+//	}
+/*	sleep 2500;
+	var i;
+	i=0;
+	while (i<5)
+	{
+		explode machinegun0 type FALL | SMOKE | FIRE;
+		explode machinegun1 type FALL | SMOKE | FIRE;
+		explode machinegun2 type FALL | SMOKE | FIRE;
+		explode machinegun3 type FALL | SMOKE | FIRE;
+		++i;
+	}*/
+//	sleep 1500;
+	explode body type SHATTER;
+	explode turret type SHATTER;
+	return (3);
+}
+
+RestoreAfterDelay()
+{
+	sleep 5000;
+	mainheading = 0;
+	turn turret to y-axis <0> speed <100>;
+	turn missilelauncher to y-axis <0> speed <160>;
+	turn cannon0 to y-axis <0> speed <160>;
+	turn cannon1 to y-axis <0> speed <160>;
+	turn machinegun0 to y-axis <45> speed <220>;
+	turn machinegun1 to y-axis <-45> speed <220>;
+	turn machinegun2 to y-axis <135> speed <220>;
+	turn machinegun3 to y-axis <-135> speed <220>;
+}
+
+
+//IonCannon
+AimWeapon1(heading, pitch)
+{
+	mainheading=heading;
+	signal SIG_Aim0;
+	set-signal-mask SIG_Aim0;
+	turn turret to y-axis heading speed <100>;
+	wait-for-turn turret around y-axis;
+	start-script RestoreAfterDelay();
+	return(TRUE);
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum=turret;
+}
+
+QueryWeapon1(piecenum)
+{
+	//if (ic==1) piecenum = ioncannon0;
+	//else piecenum = ioncannon1;
+	piecenum=ioncannon0;
+}
+
+FireWeapon1()
+{
+	ic = 1 - ic;
+	move barrel to z-axis [-4] speed [500];
+	wait-for-move barrel along z-axis;
+	move barrel to z-axis [0] speed [80];
+}
+
+
+AimWeapon9(heading, pitch)
+{
+	set-signal-mask SIG_Aim0;
+	wait-for-turn turret around y-axis;
+	return(upgrades == (upgrades | UPG_HEAVYWEAPONS));
+}
+
+AimFromWeapon9(piecenum)
+{
+	piecenum=turret;
+}
+
+QueryWeapon9(piecenum)
+{
+	piecenum = ioncannon1;
+}
+
+
+//missilelauncher
+AimWeapon2(heading,pitch)
+{
+	signal SIG_Aim1;
+	set-signal-mask SIG_Aim1;
+	turn missilelauncher to y-axis (heading - mainheading) speed <160>;
+	wait-for-turn missilelauncher around y-axis;
+	return(upgrades == (upgrades | UPG_HEAVYWEAPONS));
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum=missilelauncher;
+}
+
+QueryWeapon2(piecenum)
+{
+	if (ms==1) piecenum = missile0;
+	else piecenum = missile1;
+}
+
+FireWeapon2()
+{
+	ms = 1 - ms;
+}
+
+//Cannons
+
+AimWeapon3(heading, pitch)
+{
+	signal SIG_Aim2;
+	set-signal-mask SIG_Aim2;
+	turn cannon0 to y-axis heading - mainheading speed <160>;
+	wait-for-turn cannon0 around y-axis;
+	return(upgrades == (upgrades | UPG_HEAVYWEAPONS));
+}
+
+AimFromWeapon3(piecenum)
+{
+	piecenum=cannon0;
+}
+
+QueryWeapon3(piecenum)
+{
+	piecenum=cn0;
+}
+
+
+AimWeapon4(heading, pitch)
+{
+	signal SIG_Aim3;
+	set-signal-mask SIG_Aim3;
+	turn cannon1 to y-axis heading - mainheading speed <160>;
+	wait-for-turn cannon0 around y-axis;
+	return(upgrades == (upgrades | UPG_HEAVYWEAPONS));
+}
+
+AimFromWeapon4(piecenum)
+{
+	piecenum=cannon1;
+}
+
+QueryWeapon4(piecenum)
+{
+	piecenum=cn1;
+}
+
+// machineguns
+
+AimWeapon5(heading, pitch)
+{
+	signal SIG_Aim4;
+	set-signal-mask SIG_Aim4;
+	turn machinegun0 to y-axis heading speed <220>;
+	wait-for-turn machinegun0 around y-axis;
+	return(TRUE);
+}
+
+AimFromWeapon5(piecenum)
+{
+	piecenum=machinegun0;
+}
+
+QueryWeapon5(piecenum)
+{
+	piecenum=mg0;
+}
+
+
+AimWeapon6(heading, pitch)
+{
+	signal SIG_Aim5;
+	set-signal-mask SIG_Aim5;
+	turn machinegun1 to y-axis heading speed <220>;
+	wait-for-turn machinegun1 around y-axis;
+	return(TRUE);
+}
+
+AimFromWeapon6(piecenum)
+{
+	piecenum=machinegun1;
+}
+
+QueryWeapon6(piecenum)
+{
+	piecenum=mg1;
+}
+
+
+AimWeapon7(heading, pitch)
+{
+	signal SIG_Aim6;
+	set-signal-mask SIG_Aim6;
+	turn machinegun2 to y-axis heading speed <220>;
+	wait-for-turn machinegun2 around y-axis;
+	return(TRUE);
+}
+
+AimFromWeapon7(piecenum)
+{
+	piecenum=machinegun2;
+}
+
+QueryWeapon7(piecenum)
+{
+	piecenum=mg2;
+}
+
+
+AimWeapon8(heading, pitch)
+{
+	signal SIG_Aim7;
+	set-signal-mask SIG_Aim7;
+	turn machinegun3 to y-axis heading speed <220>;
+	wait-for-turn machinegun3 around y-axis;
+	return(TRUE);
+}
+
+AimFromWeapon8(piecenum)
+{
+	piecenum=machinegun3;
+}
+
+QueryWeapon8(piecenum)
+{
+	piecenum=mg3;
+}

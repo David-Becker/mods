@@ -1,0 +1,9 @@
+piece base, body, docker;
+
+Create() {
+	return 0;
+}
+
+QueryLandingPad(p) {
+	p = docker;
+}

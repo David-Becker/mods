@@ -1,0 +1,13 @@
+[signal]
+{
+
+	[groundflash]
+	{
+		flashSize = 0;   // flash size
+		flashAlpha = 0;    // initial alpha of the flash
+		circleGrowth = 12.8; // size increase/frame
+		circleAlpha = 0.6;   // initial alpha of the ring
+		ttl = 20;          // number of frames
+		color = 1,0.1,0.1;    // color RGB
+	}
+}

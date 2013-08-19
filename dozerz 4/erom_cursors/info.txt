@@ -1,0 +1,7 @@
+"Dots" Cursor Set
+
+Mod Author Version
+
+Requires that you not have a dependency on "otacontent.sd7" to function, but is smaller fize than the full version. Place the Anims folder in the mod archive.
+
+by Erom

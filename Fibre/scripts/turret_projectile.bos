@@ -1,0 +1,35 @@
+piece foot, turret, guns, gp0, gp1;
+
+#include "Fibre.h"
+
+static-var gun;
+#define SIG_Aim 1
+
+Create() {
+	sleep 30000;
+	get KILL_UNIT;
+}
+
+AimFromWeapon1(p) {
+	p=turret;
+}
+
+QueryWeapon1(p) {
+	p=gp0 + gun;
+}
+
+AimWeapon1(h,p) {
+	signal SIG_Aim;
+	set-signal-mask SIG_Aim;
+	turn turret to y-axis h speed <480>;
+	turn guns to x-axis 0- p speed <480>;
+	wait-for-turn turret around y-axis;
+	wait-for-turn guns around x-axis;
+	return 1;
+}
+
+Shot1() {
+//	if (!gun) emit-sfx 1024 from gp0;
+//	else emit-sfx 1024 from gp1;
+	gun = !gun;
+}

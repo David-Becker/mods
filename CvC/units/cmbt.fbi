@@ -1,0 +1,99 @@
+[UNITINFO]
+{
+	Name=Tiger;
+	UnitName=CMBT;
+	
+	//    Required Tags
+	BuildCostEnergy=0;
+	BuildCostMetal=15000;
+	BuildTime=96000;
+	Category=MBT LARGE NOTSMALL NOTBUILDING ALL ;
+	Description=- Heavy battle tank;
+	FootprintX=6;
+	FootprintZ=6;
+	MaxDamage=20000;
+	ObjectName=CMBT.s3o;
+	buildpic=cmbt.bmp;
+	icontype=mbt;
+	Side=COSMOS;
+	SoundCategory=ARM_HOVER_BIG;
+	TEDClass=TANK;
+
+	//    Movement
+	BrakeRate=0.6;
+	MovementClass=DefaultMoveType;
+	Acceleration=0.4;
+	CanMove=1;
+	MaxVelocity=1.0;
+	TurnRate=110;
+	MaxSlope=30;
+	
+	//    Airplane Moventment
+	
+	//    Buildings
+	
+	//    Construction
+	
+	//    Resources
+	EnergyMake=10;
+	EnergyStorage=0;
+	EnergyUse=0;
+	MetalStorage=300;
+	MetalMake=80;
+	
+	
+	//    Abilities
+	CanAttack=1;
+	CanStop=1;
+	
+	//    Sight/Radar
+	RadarDistance=0;
+	SightDistance=850;
+	
+	//    Weapons
+	OnlyTargetCategory=All;
+	Weapon1=Big_IonCannon;
+
+	Weapon9=Big_IonCannon;
+	WeaponSlaveTo9=1;
+
+	Weapon2=Big_GrenadeLauncher;
+	
+	Weapon3=Big_Lasercannon;
+	Weapon4=Big_Lasercannon;
+
+	Weapon5=Big_HeavyMachineGun;
+	WeaponMainDir5=-1 0 1;
+	MaxAngleDif5=180;
+	
+	Weapon6=Big_HeavyMachineGun;
+	WeaponMainDir6=1 0 1;
+	MaxAngleDif6=180;
+	
+	Weapon7=Big_HeavyMachineGun;
+	WeaponMainDir7=-1 0 -1;
+	MaxAngleDif7=180;
+	
+	Weapon8=Big_HeavyMachineGun;
+	WeaponMainDir8=1 0 -1;
+	MaxAngleDif8=180;
+	
+	wpri_badTargetCategory=AIR;
+	BadTargetCategory=AIR;
+	ExplodeAs=Big_ICBM;
+	SelfDestructAs=Big_Blast;
+	NoChaseCategory=VTOL;
+	
+	//    Tracks/Flares
+	
+	//    Watersettings
+	
+	//    Misc
+	SmoothAnim=0;
+	
+	ShowNanoFrame=0;
+        [SFXTypes]
+	{
+	       explosiongenerator0=custom:buildFX_melter_large;
+       	}
+}

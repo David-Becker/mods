@@ -1,0 +1,5 @@
+piece base, body;
+
+Create() {
+	return 0;
+}

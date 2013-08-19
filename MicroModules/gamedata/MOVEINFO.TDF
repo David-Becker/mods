@@ -1,0 +1,29 @@
+[CLASS0]
+	{
+	Name=BlobHOVER;
+	MaxWaterDepth=4;
+	MaxSlope=89;
+	CrushStrength=40;
+	FootprintX=1;
+	FootprintZ=1;
+	}
+[CLASS1]
+	{
+	Name=Tank;
+	MaxWaterDepth=16;
+	MaxSlope=30;
+	CrushStrength=60;
+	FootprintX=2;
+	FootprintZ=2;
+	}
+[CLASS2]
+	{
+	Name=EvilTankHOVER;
+	MaxWaterDepth=255;
+	MaxSlope=89;
+	CrushStrength=40;
+	FootprintX=2;
+	FootprintZ=2;
+	}
+
+

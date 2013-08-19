@@ -1,0 +1,143 @@
+piece body, fdoor0, fdoor1, accessories, fan, tdoor0, tdoor1;
+piece debry0, debry1, debry2, debry3, debry4, debry5;
+piece smoker0, smoker1, smoker2, smoker3, doorsmoke0, doorsmoke1, doorsmoke2;
+
+#include "SFXtype.h"
+#include "exptype.h"
+
+#define SIG_Activate 1
+
+static-var hitrecently;
+
+
+Create()
+{
+	hide debry0;
+	hide debry1;
+	hide debry2;
+	hide debry3;
+	hide debry4;
+	hide debry5;
+	spin fan around x-axis speed <240>;
+}
+
+SmokeStuff()
+{
+	while(1)
+	{
+		sleep 100;
+		emit-sfx SFXTYPE_BLACKSMOKE from smoker0;
+		emit-sfx SFXTYPE_BLACKSMOKE from smoker1;
+		emit-sfx SFXTYPE_BLACKSMOKE from smoker2;
+		emit-sfx SFXTYPE_BLACKSMOKE from smoker3;
+		emit-sfx SFXTYPE_BLACKSMOKE from doorsmoke0;
+		emit-sfx SFXTYPE_BLACKSMOKE from doorsmoke1;
+		emit-sfx SFXTYPE_BLACKSMOKE from doorsmoke2;
+		emit-sfx SFXTYPE_BLACKSMOKE from doorsmoke0;
+		emit-sfx SFXTYPE_BLACKSMOKE from debry3;
+		emit-sfx SFXTYPE_BLACKSMOKE from debry5;
+	}
+}
+
+Killed(severity, corpsetype)
+{
+	explode fan type FALL | FIRE | SMOKE;
+	explode accessories type SHATTER;
+	explode fdoor0 type SHATTER;
+	explode fdoor1 type SHATTER;
+	explode tdoor0 type SHATTER;
+	explode tdoor1 type SHATTER;
+	
+	hide fan;
+	hide accessories;
+	hide fdoor0;
+	hide fdoor1;
+	hide tdoor0;
+	hide tdoor1;
+	
+	if (severity > 90) {
+		hide body;
+		var n;
+		for (n=0;n<10;++n){
+			explode debry0 type FALL;
+			explode debry1 type FALL;
+			explode debry2 type FALL;
+			explode debry3 type FALL;
+			explode debry4 type FALL;
+			explode debry5 type FALL;
+		}
+		corpsetype=3;
+		return TRUE;
+	}
+
+	explode debry0 type FALL | SMOKE;
+	explode debry1 type FALL | SMOKE;
+	explode debry2 type FALL | SMOKE | FIRE;
+	explode debry3 type FALL | SMOKE;
+	explode debry4 type FALL | SMOKE | FIRE;
+	explode debry5 type FALL | SMOKE;
+	start-script SmokeStuff();
+	move body to y-axis [-22] speed [8];
+	spin body around z-axis speed <20>;
+	sleep 600;
+	explode debry2 type FALL | SMOKE | FIRE;
+	explode debry3 type FALL | SMOKE;
+	sleep 700;
+	explode debry0 type FALL | SMOKE | FIRE;
+	explode debry5 type FALL | SMOKE;
+	explode debry5 type FALL | SMOKE;
+	wait-for-move body along y-axis;
+	return 3;
+}
+
+Activate()
+{
+	signal SIG_Activate;
+//	turn fdoor0 to y-axis <25> speed <17>;
+//	turn fdoor1 to y-axis <-25> speed <17>;
+	move fdoor0 to x-axis [-6] speed [4];
+	move fdoor1 to x-axis [6] speed [4];
+	sleep 600;
+	turn tdoor0 to z-axis <25> speed <17>;
+	turn tdoor1 to z-axis <-25> speed <17>;
+	wait-for-turn tdoor0 around z-axis;
+	set INBUILDSTANCE to 1;
+	set YARD_OPEN to 1;
+}
+
+Deactivate()
+{
+	set-signal-mask SIG_Activate;
+	set INBUILDSTANCE to 0;
+	set YARD_OPEN to 0;
+	while (get YARD_OPEN){
+		set BUGGER_OFF to 1;
+		set YARD_OPEN to 0;
+		sleep 300;
+	}
+	set BUGGER_OFF to 0;
+	move fdoor0 to x-axis [0] speed [4];
+	move fdoor1 to x-axis [0] speed [4];
+	sleep 600;
+	turn tdoor0 to z-axis <0> speed <17>;
+	turn tdoor1 to z-axis <0> speed <17>;
+}
+
+HitByWeapon()
+{
+	if (hitrecently) return TRUE;
+	var r;
+	r = rand(0,6);
+	if (r==1) explode debry0 type SMOKE;
+	if (r==2) explode debry1 type SMOKE;
+	if (r==3) explode debry2 type SMOKE;
+	if (r==4) explode debry3 type SMOKE;
+	if (r==5) explode debry4 type SMOKE;
+	else explode debry5 type SMOKE;
+	emit-sfx SFXTYPE_BLACKSMOKE from doorsmoke0;
+	emit-sfx SFXTYPE_BLACKSMOKE from doorsmoke1;
+	emit-sfx SFXTYPE_BLACKSMOKE from doorsmoke2;
+	hitrecently=TRUE;
+	sleep 2000;
+	hitrecently=FALSE;
+}

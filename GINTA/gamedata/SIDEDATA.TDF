@@ -1,0 +1,20 @@
+[SIDE0]
+	{
+	name=Thingy;
+	nameprefix=t;
+	commander=mainfac;
+	}
+
+[CANBUILD]
+	{
+	[mainfac]
+		{
+		canbuild1=mbt;
+		canbuild2=batheli;
+		canbuild3=engtank;
+		}
+	[engtank]
+		{
+		canbuild1=oilpump;
+		}
+	}

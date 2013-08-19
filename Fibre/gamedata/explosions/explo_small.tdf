@@ -1,0 +1,59 @@
+[explo_small]
+{
+	[circle]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=.3;
+			sizemod=1;
+			pos=0, 1.0, 0;
+			emitVector=0,1,0;
+			gravity=0, 0, 0;
+			Texture=smoke1;
+			colorMap=1 .9 .3 .1   .8 .3 0 .1   0 0 0 0;
+			airdrag=1;
+			particleLife=12;
+			particleLifeSpread=8;
+			numParticles=3;
+			particleSpeed=0;
+			particleSpeedSpread=.6;
+			particleSize=1;
+			particleSizeSpread=.5;
+			emitRot=0;
+			emitRotSpread=90;
+			directional=0;
+			alwaysVisible=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+	[spew]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=0;
+			sizemod=1;
+			pos=0, 1.0, 0;
+			emitVector=0,1,0;
+			gravity=0, 0, 0;
+			Texture=puff;
+			colorMap=1 .9 .1 .1   .5 .3 0 .1   0 0 0 0;
+			airdrag=1;
+			particleLife=6;
+			particleLifeSpread=8;
+			numParticles=5;
+			particleSpeed=.3;
+			particleSpeedSpread=.6;
+			particleSize=1;
+			particleSizeSpread=2;
+			emitRot=0;
+			emitRotSpread=90;
+			directional=1;
+			alwaysVisible=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+}

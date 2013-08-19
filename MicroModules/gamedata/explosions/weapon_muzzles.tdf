@@ -1,0 +1,419 @@
+[Bluegun_muzzle] {
+	[ring1]
+	{
+		class = CBitmapMuzzleFlame;
+
+		[properties]
+      	{
+         	dir = dir;
+			colorMap=1 1 1 .1   .1 .1 .5 .1   0 0 0 0;
+         	pos = 0, 0, 0;
+          	size=4;
+          	length=10;
+          	sizeGrowth=1;
+          	ttl=6;
+          	frontOffset=0;
+          	sideTexture=muzzle1f;
+          	frontTexture=muzzle1s;
+      	}
+		water=1;
+		air=1;
+		ground=1;
+		count=1;
+	}
+	[blast]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=.3;
+			sizemod=.98;
+			pos=0, 1.0, 0;
+			emitVector=dir;
+			gravity=0, 0.01, 0;
+			Texture=burncircle;
+			colorMap=.2 .6 1 .1   .1 .3 1 .1   0 0 0 0;
+			airdrag=1;
+			particleLife=32;
+			particleLifeSpread=10;
+			numParticles=1;
+			particleSpeed=0;
+			particleSpeedSpread=0;
+			particleSize=3;
+			particleSizeSpread=2;
+			emitRot=0;
+			emitRotSpread=90;
+			directional=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+}
+
+[Blackgun_muzzle] {
+	[ring1]
+	{
+		class = CBitmapMuzzleFlame;
+
+		[properties]
+      	{
+         	dir = dir;
+			colorMap=1 1 1 .1   .4 .1 .3 .1   0 0 0 0;
+         	pos = 0, 0, 0;
+          	size=4;
+          	length=10;
+          	sizeGrowth=1;
+          	ttl=6;
+          	frontOffset=0;
+          	sideTexture=muzzle1f;
+          	frontTexture=muzzle1s;
+      	}
+		water=1;
+		air=1;
+		ground=1;
+		count=1;
+	}
+	[blast]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=.3;
+			sizemod=.98;
+			pos=0, 1.0, 0;
+			emitVector=dir;
+			gravity=0, 0.01, 0;
+			Texture=burncircle;
+			colorMap=.7 .3 .6 .1   .7 .1 .2 .1   0 0 0 0;
+			airdrag=1;
+			particleLife=32;
+			particleLifeSpread=10;
+			numParticles=1;
+			particleSpeed=0;
+			particleSpeedSpread=0;
+			particleSize=3;
+			particleSizeSpread=2;
+			emitRot=0;
+			emitRotSpread=90;
+			directional=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+}
+
+
+[missile_s_muzzle] {
+	[blast]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=0;
+			sizemod=.9;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			Texture=burncircle;
+			colorMap=1 1 1 .1   1 .9 .1 .1   0 0 0 0;
+			airdrag=.9;
+			particleLife=7;
+			particleLifeSpread=10;
+			numParticles=4;
+			particleSpeed=0;
+			particleSpeedSpread=3;
+			particleSize=6;
+			particleSizeSpread=4;
+			emitRot=0;
+			emitRotSpread=20;
+			directional=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+	[smoke]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=.4;
+			sizemod=.96;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0.01, 0;
+			Texture=smoke;
+			colorMap=.3 .3 .3 .4   0 0 0 0;
+			airdrag=.9;
+			particleLife=40;
+			particleLifeSpread=50;
+			numParticles=12;
+			particleSpeed=0;
+			particleSpeedSpread=8;
+			particleSize=1;
+			particleSizeSpread=1;
+			emitRot=0;
+			emitRotSpread=15;
+			directional=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+	[groundflash]
+	{
+		flashSize = 50;   // flash size
+		flashAlpha = .4;    // initial alpha of the flash
+		circleGrowth = 2; // size increase/frame
+		circleAlpha = 0;   // initial alpha of the ring
+		ttl = 9;          // number of frames
+		color = 1,.6,.2;    // color RGB
+	}
+}
+
+
+[missile_muzzle] {
+	[blast]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=0;
+			sizemod=.9;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			Texture=burncircle;
+			colorMap=1 1 1 .1   1 .9 .1 .1   0 0 0 0;
+			airdrag=.9;
+			particleLife=7;
+			particleLifeSpread=10;
+			numParticles=4;
+			particleSpeed=0;
+			particleSpeedSpread=3;
+			particleSize=6;
+			particleSizeSpread=4;
+			emitRot=0;
+			emitRotSpread=20;
+			directional=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+	[groundflash]
+	{
+		flashSize = 50;   // flash size
+		flashAlpha = .4;    // initial alpha of the flash
+		circleGrowth = 2; // size increase/frame
+		circleAlpha = 0;   // initial alpha of the ring
+		ttl = 9;          // number of frames
+		color = 1,.6,.2;    // color RGB
+	}
+}
+
+[missilerear_muzzle] {
+	[blast]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=0;
+			sizemod=.9;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			Texture=burncircle;
+			colorMap=1 1 1 .1   1 .9 .1 .1   0 0 0 0;
+			airdrag=.9;
+			particleLife=7;
+			particleLifeSpread=10;
+			numParticles=4;
+			particleSpeed=1;
+			particleSpeedSpread=3;
+			particleSize=6;
+			particleSizeSpread=4;
+			emitRot=160;
+			emitRotSpread=20;
+			directional=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+	[smoke]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=.4;
+			sizemod=.96;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0.01, 0;
+			Texture=smoke;
+			colorMap=.3 .3 .3 .4   0 0 0 0;
+			airdrag=.9;
+			particleLife=20;
+			particleLifeSpread=20;
+			numParticles=5;
+			particleSpeed=1;
+			particleSpeedSpread=3;
+			particleSize=1;
+			particleSizeSpread=1;
+			emitRot=165;
+			emitRotSpread=15;
+			directional=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+}
+
+[redmissilerear_muzzle] {
+	[blast]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=0;
+			sizemod=.9;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			Texture=burncircle;
+			colorMap=1 1 1 .1   1 .9 .1 .1   0 0 0 0;
+			airdrag=.9;
+			particleLife=7;
+			particleLifeSpread=10;
+			numParticles=4;
+			particleSpeed=0;
+			particleSpeedSpread=1;
+			particleSize=6;
+			particleSizeSpread=4;
+			emitRot=160;
+			emitRotSpread=20;
+			directional=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+	[smoke]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=.4;
+			sizemod=.96;
+			pos=0, 0, 0;
+			emitVector=0,1,0;
+			gravity=0, 0.01, 0;
+			Texture=smoke;
+			colorMap=.3 .3 .3 .4   0 0 0 0;
+			airdrag=.9;
+			particleLife=40;
+			particleLifeSpread=50;
+			numParticles=9;
+			particleSpeed=1;
+			particleSpeedSpread=3;
+			particleSize=1;
+			particleSizeSpread=1;
+			emitRot=75;
+			emitRotSpread=15;
+			directional=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+}
+
+
+[redtank_muzzle] {
+	[blast]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=0;
+			sizemod=.8;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			Texture=burncircle;
+			colorMap=1 1 1 .1   1 .9 .1 .1   0 0 0 0;
+			airdrag=.7;
+			particleLife=7;
+			particleLifeSpread=10;
+			numParticles=4;
+			particleSpeed=1;
+			particleSpeedSpread=5;
+			particleSize=12;
+			particleSizeSpread=8;
+			emitRot=0;
+			emitRotSpread=20;
+			directional=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+	[smoke]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=.4;
+			sizemod=.96;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0.01, 0;
+			Texture=smoke;
+			colorMap=.3 .3 .3 .4   0 0 0 0;
+			airdrag=.75;
+			particleLife=40;
+			particleLifeSpread=50;
+			numParticles=15;
+			particleSpeed=0;
+			particleSpeedSpread=8;
+			particleSize=1;
+			particleSizeSpread=1;
+			emitRot=0;
+			emitRotSpread=25;
+			directional=0;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+	[sparks]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=0;
+			sizemod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=-.5 r1, -.5 r1, -.5 r1;
+			Texture=puff;
+			colorMap=1 .9 .2 .1   .6 .2 0 .1   0 0 0 0;
+			airdrag=.8;
+			particleLife=18;
+			particleLifeSpread=10;
+			numParticles=1;
+			particleSpeed=5;
+			particleSpeedSpread=12;
+			particleSize=1.5;
+			particleSizeSpread=2;
+			emitRot=0;
+			emitRotSpread=30;
+			directional=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+		count=4;
+	}
+	[groundflash]
+	{
+		flashSize = 40;   // flash size
+		flashAlpha = .5;    // initial alpha of the flash
+		circleGrowth = 2; // size increase/frame
+		circleAlpha = 0;   // initial alpha of the ring
+		ttl = 7;          // number of frames
+		color = 1,.6,.2;    // color RGB
+	}
+}

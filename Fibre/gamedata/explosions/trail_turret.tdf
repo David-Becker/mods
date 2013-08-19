@@ -1,0 +1,31 @@
+[trail_turret]
+{
+	[circle]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=2;
+			sizemod=.6;
+			pos=0, 1.0, 0;
+			emitVector=0,1,0;
+			gravity=0, 0, 0;
+			Texture=smoke1;
+			colorMap=1 1 1 .1   .3 1 .3 .1   .1 .3 .1 .1   0 0 0 0;
+			airdrag=1;
+			particleLife=30;
+			particleLifeSpread=12;
+			numParticles=3;
+			particleSpeed=0;
+			particleSpeedSpread=.4;
+			particleSize=1;
+			particleSizeSpread=.5;
+			emitRot=0;
+			emitRotSpread=180;
+			directional=0;
+			alwaysVisible=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+}

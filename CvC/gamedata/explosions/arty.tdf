@@ -1,0 +1,143 @@
+[arty]
+{
+        [base]
+        {
+                class=CSimpleParticleSystem;
+                [properties] {
+                        sizegrowth=0.75;
+                        sizemod=0.95;
+              		pos=0, 2, 0;
+	        	emitVector= 0, 1, 0;
+	         	gravity=0, -0.05, 0;
+                   	colorMap= 1 .9 .4 0   1 0.2 0.1 1   0 0 0 1;
+    	            	Texture=blastcloud;
+    	             	airdrag=0.8;
+    	              	particleLife=35;
+    	               	particleLifeSpread=30;
+    	                numParticles=60;
+    		        particleSpeed=1;
+    		        particleSpeedSpread=17;
+    		        particleSize=10;
+    		        particleSizeSpread=10;
+    		        emitRot=0;
+    		        emitRotSpread=20;
+    		        directional=0;
+                }
+                air=1;
+                ground=1;
+        }
+        [basesmoke]
+        {
+                class=CSimpleParticleSystem;
+                [properties] {
+                        sizegrowth=1.2;
+                        sizemod=0.95;
+              		pos=0, 0, 0;
+	        	emitVector=0,1,0;
+	         	gravity=0, -0.1, 0;
+                   	colorMap=1 1 1 1   0.4 0.4 0.4 0.6   0 0 0 0.6   0 0 0 0;
+    	            	Texture=blastcloud;
+    	             	airdrag=0.97;
+    	              	particleLife=50;
+    	               	particleLifeSpread=30;
+    	                numParticles=40;
+    		        particleSpeed=6;
+    		        particleSpeedSpread=1;
+    		        particleSize=15;
+    		        particleSizeSpread=13;
+    		        emitRot=0;
+    		        emitRotSpread=10;
+    		        directional=0;
+                }
+                air=1;
+                ground=1;
+        }
+        [dirtsplashbig]
+        {
+                class=CSimpleParticleSystem;
+                [properties] {
+                        sizegrowth=-0.01;
+                        sizemod=1;
+              		pos=0, 1.0, 0;
+	        	emitVector=0,1,0;
+	         	gravity=0, 0, 0;
+                   	colorMap=0.9 0.8 0.0 1.0   0.9 0.8 0.0 1.0   0.3 0.25 0.0 0;
+    	            	Texture=dirt;
+    	             	airdrag=0.87;
+    	              	particleLife=30;
+    	               	particleLifeSpread=10;
+    	                numParticles=80;
+    		        particleSpeed=5;
+    		        particleSpeedSpread=20;
+    		        particleSize=2;
+    		        particleSizeSpread=4;
+    		        emitRot=20;
+    		        emitRotSpread=2;
+    		        directional=1;
+                }
+                air=0;
+                ground=1;
+        }
+        [dirtsplashsmall]
+        {
+                class=CSimpleParticleSystem;
+                [properties] {
+                        sizegrowth=0.01;
+                        sizemod=1;
+              		pos=0, 1.0, 0;
+	        	emitVector=0,1,0;
+	         	gravity=0, 0, 0;
+                   	colorMap=0.9 0.8 0.0 1.0   0.9 0.8 0.0 1.0   0.3 0.25 0.0 0;
+    	            	Texture=dirt;
+    	             	airdrag=0.9;
+    	              	particleLife=20;
+    	               	particleLifeSpread=10;
+    	                numParticles=30;
+    		        particleSpeed=2;
+    		        particleSpeedSpread=5;
+    		        particleSize=2;
+    		        particleSizeSpread=4;
+    		        emitRot=40;
+    		        emitRotSpread=2;
+    		        directional=1;
+                }
+                air=0;
+                ground=1;
+        }
+        [dispersion1]
+        {
+                class=CSimpleParticleSystem;
+                [properties] {
+                        sizegrowth=.1;
+                        sizemod=1;
+              		pos=0, 1.0, 0;
+	        	emitVector=0,1,0;
+	         	gravity=0, -0.3, 0;
+                   	colorMap=1.0 0.8 0.2 0.5    1.0 0.6 0.1 0.3         1.0 0.4 0.1 0     0.5 0.2 0.1 0;
+    	            	Texture=blastcloud;
+    	             	airdrag=0.9;
+    	              	particleLife=60;
+    	               	particleLifeSpread=30;
+    	                numParticles=50;
+    		        particleSpeed=16;
+    		        particleSpeedSpread=4;
+    		        particleSize=2;
+    		        particleSizeSpread=4;
+    		        emitRot=70;
+    		        emitRotSpread=10;
+    		        directional=0;
+                }
+                air=0;
+                ground=0;
+        }
+
+	[groundflash]
+	{
+		flashSize = 128;   // flash size
+		flashAlpha = 1;    // initial alpha of the flash
+		circleGrowth = 16; // size increase/frame
+		circleAlpha = 0.3;   // initial alpha of the ring
+		ttl = 8;          // number of frames
+		color = 1 1 1 ;    // color RGB
+	}
+}

@@ -1,0 +1,92 @@
+[UNITINFO]
+{
+	Name=Tank;
+	Unitname=tank;
+	Description=Heavy armored unit;
+
+	// Required Tags
+	icontype=tank;
+	BuildCostMetal=100;
+	Category=ARMORED UNBLOCKABLE UNIT TARGET;
+	FootprintX=4;
+	FootprintZ=4;
+	MaxDamage=2500;
+	IdleAutoHeal=50;
+	IdleTime=300;
+	ObjectName=sep_tank.s3o;
+	SoundCategory=COMPUTER;
+	upright=0;
+
+	collisionVolumeTest=1;
+
+	// Movement
+	MovementClass=STANDARD;
+	BrakeRate=3;
+	Acceleration=3;
+	CanMove=1;
+	MaxVelocity=2;
+	TurnRate=900;
+	turnInPlace=0;
+
+	// Airplane Moventment
+
+	// Buildings
+
+	// Construction
+	ShowNanoFrame=0;
+	LevelGround=0;
+
+	// Resources
+	EnergyMake=0;
+	EnergyStorage=0;
+	MetalStorage=0;
+	MetalMake=0;
+	Reclaimable=0;
+
+	// Abilities
+	CanAttack=1;
+	CanStop=1;
+	SelfDestructCountdown=1;
+
+	// Sight/Radar
+	RadarDistance=0;
+	SightDistance=800;
+	SeismicSignature=1;
+
+	// Weapons
+	Weapon1=TankGun;
+	OnlyTargetCategory1=TARGET;
+	BadTargetCategory1=UNARMORED;
+
+	Weapon2=Gun;
+	BadTargetCategory2=ARMORED;
+	OnlyTargetCategory2=TARGET;
+	WeaponMainDir2=1 0 0;
+	MaxAngleDif2=180;
+
+	Weapon3=Gun;
+	BadTargetCategory3=ARMORED;
+	OnlyTargetCategory3=TARGET;
+	WeaponMainDir3=-1 0 0;
+	MaxAngleDif3=180;
+
+	ExplodeAs=BaseDeath;
+	SelfDestructAs=BaseDeath;
+	NoChaseCategory=NOTARGET;
+
+	// Tracks/Flares
+
+	// Watersettings
+
+	// Misc
+	SmoothAnim=0;
+
+	[SFXTypes]
+	{
+		explosiongenerator0=custom:BigMuzzle;
+		explosiongenerator1=custom:Muzzle;
+	}
+	[customParams] {
+		squadformation=square;
+	}
+}

@@ -1,0 +1,18 @@
+[Armor_MBT]
+{
+	IsShield=1;
+	shieldrepulser=0;
+	smartshield=1;
+	exteriorshield=1;
+	visibleshield=0;
+	shieldenergyuse=0;
+	shieldradius=12;
+	shieldpower=5000;
+	shieldpowerregen=8000;
+	// 1= Standard Armor
+	shieldintercepttype=1;
+	[damage]
+	{
+		default=11;
+	}
+}

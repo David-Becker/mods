@@ -1,0 +1,80 @@
+[UNITINFO]
+{
+	Name=Air Fortress;
+	Unitname=airblue;
+	Description=Armored anti-ground aircraft;
+
+	// Required Tags
+	Category=UNIT AIR MIXED BLUE;
+	FootprintX=2;
+	FootprintZ=2;
+	MaxDamage=500;
+	IdleAutoHeal=20;
+	BuildCostEnergy=100;
+	BuildCostMetal=20;
+	power=300;
+	maxSlope=22;
+	ObjectName=airblue.s3o;
+	Side=ANY;
+	//SoundCategory=CITADEL;
+
+	// Movement
+	CanMove=1;
+	MaxVelocity=2.8;
+	Acceleration=.15;
+	Brakerate=.9;
+	TurnRate=500;
+	canFly=1;
+	hoverAttack=1;
+	cruiseAlt=75;
+
+	// Airplane Moventment
+
+	// Buildings
+
+	// Construction
+	ShowNanoFrame=0;
+	LevelGround=0;
+
+	// Resources
+	EnergyMake=0;
+	EnergyStorage=0;
+	MetalStorage=0;
+	MetalMake=0;
+	Reclaimable=0;
+
+	// Abilities
+	CanStop=1;
+	SelfDestructCountdown=1;
+
+	// Sight/Radar
+	RadarDistance=0;
+	SightDistance=600;
+	SeismicSignature=0;
+
+	// Weapons
+	Weapon1=AirBlueGun;
+	WeaponMainDir1=0 -.2 1;
+	MaxAngleDif1=90;
+	BadTargetCategory1=MIXED;
+	Weapon2=AirBlueCannon;
+	WeaponMainDir2=0 -.2 1;
+	MaxAngleDif2=60;
+	BadTargetCategory2=AIR;
+	OnlyTargetCategory2=MIXED;
+	NoChaseCategory=AIR;
+	ExplodeAs=TankBurst;
+
+	// Tracks/Flares
+
+	// Watersettings
+
+	// Misc
+	SmoothAnim=0;
+
+	[SFXTypes]
+	{
+		explosionGenerator0=custom:bluegun_muzzle;
+		explosionGenerator1=custom:redtank_muzzle;
+	}
+}

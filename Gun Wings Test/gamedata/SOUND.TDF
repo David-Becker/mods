@@ -1,0 +1,17 @@
+// unit sounds
+
+[TEMPLATE]
+	{
+	select1=select;
+	ok1=ok;
+	arrived1=stop;
+	cant1=cantdo4;
+	underattack=warning1;
+	count5=count1;
+	count4=count2;
+	count3=count3;
+	count2=count4;
+	count1=count5;
+	count0=count6;
+	canceldestruct=cancel2;
+	}

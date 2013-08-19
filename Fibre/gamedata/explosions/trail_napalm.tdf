@@ -1,0 +1,31 @@
+[trail_napalm]
+{
+	[circle]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=1;
+			sizemod=.9;
+			pos=0, 0, 0;
+			emitVector=0,1,0;
+			gravity=0, .1, 0;
+			Texture=smoke1;
+			colorMap=1 .9 .2 .1   .5 .2 0 .1   0 0 0 0;
+			airdrag=.95;
+			particleLife=2;
+			particleLifeSpread=6;
+			numParticles=1;
+			particleSpeed=0;
+			particleSpeedSpread=1;
+			particleSize=6;
+			particleSizeSpread=8;
+			emitRot=0;
+			emitRotSpread=180;
+			directional=0;
+			alwaysVisible=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+}

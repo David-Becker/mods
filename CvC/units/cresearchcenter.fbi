@@ -1,0 +1,53 @@
+[UNITINFO]
+	{
+	unitname=CRESEARCHCENTER;
+	version=1.2;
+	side=COSMOS;
+	objectname=CResearchCenter.s3o;
+	designation=CRESEARCHCENTER;
+	name=Upgrade Center;
+	description=- upgrades stuff;
+	buildpic=CResearchCenter.bmp;
+	footprintx=4;
+	footprintz=4;
+	buildcostenergy=0;
+	buildcostmetal=2000;
+	UnitRestricted=1;
+	maxdamage=28000;
+	maxwaterdepth=0;
+	maxslope=30;
+	energyuse=0;
+	buildtime=11000;
+	workertime=5000;
+	bmcode=0;
+	builder=1;
+	threed=1;
+	zbuffer=1;
+	noautofire=0;
+	sightdistance=600;
+	radardistance=0;
+	soundcategory=TANKPLANT;
+	energystorage=0;
+	energymake=0;
+	metalstorage=0;
+	explodeas=Big_ICBM;
+	selfdestructas=Big_Blast;
+	Category=RESEARCH HARMLESS LARGE NOTSMALL BUILDING ALL ;
+	tedclass=PLANT;
+	yardmap=o;
+	firestandorders=0;
+	standingfireorder=0;
+	mobilestandorders=0;
+	standingmoveorder=0;
+	canmove=0;
+	canpatrol=0;
+	canstop=1;
+	shownanoframe=0;
+	shownanospray=0;
+        [SFXTypes]
+	{
+	       explosiongenerator0=custom:buildFX_melter;
+	       explosiongenerator1=custom:buildFX_emitter_drone;
+       	}
+	}
+

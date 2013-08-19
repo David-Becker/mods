@@ -1,0 +1,10 @@
+[CLASS0]
+	{
+	Name=DefaultMoveType;
+	FootprintX=3;
+	FootprintZ=3;
+	MaxWaterDepth=25;
+	MaxSlope=28;
+	CrushStrength=60;
+	}
+

@@ -1,0 +1,22 @@
+[CLASS0]
+	{
+	Name=DefaultMoveType;
+	FootprintX=3;
+	FootprintZ=3;
+	MaxWaterDepth=25;
+	MaxSlope=28;
+	CrushStrength=60;
+	}
+[CLASS1]
+	{
+	floater=1;
+	Name=TANKHOVER2;
+	FootprintX=2;
+	FootprintZ=2;
+//	MaxWaterDepth=255;
+	MaxSlope=30;
+	BadSlope=20;
+//	MaxWaterSlope=255;
+//	BadWaterSlope=255;
+	CrushStrength=25;
+	}

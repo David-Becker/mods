@@ -1,0 +1,87 @@
+[trail_node]
+{
+	[circle]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=1.6;
+			sizemod=.99;
+			pos=0, 0, 0;
+			emitVector=0,-1,0;
+			gravity=0, 0, 0;
+			Texture=smoke1;
+			colorMap=1 .9 .3 .1   .8 .3 0 .1   .2 .2 .2 .9   .2 .2 .2 .9   0 0 0 0;
+			airdrag=.95;
+			particleLife=12;
+			particleLifeSpread=8;
+			numParticles=3;
+			particleSpeed=0;
+			particleSpeedSpread=4;
+			particleSize=2;
+			particleSizeSpread=1.5;
+			emitRot=0;
+			emitRotSpread=40;
+			directional=0;
+			alwaysVisible=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+	[smoke]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=.6;
+			sizemod=.98;
+			pos=0, 0, 0;
+			emitVector=0,-1,0;
+			gravity=0, 0, 0;
+			Texture=smoke;
+			colorMap=.2 .2 .2 1   .1 .1 .1 .9   0 0 0 0;
+			airdrag=.9;
+			particleLife=30;
+			particleLifeSpread=15;
+			numParticles=1;
+			particleSpeed=0;
+			particleSpeedSpread=.5;
+			particleSize=8;
+			particleSizeSpread=20;
+			emitRot=0;
+			emitRotSpread=40;
+			directional=1;
+			alwaysVisible=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+	[spew]
+	{
+		class=CSimpleParticleSystem;
+		[properties] {
+			sizegrowth=0;
+			sizemod=1;
+			pos=0, 0, 0;
+			emitVector=0,-1,0;
+			gravity=0, 0, 0;
+			Texture=puff;
+			colorMap=1 .9 .1 .1   .5 .3 0 .1   0 0 0 0;
+			airdrag=1;
+			particleLife=2;
+			particleLifeSpread=4;
+			numParticles=5;
+			particleSpeed=3;
+			particleSpeedSpread=2;
+			particleSize=4;
+			particleSizeSpread=8;
+			emitRot=45;
+			emitRotSpread=90;
+			directional=1;
+			alwaysVisible=1;
+		}
+		air=1;
+		ground=1;
+		water=1;
+	}
+}

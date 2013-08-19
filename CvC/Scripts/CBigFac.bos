@@ -1,0 +1,105 @@
+piece base, body, rotor, backstop, ramp;
+piece nano0, nano1, nano2, nano3;
+
+
+#define STAT_CLOSED 0
+#define STAT_CLOSING 1
+#define STAT_OPEN 2
+#define STAT_OPENING 3
+
+#define SIG_open 1
+
+#include "exptype.h"
+
+#define MELTER_DEPTH [-16]
+#include "buildFX_melter.h"
+
+static-var status;
+
+Create()
+{
+	status = STAT_CLOSED;
+	start-script buildFX();
+	turn nano0 to y-axis <-45> now;
+	turn nano1 to y-axis <-135> now;
+	turn nano2 to y-axis <45> now;
+	turn nano3 to y-axis <135> now;
+
+	turn nano0 to x-axis <20> now;
+	turn nano1 to x-axis <20> now;
+	turn nano2 to x-axis <20> now;
+	turn nano3 to x-axis <20> now;
+}
+
+Killed(severity, corpsetype)
+{
+	explode backstop type FALL | SMOKE;
+	explode ramp type FALL | FIRE | SMOKE;
+	explode rotor type SHATTER;
+	explode nano0 type FALL| FIRE | SMOKE;
+	explode nano1 type FALL| FIRE | SMOKE;
+	explode nano2 type FALL| FIRE | SMOKE;
+	explode nano3 type FALL| FIRE | SMOKE;
+	corpsetype=1;
+	if (severity>99)
+	{
+		corpsetype=3;
+		explode body type SHATTER;
+	}
+}
+
+Activate()
+{
+//	if (status == STAT_CLOSED)
+//	{
+		signal SIG_open;
+		status = STAT_OPENING;
+		move backstop to z-axis [-25] speed [40];
+		move ramp to z-axis [25] speed [40];
+		//sleep [10];
+		move rotor to y-axis [25] speed [30];
+		wait-for-move rotor along y-axis;
+		spin rotor around y-axis speed <60> accelerate <10>;
+		set INBUILDSTANCE to 1;
+		set YARD_OPEN to 1;
+		status = STAT_OPEN;
+//	}
+}
+
+Deactivate()
+{
+//	if (status == STAT_OPEN)
+//	{
+		set-signal-mask SIG_open;
+		status = STAT_CLOSING;
+		set BUGGER_OFF to 1;
+		set INBUILDSTANCE to 0;
+		while (get YARD_OPEN)
+		{
+			set YARD_OPEN to 0;
+			sleep 250;
+		}
+		set BUGGER_OFF to 0;
+		stop-spin rotor around y-axis;
+		turn rotor to y-axis <0> speed <20>;
+		wait-for-turn rotor around z-axis;
+		move rotor to y-axis [0] speed [30];
+		wait-for-move rotor along y-axis;
+		move backstop to z-axis [0] speed [30];
+		move ramp to z-axis [0] speed [30];
+		status = STAT_CLOSED;
+//	}
+}
+
+QueryNanoPiece(piecenum)
+{
+	emit-sfx 1025 from nano0;
+	emit-sfx 1025 from nano1;
+	emit-sfx 1025 from nano2;
+	emit-sfx 1025 from nano3;
+}
+
+QueryBuildInfo(piecenum)
+{
+	piecenum=base;
+}

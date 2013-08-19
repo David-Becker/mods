@@ -1,0 +1,15 @@
+[dead_nukelauncher]
+{
+	description=used launcher;
+	object=dead_nukelauncher.s3o;
+	footprintx=1;
+	footprintz=1;
+	height=30;
+	blocking=1;
+	hitdensity=100;
+	metal=64;
+	damage=400;
+	reclaimable=1;
+	energy=0;
+}
+

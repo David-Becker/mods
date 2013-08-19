@@ -1,0 +1,25 @@
+[icontypes]
+{
+	[default]
+	{
+		// Units without icons should get this one, but apparently no
+		bitmap=icons/trinver.tga;// Image to use
+		size=1;// Multiplier for icon size
+		radiusadjust=1;// Does the icon change size according to unit size?
+		distance=0.5;// Multiplier for the distance at which unit turns into icon
+	}
+	[tiny]
+	{
+		bitmap=icons/trinver.tga;// Image to use
+		size=.25;// Multiplier for icon size
+		radiusadjust=0;// Does the icon change size according to unit size?
+		distance=0.5;// Multiplier for the distance at which unit turns into icon
+	}
+	[beacon]
+	{
+		bitmap=icons/beacon.tga;// Image to use
+		size=4;// Multiplier for icon size
+		radiusadjust=0;// Does the icon change size according to unit size?
+		distance=0;// Multiplier for the distance at which unit turns into icon
+	}
+}

@@ -1,0 +1,29 @@
+piece base, body;
+
+Killed() {
+	hide body;
+}
+
+AimWeapon1() {
+	return 0;
+}
+
+AimFromWeapon1(p) {
+	p=base;
+}
+
+QueryWeapon1(p) {
+	p=base;
+}
+
+AimWeapon2() {
+	return 1;
+}
+
+AimFromWeapon2(p) {
+	p=base;
+}
+
+QueryWeapon2(p) {
+	p=base;
+}

@@ -1,0 +1,147 @@
+piece base, body, flier0, flier1, wing, thruster0, thruster1;
+piece builder, nano0, nano1;
+piece laserarms, lasergun0, laser0, lasergun1, laser1;
+piece missile0, missile1, missile2, missilelauncher0, missilelauncher1, missilelauncher2;
+piece snipergun, sniper;
+
+#include "exptype.h"
+
+#define SIG_Fire 1
+#define SIG_Aim 2
+#define SIG_Targeting 4
+#define SIG_TargetLost 8
+
+static-var ready, aiming, aimed;
+
+FlameTrail() {
+	while(1) {
+		sleep 100+10 * get HEALTH;
+		if (50 > get HEALTH) {
+			emit-sfx 1025 from body;
+		}
+	}
+}
+
+Create() {
+	hide builder;
+	hide snipergun;
+	hide laserarms;
+	hide lasergun1;
+	hide lasergun0;
+	start-script FlameTrail();
+}
+
+Killed() {
+/*	explode missile0 type FALL | FIRE | SMOKE;
+	explode missile1 type FALL | FIRE | SMOKE;
+	explode missile2 type FALL | FIRE | SMOKE;
+	hide missile0;
+	hide missile1;
+	hide missile2;*/
+
+	emit-sfx 1024 from missile0;
+	hide missile0;
+	explode missile0 type FALL | FIRE | SMOKE;
+	
+//	sleep 100;
+	
+//	emit-sfx 1024 from missile1;
+	hide missile1;
+	explode missile1 type FALL | FIRE | SMOKE;
+
+//	sleep 100;
+	
+//	emit-sfx 1024 from missile2;
+	hide missile2;
+	explode missile2 type FALL | FIRE | SMOKE;
+
+//	sleep 200;
+
+	explode flier1 type FALL;
+	explode wing type FALL;
+	hide flier1;
+	hide wing;
+	emit-sfx 1024 from flier1;
+
+//	sleep 50;
+
+	emit-sfx 1024 from flier0;
+	explode flier0 type FALL;
+	hide flier0;
+	
+//	sleep 300;
+
+	explode body type FALL | FIRE | SMOKE;
+	explode thruster0 type FALL | FIRE;
+	explode thruster1 type FALL | FIRE;
+	hide body;
+	hide thruster0;
+	hide thruster1;
+	
+	return 1;
+}
+
+HitByWeapon() {
+	emit-sfx 1025 from body;
+	emit-sfx 1025 from flier0;
+	emit-sfx 1025 from thruster1;
+}
+
+AimWeapon1() {
+	signal SIG_Aim;
+	set-signal-mask SIG_Aim;
+	ready=1;
+	sleep 1000;
+	ready=0;
+	return 0;
+}
+
+Targeting() {
+	if (aiming) return 0;
+	aiming=1;
+	set-signal-mask SIG_TargetLost;
+	sleep 3000;
+	aimed=1;
+}
+
+LoseTarget() {
+	sleep 1000;
+	aiming=0;
+	aimed=0;
+	signal SIG_TargetLost;
+}
+
+AimWeapon2() {
+	if (!ready) return 0;
+	signal SIG_Targeting;
+	set-signal-mask SIG_Targeting;
+	start-script Targeting();
+	start-script LoseTarget();
+	return aimed;
+}
+
+AimFromWeapon2(piecenum) {
+	piecenum=body;
+}
+
+QueryWeapon2(piecenum) {
+	piecenum=missile2;
+}
+
+NoCharge() {
+	signal SIG_Fire;
+	set-signal-mask SIG_Fire;
+	set ACTIVATION to 0;
+	sleep 2000;
+	set ACTIVATION to 1;
+}
+
+FireWeapon2() {
+	aiming=0;
+	aimed=0;
+	start-script NoCharge();
+}
+
+AimWeapon3() {
+	return 0;
+}

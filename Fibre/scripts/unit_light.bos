@@ -1,0 +1,13 @@
+piece base, body, gp;
+
+AimWeapon1(h,p) {
+	return 1;
+}
+
+QueryWeapon1(p) {
+	p=gp;
+}
+
+AimFromWeapon1(p) {
+	p=gp;
+}

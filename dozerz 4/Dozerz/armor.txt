@@ -1,0 +1,10 @@
+[dozer]
+{
+	d=1;
+	e=1;
+}
+[flag]
+{
+	flag=1;
+	flagnofire=1;
+}

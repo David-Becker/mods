@@ -1,0 +1,14 @@
+piece base, foot, floater, cube, ring0, ring1;
+
+#include "Fibre.h"
+
+Completed() {
+	spin cube around x-axis speed <180>;
+	spin ring0 around z-axis speed <-90>;
+	spin ring1 around z-axis speed <120>;
+	spin floater around y-axis speed <30>;
+}
+
+EmitRepair() {
+	emit-sfx 1024 from floater;
+}

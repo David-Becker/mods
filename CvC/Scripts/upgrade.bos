@@ -1,0 +1,27 @@
+#include "exptype.h"
+
+piece base;
+
+Create()
+{
+	var id;
+	//this function checks if any friendly non-mine units are still alive and detonates the mine if not
+	for(id = get MAX_ID; id>0; --id) { //iterate through all units
+		if (get UNIT_ALLIED(id)) { //see if it's friendly
+			if (65536< (get UNIT_HEIGHT(id))) { //check for units of radius > 8, should mean everything that's not an upgrade
+				id=(get (MAX_ID))+1; //this check is done because we've found a survivor, go back to the beginning of the unit list and wait a bit
+				sleep 500;
+			}
+		}
+	}
+	//if this is reached there are no living non-mine friendlies so we detonate the mine
+	while (1) {
+		emit-sfx 4096 from base;
+		sleep 200;
+	}
+}
+
+AimWeapon1()
+{
+	return 0;
+}

@@ -1,0 +1,49 @@
+piece base, body, emitter, aimer;
+
+#include "fibre.h"
+
+static-var firing;
+
+AimFromWeapon1(p) {
+	p=aimer;
+}
+
+QueryWepaon1(p) {
+	p=aimer;
+}
+
+AimWeapon1(h,p) {
+	if(!firing) {
+		turn emitter to y-axis h now;
+		turn emitter to x-axis <0>-p now;
+		return 1;
+	}
+	else {
+		return 0;
+	}
+}
+
+BlockShot1(target, block) {
+	if ((get POWERLEVEL) > 9000) block = 0;
+	else block=1;
+}
+
+FireWeapon1() {
+	firing=1;
+	set POWERLEVEL to (get POWERLEVEL) - 500;
+	var c;
+	for(c=0; c < 200; ++c) {
+		move emitter to y-axis [2]*c now;
+		set CEG_DAMAGE to c;
+		emit-sfx 1024 from emitter;
+		sleep 30;
+	}
+	emit-sfx 2049 from emitter;
+	firing=0;
+}
+
+HitByWeaponId(z,x,id,d) {
+	set POWERLEVEL to (get POWERLEVEL) - d/100;
+	if ((get POWERLEVEL) < 0) set POWERLEVEL to 0;
+	return 0;
+}

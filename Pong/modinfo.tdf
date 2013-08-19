@@ -1,0 +1,15 @@
+[MOD]
+{
+	Game=Global Thermonuclear PONG;
+	ShortGame=nukepong;
+	Name=Global Thermonuclear PONG;
+	ShortName=nukepong;
+	Mutator=official;
+
+	Description=Nuclear war for two;
+	Version=TEST;
+	ModType=1;
+	NumDependencies=1;
+	Depend0=springcontent.sdz;
+}
+

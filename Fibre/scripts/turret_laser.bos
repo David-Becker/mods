@@ -1,0 +1,49 @@
+piece base, foot, pillar, aim, gunl, gunr, gpl, gpr;
+#include "fibre.h"
+
+#define SIG_Aim 1
+
+#define DRAIN 5
+
+static-var gp;
+
+/*Create() {
+	hide pillar;
+	hide gunl;
+	hide gunr;
+}
+
+Completed() {
+	show pillar;
+	show gunl;
+	show gunr;
+}*/
+
+AimFromWeapon1(p) {
+	p=aim;
+}
+
+QueryWeapon1(p) {
+	if (gp) p = gpl;
+	else    p = gpr;
+}
+
+AimWeapon1(h,p) {
+	signal SIG_Aim;
+	set-signal-mask SIG_Aim;
+	turn pillar to y-axis h speed <360>;
+	turn gunl to x-axis <90>-p speed <240>;
+	turn gunr to x-axis <90>-p speed <240>;
+	wait-for-turn pillar around y-axis;
+	wait-for-turn gunl around x-axis;
+	return 1;
+}
+
+BlockShot1(target, block) {
+	block = (get POWERLEVEL) < DRAIN;
+}
+
+Shot1() {
+	set POWERLEVEL to (get POWERLEVEL) - DRAIN;
+	gp= !gp;
+}

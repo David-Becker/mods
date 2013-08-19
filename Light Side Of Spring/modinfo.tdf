@@ -1,0 +1,15 @@
+[MOD]
+{
+	Game=Light Side of Spring;
+	ShortGame=LSOS;
+	Name=Light Side of Spring;
+	ShortName=LSOS;
+	Mutator=official;
+
+	Description=BEAM AS BEAM CAN!;
+	Version=WIP2;
+	ModType=1;
+	NumDependencies=1;
+	Depend0=springcontent.sdz;
+}
+

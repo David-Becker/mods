@@ -1,0 +1,8 @@
+[EXPERIENCE] {
+	experienceMult=0.0;
+	healthScale=0;
+}
+
+[FLANKINGBONUS] {
+	DefaultMode=0;
+}

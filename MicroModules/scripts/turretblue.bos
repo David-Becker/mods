@@ -1,0 +1,162 @@
+piece base, body, turret0, barrel0, gp0, turret1, barrel1, gp1, turret2, barrel2, gp2;
+
+#include "blob.h"
+
+static-var bc, b1, b2, b3, shooting;
+
+ChangedBlobCount(type, count, root) {
+	if (type==1) {
+		get WEAPON_RANGE(-1, [500] + [15]*count);
+		get WEAPON_PROJECTILE_SPEED(-1, ([350] + [20]*count) /32);
+		get WEAPON_RANGE(-2, [500] + [15]*count);
+		get WEAPON_PROJECTILE_SPEED(-2, ([350] + [20]*count) /32);
+		get WEAPON_RANGE(-3, [500] + [15]*count);
+		get WEAPON_PROJECTILE_SPEED(-3, ([350] + [20]*count) /32);
+	}
+	if (type==2) {
+		bc = count + 1;
+		get WEAPON_SPRAY(-1, root * 360);
+		get WEAPON_SPRAY(-2, root * 360);
+		get WEAPON_SPRAY(-3, root * 360);
+		if (!shooting) {
+			b1=bc/3 + (bc / 3 * 3 < bc);
+			b2=bc/3 + (bc / 3 * 3 + 1 < bc);
+			b3=bc/3;
+		}
+		if (bc > 1) {
+			show turret1;
+			show barrel1;
+		}
+		else {
+			hide turret1;
+			hide barrel1;
+		}
+		if (bc > 2) {
+			show turret2;
+			show barrel2;
+		}
+		else {
+			hide turret2;
+			hide barrel2;
+		}
+	}
+}
+
+Create() {
+	call-script ChangedBlobCount(2,0,0);
+}
+
+ResetAim() {
+	sleep 2000;
+	turn barrel0 to x-axis 0 speed <180>;
+	turn barrel1 to x-axis 0 speed <180>;
+	turn barrel2 to x-axis 0 speed <180>;
+	shooting=0;
+	b1=bc/3 + (bc / 3 * 3 < bc);
+	b2=bc/3 + (bc / 3 * 3 + 1 < bc);
+	b3=bc/3;
+}
+
+
+QueryWeapon1(p) {
+	p=gp0;
+}
+
+AimFromWeapon1(p) {
+	p=turret0;
+}
+
+AimWeapon1(h,p) {
+	signal SIG_Aim;
+	set-signal-mask SIG_Aim;
+	start-script ResetAim();
+	turn turret0 to y-axis h speed <400>;
+	turn barrel0 to x-axis 0 - p speed <180>;
+	wait-for-turn turret0 around y-axis;
+	wait-for-turn barrel0 around x-axis;
+	return 1;
+}
+
+Shot1() {
+	emit-sfx 1024 from gp0;
+	if (b1 > 1) {
+		shooting=1;
+		get WEAPON_RELOADSTATE(-1,0); //instant reload
+		--b1;
+	} 
+	else {
+		sleep 300;
+		shooting=0;
+		b1=bc/3 + (bc / 3 * 3 < bc);
+	}
+}
+
+
+QueryWeapon2(p) {
+	p=gp1;
+}
+
+AimFromWeapon2(p) {
+	p=turret1;
+}
+
+AimWeapon2(h,p) {
+	signal SIG_Aim2;
+	set-signal-mask SIG_Aim2;
+	if (bc < 2)return 0;
+	start-script ResetAim();
+	turn turret1 to y-axis h speed <400>;
+	turn barrel1 to x-axis 0 - p speed <180>;
+	wait-for-turn turret1 around y-axis;
+	wait-for-turn barrel1 around x-axis;
+	return 1;
+}
+
+Shot2() {
+	emit-sfx 1024 from gp1;
+	if (b2 > 1) {
+		shooting=1;
+		get WEAPON_RELOADSTATE(-2,0); //instant reload
+		--b2;
+	} 
+	else {
+		sleep 300;
+		shooting=0;
+		b2=bc/3 + (bc / 3 * 3 + 1 < bc);
+	}
+}
+
+
+QueryWeapon3(p) {
+	p=gp2;
+}
+
+AimFromWeapon3(p) {
+	p=turret2;
+}
+
+AimWeapon3(h,p) {
+	signal SIG_Aim3;
+	set-signal-mask SIG_Aim3;
+	if (bc < 3) return 0;
+	start-script ResetAim();
+	turn turret2 to y-axis h speed <400>;
+	turn barrel2 to x-axis 0 - p speed <180>;
+	wait-for-turn turret2 around y-axis;
+	wait-for-turn barrel2 around x-axis;
+	return 1;
+}
+
+Shot3() {
+	emit-sfx 1024 from gp2;
+	if (b3 > 1) {
+		shooting=1;
+		get WEAPON_RELOADSTATE(-3,0); //instant reload
+		--b3;
+	} 
+	else {
+		sleep 300;
+		shooting=0;
+		b3=bc/3;
+	}
+}

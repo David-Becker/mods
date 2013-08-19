@@ -1,0 +1,356 @@
+[Shield]
+{
+	IsShield=1;
+	smartshield=1;
+	exteriorshield=1;
+	visibleshield=1;
+	shieldenergyuse=0;
+	shieldradius=23;
+	shieldpower=2500;
+	shieldpowerregen=250;
+	shieldalpha=1;
+	// 1=Gun
+	shieldintercepttype=1;
+	range=1024;
+	[damage]
+	{
+		default=11;
+	}
+}
+
+[Suppressor_Shield]
+{
+	IsShield=1;
+	smartshield=1;
+	exteriorshield=1;
+	visibleshield=0;
+	shieldenergyuse=0;
+	shieldradius=28;
+	shieldpower=0;
+	shieldpowerregen=800;
+	shieldalpha=1;
+	// 1=Gun 2=Suppressor
+	shieldintercepttype=2;
+	range=1024;
+	[damage]
+	{
+		default=11;
+	}
+}
+
+[Flag_Shield]
+{
+	IsShield=1;
+	smartshield=0;
+	exteriorshield=0;
+	visibleshield=1;
+	shieldenergyuse=0;
+	shieldradius=64;
+	shieldpower=0;
+	shieldpowerregen=800;
+	shieldalpha=1;
+	// 1=Gun 2=Suppressor
+	shieldintercepttype=3;
+	range=1024;
+	[damage]
+	{
+		default=11;
+	}
+}
+
+
+[Gun]
+	{
+	name=Shoota;
+	rendertype=1;
+	lineofsight=1;
+	beamlaser=1;
+	beamtime=0.1;
+	//beamweapon=1;
+	//duration=.15;
+	color=1;
+	intensity=1;
+	thickness=1;
+	weaponvelocity=256;
+
+	turret=1;
+	range=1024;
+
+	reloadtime=.5;
+
+	areaofeffect=4;
+	collidefriendly=0;
+	avoidfriendly=1;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0; //Thanks, Argh.
+	craterMult=0;
+	craterBoost=0;
+	explosiongenerator=custom:lasgun;
+
+	interceptedbyshieldtype=1;
+	[DAMAGE]
+		{
+		default=100;
+		flag=0.0000000001;
+		dozer=20;
+		}
+	}
+
+[Suppressor]
+	{
+	name=MG;
+	rendertype=1;
+	lineofsight=1;
+	//ballistic=1;
+	//beamweapon=1;
+	//duration=0.015;
+	beamlaser=1;
+	beamtime=0.06;
+	color=160;
+	intensity=5;
+	thickness=0.5;
+	size=1;
+
+	turret=1;
+	range=1024;
+	weaponvelocity=256;
+
+	reloadtime=2;
+	Burst=30;
+	Burstrate=0.01;
+	//sprayangle=1000;
+
+	areaofeffect=4;
+	collidefriendly=0;
+	avoidfriendly=0;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0; //Thanks, Argh.
+	craterMult=0;
+	craterBoost=0;
+	explosiongenerator=custom:suppressor;
+
+	interceptedbyshieldtype=2;
+	[DAMAGE]
+		{
+		default=5;
+		flag=0.00000001;
+		dozer=80;
+		}
+	}
+
+[Flag_Gun]
+	{
+	name=Arty;
+	rendertype=1;
+	lineofsight=1;
+	//ballistic=1;
+	beamweapon=1;
+	duration=.1;
+	color=1;
+	intensity=1;
+	thickness=2;
+	//size=20;
+
+	turret=1;
+	range=3000;
+	weaponvelocity=1024;
+
+	reloadtime=2;
+	Burst=4;
+	Burstrate=0.01;
+	sprayangle=5000;
+
+	areaofeffect=256;
+	collidefriendly=0;
+	avoidfriendly=0;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0; //Thanks, Argh.
+	craterMult=0;
+	craterBoost=0;
+	explosiongenerator=custom:lasblast;
+
+	interceptedbyshieldtype=0;
+	[DAMAGE]
+		{
+		default=4000;
+		flag=2;
+		dozer=40;
+		}
+	}
+
+[DISINTEGRATOR_Bomb]
+	{
+	name=Grenade;
+	rendertype=2;
+	lineofsight=0;
+	ballistic=1;
+	//beamweapon=1;
+	//duration=0.02;
+	//color=1;
+	//intensity=0.5;
+	//thickness=0.5;
+	size=36;
+
+	turret=1;
+	range=1024;
+	weaponvelocity=128;
+
+	reloadtime=5;
+	commandfire=1;
+
+	areaofeffect=384;
+	collidefriendly=1;
+	avoidfriendly=1;
+
+//	paralyzer=1;
+//	paralyzetime=20;
+
+	metalpershot=100;
+	energypershot=700;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0; //Thanks, Argh.
+	craterMult=0;
+	craterBoost=0;
+	explosiongenerator=custom:dblast;
+
+	interceptedbyshieldtype=4;
+	[DAMAGE]
+		{
+		default=2000;
+		flag=0.00000001;
+		dozer=500;
+		}
+	}
+
+[Flagkiller]
+	{
+	name=Decap;
+	rendertype=2;
+	lineofsight=1;
+	beamweapon=1;
+	duration=0.02;
+	color=40;
+	intensity=0.5;
+	thickness=0.5;
+
+	turret=1;
+	range=768;
+	weaponvelocity=420;
+
+	reloadtime=0.11;
+	sprayangle=1536;
+
+	areaofeffect=512;
+	edgeeffectiveness=1;
+	collidefriendly=0;
+	avoidfriendly=0;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0; //Thanks, Argh.
+	craterMult=0;
+	craterBoost=0;
+	explosiongenerator=custom:selfd;
+
+	interceptedbyshieldtype=0; //Doesn't care about armor plates
+	[DAMAGE]
+		{
+		default=200;
+		dozer=0.000000001;
+		flag=10;
+		}
+	}
+
+[Flagblast]
+	{
+	name=Gameover;
+	rendertype=2;
+	lineofsight=1;
+	beamweapon=1;
+	duration=0.02;
+	color=40;
+	intensity=0.5;
+	thickness=0.5;
+
+	turret=1;
+	range=768;
+	weaponvelocity=420;
+
+	reloadtime=0.11;
+	sprayangle=1536;
+
+	areaofeffect=1024;
+	edgeeffectiveness=1;
+	collidefriendly=0;
+	avoidfriendly=0;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0; //Thanks, Argh.
+	craterMult=0;
+	craterBoost=0;
+	explosiongenerator=custom:flagblast;
+
+	interceptedbyshieldtype=0; //Doesn't care about armor plates
+	[DAMAGE]
+		{
+		default=10000;
+		dozer=0.000000001;
+		flag=10;
+		}
+	}
+
+[DozerDeath]
+	{
+	name=Gameover;
+	rendertype=2;
+	lineofsight=1;
+	beamweapon=1;
+	duration=0.02;
+	color=40;
+	intensity=0.5;
+	thickness=0.5;
+
+	turret=1;
+	range=768;
+	weaponvelocity=420;
+
+	reloadtime=0.11;
+	sprayangle=1536;
+
+	areaofeffect=16;
+	edgeeffectiveness=1;
+	collidefriendly=0;
+	avoidfriendly=0;
+
+	tolerance=3000;
+
+	impulsefactor=0;
+	impulseBoost=0; //Thanks, Argh.
+	craterMult=4;
+	craterBoost=5;
+	explosiongenerator=custom:explode;
+
+	interceptedbyshieldtype=0; //Doesn't care about armor plates
+	[DAMAGE]
+		{
+		default=10000;
+		dozer=0.000000001;
+		flag=0.000000001;
+		}
+	}
+

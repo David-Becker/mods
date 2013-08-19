@@ -1,0 +1,79 @@
+[Laser]
+{
+	name=Laser;
+	WeaponType=LaserCannon;
+	//WeaponType=BeamLaser;
+	//BeamBurst=1;
+	//BeamTTL=12;
+	//BeamDecay=.8;
+	turret=1;
+	range=65536;
+	weaponvelocity=1600;
+	duration=3;
+	thickness=5;
+	RGBcolor=1 1 .2;
+	sprayangle=0;
+	alwaysvisible=1;
+
+	reloadtime=1;
+	EnergyPerShot=100;
+
+	areaofeffect=32;
+	collidefriendly=1;
+	avoidfriendly=0;
+
+	tolerance=1000;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+	cegTag=BeamTrail;
+	explosionGenerator=custom:none;
+
+	interceptedbyshieldtype=0;
+	[DAMAGE]
+	{
+		default=225;
+	}
+}
+
+[GuideLaser]
+{
+	name=Guide Laser;
+	//WeaponType=LaserCannon;
+	WeaponType=BeamLaser;
+	turret=1;
+	range=8000;
+	weaponVelocity=2500;
+	beamburst=1;
+	beamttl=7;
+	thickness=2;
+	duration=.1;
+	RGBcolor=1 0 0;
+	sprayangle=0;
+	hardstop=1;
+	corethickness=0;
+
+	reloadtime=1;
+	EnergyPerShot=0;
+
+	areaofeffect=32;
+	collidefriendly=1;
+	avoidfriendly=0;
+
+	tolerance=1000;
+
+	impulsefactor=0;
+	impulseBoost=0;
+	craterMult=0;
+	craterBoost=0;
+
+	explosionGenerator=custom:none;
+
+	interceptedbyshieldtype=0;
+	[DAMAGE]
+	{
+		default=0.0001;
+	}
+}

@@ -1,0 +1,80 @@
+[UNITINFO]
+{
+	Name=Flag;
+	Unitname=flagnofire;
+	Description=Your base. Protect it.;
+
+	//    Required Tags
+	BuildCostEnergy=0;
+	BuildCostMetal=5000;
+	BuildTime=10000;
+	ShowNanoFrame=0;
+	Category=FLAG NOTDOZER COMMANDER;
+	FootprintX=1;
+	FootprintZ=1;
+	MaxSlope=255;
+	MaxDamage=100;
+	ObjectName=flag.s3o;
+	Side=Dozerz;
+	SoundCategory=ARM_HOVER_BIG;
+	TEDClass=FLAG;
+	IdleTime=900;
+	IdleAutoHeal=0;
+	Commander=1;
+
+	//    Movement
+	BrakeRate=0;
+	Acceleration=0;
+	CanMove=0;
+	MaxVelocity=0;
+	MaxSlope=10;
+	TurnRate=0;
+
+	//    Airplane Moventment
+
+	//    Buildings
+	yardmap=c;
+	IconType=flag;
+
+	//    Construction
+	Builder=1;
+	WorkerTime=32;
+	BuildDistance=1024;
+	ShowNanoSpray=0;
+
+	//    Resources
+	EnergyMake=0;
+	EnergyStorage=0;
+	//EnergyUse=200;
+	MetalStorage=0;
+	MetalMake=30;
+
+
+	//    Abilities
+	CanStop=1;
+//	OnOffable=1;
+
+	//    Sight/Radar
+	RadarDistance=0;
+	SightDistance=512;
+
+	//    Weapons
+	ExplodeAs=Flagblast;
+	SelfDestructAs=Flagblast;
+	Weapon1=DISINTEGRATOR_Flag_Gun;
+
+	//    Tracks/Flares
+
+	//    Watersettings
+
+	//    Misc
+	bmcode=0;
+	noautofire=0;
+	unitnumber=5;
+	firestandorders=1;
+	standingfireorder=2;
+	mobilestandorders=1;
+	standingmoveorder=1;
+	canpatrol=1;
+	buildangle=1024;
+}

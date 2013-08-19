@@ -1,0 +1,70 @@
+[UNITINFO]
+{
+	Name=Oil Pump;
+	Unitname=oilpump;
+	Description=Extracts oil until its Silo is full, use Refinery or Truck to empty;
+	
+	//    Required Tags
+	BuildCostEnergy=0;
+	BuildCostMetal=300;
+	BuildTime=2000;
+	ShowNanoFrame=0;
+	Category=BUILDING UNARMORED BOMBABLE NOTINF NOTSUB NOTAIR MISSILETARGET ALL;
+	FootprintX=5;
+	FootprintZ=4;
+	MaxSlope=30;
+	MaxDamage=9000;
+	ObjectName=OilPump.s3o;
+	Side=Thingy;
+	SoundCategory=ARM_HOVER_BIG;
+	TEDClass=METAL;
+	IdleTime=900;
+	IdleAutoHeal=300;
+	
+	//    Movement
+	BrakeRate=0;
+	Acceleration=0;
+	CanMove=0;
+	MaxVelocity=0;
+	TurnRate=0;
+	
+	//    Airplane Moventment
+	
+	//    Buildings
+	yardmap=o;
+	
+	//    Construction
+	
+	//    Resources
+	EnergyMake=0;
+	EnergyStorage=0;
+	MetalStorage=500;
+	ExtractsMetal=0.0015;
+	
+	
+	//    Abilities
+	CanStop=1;
+	
+	//    Sight/Radar
+	RadarDistance=0;
+	SightDistance=300;
+	
+	//    Weapons
+	ExplodeAs=;
+	SelfDestructAs=;
+	
+	//    Tracks/Flares
+	
+	//    Watersettings
+	
+	//    Misc
+	bmcode=0;
+	noautofire=0;
+	unitnumber=5;
+	firestandorders=1;
+	standingfireorder=2;
+	mobilestandorders=1;
+	standingmoveorder=1;
+	canpatrol=1;
+	buildangle=1024;
+}

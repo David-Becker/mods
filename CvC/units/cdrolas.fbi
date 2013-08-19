@@ -1,0 +1,78 @@
+[UNITINFO]
+{
+	Name=Predator;
+	UnitName=CDROLAS;
+	buildpic=CDroLas.bmp;
+	
+	//    Required Tags
+	BuildCostEnergy=0;
+	BuildCostMetal=80;
+	BuildTime=320;
+	Category=DROLAS NOTLARGE SMALL NOTBUILDING ALL ;
+	Description=- Standard drone equipped with lasers;
+	FootprintX=2;
+	FootprintZ=2;
+	MaxDamage=140;
+	ObjectName=CDrone.s3o;
+	Side=COSMOS;
+	SoundCategory=ARM_HOVER_BIG;
+	TEDClass=TANK;
+	OnOffable=0;
+	DamageModifier=0.1;
+	
+	//    Movement
+	BrakeRate=1.2;
+	MovementClass=TANKHOVER2;
+	Acceleration=0.60;
+	CanMove=1;
+	MaxVelocity=5.1;
+	TurnRate=700;
+	Upright=1;
+	//Floater=1;
+	CanHover=1;
+	
+	//    Airplane Moventment
+	
+	//    Buildings
+
+	//    Construction
+	Builder=0;
+	WorkerTime=300;
+
+	//    Resources
+	EnergyMake=0;
+	EnergyStorage=0;
+	MetalStorage=0;
+	MetalMake=0;
+	
+	
+	//    Abilities
+	CanAttack=1;
+	CanHover=1;
+	CanStop=1;
+	CanBuild=1;
+	
+	//    Sight/Radar
+	RadarDistance=0;
+	SightDistance=400;
+	
+	//    Weapons
+	OnlyTargetCategory=All;
+	Weapon1=DRONE_LASER;
+	Weapon2=DRONE_LASER;
+	ExplodeAs=DRONE_EXPLOSION;
+	SelfDestructAs=DRONE_EXPLOSION;
+	NoChaseCategory=VTOL;
+	
+	//    Tracks/Flares
+	
+	//    Watersettings
+	
+	//    Misc
+	SmoothAnim=0;
+        [SFXTypes]
+	{
+	       explosiongenerator0=custom:buildFX_melter_small;
+       	}
+
+}

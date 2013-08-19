@@ -1,0 +1,107 @@
+Fibre
+=====
+
+Fibre is an unconventional mod. You claim territory by building a node network and from this territory you must launch attacks at the enemy.
+
+You start out with your Citadel, your central building. This Citadel initiates all construction and serves as the core of your base, lose it and you lose the game.
+
+To expand you must place a node near your occupied territory, when you are placing a node you should see blue circles indicating the possible area (if you have LuaUI disabled they won't show up. Make sure it's enabled!). Place the node inside these circles and it will get build. If the option wasn't disabled in the mod options dialogue nodes will also cost a number of parts depending on the number of nodes you possess.
+
+To build anything you need energy. Energy is the white number above all buildings. It is produced by nodes and the citadel and consumed by practically everything.
+
+Every node has a solid colored circle around it, that is its circle of influence. You can build other buildings in that area and they will belong to the node and use the node's energy. Make sure the circles don't overlap, that reduces the node's energy production!
+
+If a node is destroyed all of its buildings will turn neutral and be up for grabs! They will become property of whoever makes a new node to cover them. Even worse, if the connection from a node to the Citadel is destroyed (by destroying the nodes in between), the whole node will turn neutral and belong to the first player to connect to it! The same applies to your enemy though so try to destroy his node connections to claim his buildings.
+
+All nodes store their own energy, they won't use other nodes' energy (except when you build a new node, the construction is funded by another node nearby). If you want to move energy from one node to another you need transmitters. They're inefficient (only 50% of the energy they draw makes it to the target node) but sometimes you just need to reinforce one node.
+
+While you can build buildings and turrets just fine with energy you need parts to make units. For that purpose the Part Fabber exists. It adds parts to the global pool shown at the top of your screen. Once you are making parts you can build factories. When you do that you'll see an icon appear in front of the factory, that's the beacon. You cannot control units directly, you can only move their beacon. They will follow the beacon and if the beacon is moved on an enemy they'll attack that enemy. You can control the beacon by selecting the factory, too. You'll notice that the range of the factory is limited, units can only move in a certain radius around their factory. Also every factory maintains a squad of a certain size, once that squad is at full size the factory will stop making more units until the squad loses units.
+
+So what do you do when your factories and your expensive artillery have done their fighting and the frontline has moved away? That's where Teleporters come into play. Place a Teleporter where you want your building to go and tell it to teleport the building. This moves the building to the Teleporter's location. It's single use but worth it for expensive equipment. You can also use it to build your expensive things in the backyard of your base and teleport it to the frontline when it's done.
+
+You can add a LuaAI called "Hostiles" to the game. Random units belonging to that bot will appear at the edge of your territory. To defeat a creep bot players must reach all sides of the map with their nodes at least once (of course having two players start in opposite corners will instantly end this...).
+
+Mod Options
+-----------
+Fibre offers some options to customize the gameplay a bit:
+
+Growing Node costs:
+Nodes cost increasing amounts of parts to place. Factories won't make units if you have fewer parts than that so they won't prevent you from placing nodes. This defaults to on.
+
+King of the Doomsday:
+King of the Doomsday places a neutral doomsday device in the center of the map (average of all Citadel positions, BTW). It can fire devastating laser beams across the map. If a player can claim it and power it to over 9000 energy he is pretty much guaranteed victory.
+
+Replace Geos:
+Many maps have geothermal vents in contested spots, the replace geos option lets you use them in Fibre by replacing them with different neutral buildings.
+*Unclaimed Nodes: As the name says, nodes that belong to noone.
+*Missile Silos: Single-use superweapons that can strike deep into enemy territory. They can allow you to get a decisive edge if used right. Don't bother just shooting them at the enemy citadel tho, you need a few of them to destroy that (and it can repair if you space the launches out too much so if you're going to do a citadel kill do it all at once!).
+*Superchargers: Great powersources that start outputting a humongous amount of power once they are charged to their capacity.
+
+Infinite unit range:
+One guy kept complaining that he wants the units to move freely, this option is just to show what happens. Don't use it if you want a proper game. Might make sense in a game against a Hostiles bot though.
+
+Special buildings like the doomsday are indestructible but that doesn't mean you can't shoot them, if they are damaged they lose charge which allows you to prevent their use. Note that you can't teleport special buildings.
+
+Buildings
+---------
+A complete list of the buildings you can make.
+
+Node:
+The basic part of your node network. It makes energy and establishes control over other things.
+
+Transmitter:
+The only way to move energy from one node to another. It's lossy at a 2:1 rate but sometimes it's still needed.
+
+Teleporter:
+Gives your base the needed mobility, the Teleporter "pulls" a building to its own location.
+
+Part Fabber:
+Produces the parts you need to make units.
+
+Repair System:
+Repairs targets quickly. In fact it can often repair buildings faster than enemies can damage them but it also drains a lot of power so it'll deplete the node's energy quickly.
+
+Laser turret:
+A cheap defense turret. It has a really short range but does a lot of damage if anything gets into it. If your enemy gets too close, use laser turrets. LTs also defend fairly well against drones. They're your "hand to hand" option in base combat.
+
+Missile turret:
+An all-purpose defense turret, it can hit any unit (to varying degrees of accuracy) and outranges laser turrets. The damage output isn't as high as the laser turret's though. It's not as good as any of the more specialized turrets for specific purposes but it can do any job.
+
+Globber:
+Shoots globs of napalm that burn for a while and provide excellent anti-swarm firepower.
+
+Mortar:
+Stationary artillery that's useful for attacking enemy buildings.
+
+Starfire Cannon:
+Covers a large area in explosives with every shot, might help if the enemy makes a lot of turrets in a small area.
+
+Shredder flak:
+If you have trouble with planes make these. Cheap as dirt and fairly long ranged. Their energy pool doesn't last long though and when it's depleted they fire very slowly.
+
+Kraken:
+A turret for sea use, it has a Shredder flak on the top and a torpedo launcher at the bottom. While it won't be able to fight with ships at maximum range it's a very good reason for ships to keep their distance until it is destroyed. It cannot deal with drones so if you plan to engage those you'll need something else.
+
+Stonefist howitzer:
+Expensive but powerful, the Stonefist does massive damage over a large area with every shot. It's great for destroying entire squads of units.
+
+Stiletto cruise missile launcher:
+This thing has the largest range of any turret in Fibre. Its drawback is that it cannot attack harmless buildings like nodes or teleporters (use the latter to build expensive stuff outside the Stiletto's range if you're facing one). The Stiletto allows you to strike enemy factories at a distance.
+
+Turret Launcher:
+An artillery piece that fires three turrets into the target area. These turrets have a lot of firepower but little HP, they are best used to assault unguarded positions or deploy a defense against mobile units. Don't toss them right between the enemy units though, they won't survive that.
+
+Drone factory:
+This is the cheapest factory available, it produces small drones in large numbers. They are dangerous in numbers and can cross most terrain obstacles.
+
+Armor factory:
+This factory makes tanks, powerful units that can take some damage from enemy turrets. They outrange laser turrets.
+
+Howler factory:
+An airpad for small ground attack planes. They can do a lot of damage with their rocket launchers and are fast to get anywhere but flak eats them up quickly.
+
+Bomber factory:
+For all your bombing raid needs, the bomber factory sends a single bomber that covers a large area in powerful bombs. Flak won't stop the bomber completely so it can strike even fortified positions.
+
+Shipyard:
+Produces ships if water is available. Ships have infinite movement range and extremely powerful attacks but they are only available where there's water.
